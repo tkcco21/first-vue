@@ -13,6 +13,7 @@
     color: #00f;
     display: grid;
     display: flex;
+    justify-content: center;
   }
 }
 </style>

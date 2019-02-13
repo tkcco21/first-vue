@@ -6,7 +6,9 @@
   extends: [
     "plugin:vue/recommended"
   ],
-  plugins: [],
+  plugins: [
+    "vue"
+  ],
   rules: {
     no-console: "error",
     no-control-regex: "off",
