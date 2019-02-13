@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h1 class="hello-title">Hello Vue</h1>
+    <h1 class="hello-title">
+      Hello Vue
+    </h1>
   </div>
 </template>
 

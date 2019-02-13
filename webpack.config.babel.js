@@ -41,12 +41,20 @@ const config = {
   module: {
     rules: [
       {
+        test: /\.(jsx?|vue)$/,
+        enforce: 'pre',
+        exclude: /node_modules/,
+        loader: 'eslint-loader',
+        options: { failOnError: false }
+      },
+      {
         test: /\.js$/,
         exclude: /node_modules/,
         loader: 'babel-loader',
       },
       {
         test: /\.vue$/,
+        exclude: /node_modules/,
         loader: 'vue-loader'
       },
       {
