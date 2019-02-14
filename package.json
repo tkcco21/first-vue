@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest --notify --watch",
     "dev": "NODE_ENV=development webpack-dev-server --color --progress --hot",
     "build": "NODE_ENV=production webpack --progress"
   },
@@ -27,6 +27,7 @@
     "babel-eslint": "^10.0.1",
     "babel-jest": "^24.1.0",
     "babel-loader": "^8.0.5",
+    "babel-preset-power-assert": "^3.0.0",
     "css-loader": "^2.1.0",
     "eslint": "^5.13.0",
     "eslint-loader": "^2.1.2",
@@ -35,6 +36,7 @@
     "jest-serializer-vue": "^2.0.2",
     "node-sass": "^4.11.0",
     "postcss-loader": "^3.0.0",
+    "power-assert": "^1.6.1",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "vue-jest": "^3.0.3",

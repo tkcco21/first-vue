@@ -1,9 +1,11 @@
+import assert from 'assert';
 import { mount } from '@vue/test-utils';
 import Index from '@/';
 
 describe('Root Component', () => {
   test('is a Vue instance', () => {
-    const wrapper = mount(Index)
+    const wrapper = mount(Index);
     expect(wrapper.isVueInstance()).toBeTruthy()
+    assert(wrapper.isVueInstance());
   });
 });

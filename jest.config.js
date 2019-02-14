@@ -10,9 +10,11 @@ module.exports = {
     '^.+\\.js$': '<rootDir>/node_modules/babel-jest'
   },
   transformIgnorePatterns: [ 'node_modules' ],
+  // webpackのエイリアスを設定している場合は必要
+  // alias: { '@': path.join(__dirname, 'src') } 的なやつ
   moduleNameMapper: {
     '^@/(.*)$': '<rootDir>/src/$1'
   },
-  // スナップショットに対するシリアライズ
-  snapshotSerializers: [ 'jest-serializer-vue' ]
+  // Vue.jsでスナップショットを取る場合に必要
+  // snapshotSerializers: [ 'jest-serializer-vue' ]
 };
