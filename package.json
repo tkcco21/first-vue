@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest --notify --watch",
+    "test": "jest --notify --watchAll --colors",
     "dev": "NODE_ENV=development webpack-dev-server --color --progress --hot",
     "build": "NODE_ENV=production webpack --progress"
   },
