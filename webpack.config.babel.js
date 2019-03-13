@@ -5,6 +5,7 @@ const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
 console.log('nodeEnv ==> ', nodeEnv);
 console.log('isDev ==> ', isDev);
+console.log(path.resolve(__dirname, 'src/js/components'));
 
 const src = path.resolve(__dirname, './src');
 const dist = path.resolve(__dirname, './public');
@@ -15,8 +16,7 @@ const config = {
   resolve: {
     extensions: ['.js', '.json', '.vue'],
     alias: {
-      Components: path.resolve(__dirname, 'src/components'),
-      'vue$': 'vue/dist/vue.esm.js'
+      Components: `${src}/js/components`,
     }
   },
   plugins: [new VueLoaderPlugin()],
@@ -24,19 +24,17 @@ const config = {
   devServer: {
     open: true,
     inline: true,
+    hot: true,
     port: 8080,
     watchContentBase: true,
-    contentBase: path.join(__dirname, 'public'),
+    contentBase: dist
   },
   entry: {
-    index: [
-      '@babel/polyfill',
-      './src/index.js'
-    ]
+    index: `${src}/js/index.js`
   },
   output: {
     filename: '[name].js',
-    path: path.resolve(__dirname, 'public/'),
+    path: `${dist}/js/`,
   },
   module: {
     rules: [
@@ -84,7 +82,7 @@ const config = {
             loader: 'sass-loader',
             options: {
               outputStyle: 'expanded',
-              sourceMap: true,
+              sourceMap: true
             }
           }
         ]
@@ -92,6 +90,5 @@ const config = {
     ]
   }
 }
-console.log(path.resolve(__dirname, 'src/components'));
 
 export default config;
