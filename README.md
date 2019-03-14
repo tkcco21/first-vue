@@ -1,14 +1,15 @@
 # First Vue (ver. TODO)
 
+developブランチに切り替え
 ```
 git checkout -b develop origin/develop
 ```
-
+package.jsonに記載のあるパッケージのインストール
 ```
 yarn
 ```
 
-インストールしたら下記2つを実行
+インストールしたら下記2つを別タブで実行
 
 ```
 yarn dev:server
