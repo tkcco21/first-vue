@@ -1,13 +1,17 @@
 # First Vue (ver. TODO)
 
 ```
+git checkout -b develop origin/develop
+```
+
+```
 yarn
 ```
 
 インストールしたら下記2つを実行
 
 ```
-yarn dev:servber
+yarn dev:server
 ```
 
 ```
