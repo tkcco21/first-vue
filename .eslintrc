@@ -1,14 +1,24 @@
 {
   "parserOptions": {
-    "parser": "babel-eslint",
-    "sourceType": "module"
+    "parser": "babel-eslint"
   },
   extends: [
+    "airbnb-base",
     "plugin:vue/recommended"
   ],
   plugins: [
     "vue"
   ],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        map: [
+          # ["Components", "./src/js/components"]
+        ],
+        # extensions: ['.vue', '.js', '.jsx', '.json']
+      }
+    }
+  },
   rules: {
     no-console: 1,
     no-control-regex: "off",
