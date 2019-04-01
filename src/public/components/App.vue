@@ -6,8 +6,7 @@
   </div>
 </template>
 
-<style scoped lang="scss">
-
+<style lang="scss" scoped>
 .hello {
   &-title {
     color: #00f;

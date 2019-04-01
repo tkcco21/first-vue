@@ -7,36 +7,25 @@ console.log('nodeEnv ==> ', nodeEnv);
 console.log('isDev ==> ', isDev);
 
 const src = path.resolve(__dirname, './src');
-const dist = path.resolve(__dirname, './public');
+const dist = path.resolve(__dirname, './dist');
 
 const config = {
   mode: nodeEnv,
   devtool: isDev ? 'source-map' : 'eval',
   resolve: {
-    extensions: ['.js', '.json', '.vue'],
+    extensions: ['.vue', '.js', '.json'],
     alias: {
-      Components: path.resolve(__dirname, 'src/components'),
-      'vue$': 'vue/dist/vue.esm.js'
+      'PublicComponents': path.resolve(__dirname, 'src/public/components'),
     }
   },
   plugins: [new VueLoaderPlugin()],
-  // webpack-dev-server
-  devServer: {
-    open: true,
-    inline: true,
-    port: 8080,
-    watchContentBase: true,
-    contentBase: path.join(__dirname, 'public'),
-  },
   entry: {
-    index: [
-      '@babel/polyfill',
-      './src/index.js'
-    ]
+    public: './src/public/index.js',
+    admin: './src/admin/index.js',
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'public/'),
+    filename: 'js/[name].bundle.js',
+    path: path.resolve(__dirname, 'dist/'),
   },
   module: {
     rules: [
@@ -91,7 +80,6 @@ const config = {
       }
     ]
   }
-}
-console.log(path.resolve(__dirname, 'src/components'));
+};
 
 export default config;

@@ -1,43 +1,56 @@
 {
+  "parser": "vue-eslint-parser",
   "parserOptions": {
-    "parser": "babel-eslint",
-    "sourceType": "module"
+    "parser": "babel-eslint"
   },
-  extends: [
-    "plugin:vue/recommended"
-  ],
-  plugins: [
-    "vue"
-  ],
-  rules: {
-    no-console: "error",
-    no-control-regex: "off",
-    max-len: ["error", {
-      code: 90,
-      ignoreComments: true,
-      ignoreTrailingComments: true,
-      ignoreUrls: true
+  "extends": ["airbnb-base"],
+  "plugins": ["vue"],
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        map: [
+          ["PublicComponents", "./src/public/components"]
+        ],
+        extensions: ['.vue', '.js', '.json']
+      }
+    }
+  },
+  "rules": {
+    "no-new": "off",
+    "no-console": 1,
+    "no-control-regex": "off",
+    "max-len": ["error", {
+      "code": 90,
+      "ignoreComments": true,
+      "ignoreTrailingComments": true,
+      "ignoreUrls": true
     }],
-    no-irregular-whitespace: [
+    "no-irregular-whitespace": [
       "error",
       {
-        skipTemplates: true,
-        skipStrings: true
+        "skipTemplates": true,
+        "skipStrings": true
       }
     ],
-    import/no-named-as-default: "off",
-    no-trailing-spaces: "error",
-    vue/singleline-html-element-content-newline: [
+    "import/no-named-as-default": "off",
+    "no-param-reassign": ["error", {
+      "props": true,
+      "ignorePropertyModificationsFor": ["state"]
+    }],
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/max-attributes-per-line": [
       "error",
       {
-        ignoreWhenNoAttributes: true,
-        ignoreWhenEmpty: true
+        "singleline": 3,
+        "multiline": {
+          "max": 1
+        }
       }
     ]
   },
-  env: {
-    browser: true,
-    node: true,
-    es6: true
+  "env": {
+    "browser": true,
+    "node": true,
+    "es6": true
   }
 }
