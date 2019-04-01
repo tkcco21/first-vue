@@ -15,6 +15,7 @@ const config = {
   resolve: {
     extensions: ['.vue', '.js', '.json'],
     alias: {
+      'AdminComponents': path.resolve(__dirname, 'src/admin/components'),
       'PublicComponents': path.resolve(__dirname, 'src/public/components'),
     }
   },

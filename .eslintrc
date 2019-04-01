@@ -9,6 +9,7 @@
     "import/resolver": {
       "alias": {
         map: [
+          ["AdminComponents", "./src/admin/components"],
           ["PublicComponents", "./src/public/components"]
         ],
         extensions: ['.vue', '.js', '.json']

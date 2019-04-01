@@ -1,6 +1,6 @@
 node_modules/
 
-_vagrant/.vagrant
+_vagrant/
 dist/js
 
 .DS_Store
