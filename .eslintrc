@@ -1,57 +1,68 @@
 {
-  "parser": "vue-eslint-parser",
-  "parserOptions": {
-    "parser": "babel-eslint"
+  parser: "vue-eslint-parser",
+  parserOptions: {
+    parser: "babel-eslint"
   },
-  "extends": ["airbnb-base"],
-  "plugins": ["vue"],
-  "settings": {
-    "import/resolver": {
-      "alias": {
+  extends: ["airbnb-base"],
+  plugins: [
+    "vue",
+    "vue-a11y"
+  ],
+  settings: {
+    import/resolver: {
+      alias: {
         map: [
           ["AdminComponents", "./src/admin/components"],
-          ["PublicComponents", "./src/public/components"]
+          ["AdminContainers", "./src/admin/containers"],
+          ["PublicComponents", "./src/public/components"],
+          ["PublicContainers", "./src/public/containers"]
         ],
         extensions: ['.vue', '.js', '.json']
       }
     }
   },
-  "rules": {
-    "no-new": "off",
-    "no-console": 1,
-    "no-control-regex": "off",
-    "max-len": ["error", {
-      "code": 90,
-      "ignoreComments": true,
-      "ignoreTrailingComments": true,
-      "ignoreUrls": true
-    }],
-    "no-irregular-whitespace": [
+  rules: {
+    no-new: "off",
+    no-console: "warn",
+    no-control-regex: "off",
+    max-len: [
       "error",
       {
-        "skipTemplates": true,
-        "skipStrings": true
+        code: 90,
+        ignoreComments: true,
+        ignoreTrailingComments: true,
+        ignoreUrls: true
       }
     ],
-    "import/no-named-as-default": "off",
-    "no-param-reassign": ["error", {
-      "props": true,
-      "ignorePropertyModificationsFor": ["state"]
-    }],
-    "vue/singleline-html-element-content-newline": "off",
-    "vue/max-attributes-per-line": [
+    no-irregular-whitespace: [
       "error",
       {
-        "singleline": 3,
-        "multiline": {
-          "max": 1
+        skipTemplates: true,
+        skipStrings: true
+      }
+    ],
+    import/no-named-as-default: "off",
+    no-param-reassign: [
+      "error",
+      {
+        props: true,
+        ignorePropertyModificationsFor: ["state"]
+      }
+    ],
+    vue/singleline-html-element-content-newline: "off",
+    vue/max-attributes-per-line: [
+      "error",
+      {
+        singleline: 3,
+        multiline: {
+          max: 1
         }
       }
     ]
   },
-  "env": {
-    "browser": true,
-    "node": true,
-    "es6": true
+  env: {
+    browser: true,
+    node: true,
+    es6: true
   }
 }

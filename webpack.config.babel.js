@@ -3,8 +3,13 @@ import path from 'path';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
-console.log('nodeEnv ==> ', nodeEnv);
-console.log('isDev ==> ', isDev);
+
+console.log('*******************************************************');
+console.log('***');
+console.log('*** nodeEnv ==> ', nodeEnv);
+console.log('*** isDev ==> ', isDev);
+console.log('***');
+console.log('*******************************************************');
 
 const src = path.resolve(__dirname, './src');
 const dist = path.resolve(__dirname, './dist');
@@ -16,7 +21,9 @@ const config = {
     extensions: ['.vue', '.js', '.json'],
     alias: {
       'AdminComponents': path.resolve(__dirname, 'src/admin/components'),
+      'AdminContainers': path.resolve(__dirname, 'src/admin/containers'),
       'PublicComponents': path.resolve(__dirname, 'src/public/components'),
+      'PublicContainers': path.resolve(__dirname, 'src/public/containers'),
     }
   },
   plugins: [new VueLoaderPlugin()],
