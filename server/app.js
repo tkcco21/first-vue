@@ -9,7 +9,22 @@ import createError from 'http-errors';
 import adminRouter from './routes/admin'
 import publicRouter from './routes/public'
 
+const nodeEnv = process.env.NODE_ENV || 'development';
+const isDev = nodeEnv === 'development';
+
 const app = express();
+
+// =========================================================
+if (isDev) {
+  const webpack = require('webpack');
+  const webpackConfig = require('../webpack.config.babel.js').default;
+  const compiler = webpack(webpackConfig);
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true, publicPath: webpackConfig.output.publicPath
+  }));
+  app.use(require('webpack-hot-middleware')(compiler));
+}
+// =========================================================
 
 app.use(logger('dev'));
 app.use(cookieParser());

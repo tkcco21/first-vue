@@ -1,4 +1,5 @@
 const { VueLoaderPlugin } = require("vue-loader");
+import webpack from 'webpack';
 import path from 'path';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -28,12 +29,13 @@ const config = {
   },
   plugins: [new VueLoaderPlugin()],
   entry: {
-    public: './src/public/index.js',
-    admin: './src/admin/index.js',
+    public: ['./src/public/index.js'],
+    admin: ['./src/admin/index.js']
   },
   output: {
     filename: 'js/[name].bundle.js',
-    path: path.resolve(__dirname, 'dist/'),
+    path: dist,
+    publicPath: '/',
   },
   module: {
     rules: [
@@ -52,7 +54,7 @@ const config = {
       {
         test: /\.vue$/,
         exclude: /node_modules/,
-        loader: 'vue-loader'
+        loader: 'vue-loader',
       },
       {
         test: /\.(css|sass|scss)$/,
@@ -89,5 +91,15 @@ const config = {
     ]
   }
 };
+
+if (isDev) {
+  config.entry.admin.unshift('webpack-hot-middleware/client');
+  config.entry.public.unshift('webpack-hot-middleware/client');
+  config.output = Object.assign({}, config.output, {
+    hotUpdateChunkFilename: 'js/.hot/[id].[hash].hot-update.js',
+    hotUpdateMainFilename: 'js/.hot/[hash].hot-update.json'
+  });
+  config.plugins.push(new webpack.HotModuleReplacementPlugin());
+}
 
 export default config;

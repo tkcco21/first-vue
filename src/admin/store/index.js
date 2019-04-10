@@ -8,6 +8,7 @@ export default {
   },
   mutations: {
     increments(state) {
+      console.log('test');
       state.counter += 1;
     },
   },
