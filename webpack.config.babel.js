@@ -8,6 +8,7 @@ console.log('*******************************************************');
 console.log('***');
 console.log('*** nodeEnv ==> ', nodeEnv);
 console.log('*** isDev ==> ', isDev);
+console.log('*** ', __dirname);
 console.log('***');
 console.log('*******************************************************');
 
@@ -81,7 +82,7 @@ const config = {
             loader: 'sass-loader',
             options: {
               outputStyle: 'expanded',
-              sourceMap: true,
+              sourceMap: true
             }
           }
         ]
