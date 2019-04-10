@@ -21,16 +21,16 @@ const config = {
   resolve: {
     extensions: ['.vue', '.js', '.json'],
     alias: {
-      'AdminComponents': path.resolve(__dirname, 'src/admin/components'),
-      'AdminContainers': path.resolve(__dirname, 'src/admin/containers'),
-      'PublicComponents': path.resolve(__dirname, 'src/public/components'),
-      'PublicContainers': path.resolve(__dirname, 'src/public/containers'),
+      'AdminComponents': path.resolve(__dirname, './src/js/admin/components'),
+      'AdminContainers': path.resolve(__dirname, './src/js/admin/containers'),
+      'PublicComponents': path.resolve(__dirname, './src/js/public/components'),
+      'PublicContainers': path.resolve(__dirname, './src/js/public/containers'),
     }
   },
   plugins: [new VueLoaderPlugin()],
   entry: {
-    public: './src/public/index.js',
-    admin: './src/admin/index.js',
+    public: './src/js/public/index.js',
+    admin: './src/js/admin/index.js',
   },
   output: {
     filename: 'js/[name].bundle.js',
