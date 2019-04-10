@@ -30,8 +30,8 @@ const config = {
   },
   plugins: [new VueLoaderPlugin()],
   entry: {
-    public: ['./src/public/index.js'],
-    admin: ['./src/admin/index.js']
+    public: ['./src/js/public/index.js'],
+    admin: ['./src/js/admin/index.js']
   },
   output: {
     filename: 'js/[name].bundle.js',
