@@ -9,6 +9,7 @@ console.log('*******************************************************');
 console.log('***');
 console.log('*** nodeEnv ==> ', nodeEnv);
 console.log('*** isDev ==> ', isDev);
+console.log('*** ', __dirname);
 console.log('***');
 console.log('*******************************************************');
 
@@ -21,10 +22,10 @@ const config = {
   resolve: {
     extensions: ['.vue', '.js', '.json'],
     alias: {
-      'AdminComponents': path.resolve(__dirname, 'src/admin/components'),
-      'AdminContainers': path.resolve(__dirname, 'src/admin/containers'),
-      'PublicComponents': path.resolve(__dirname, 'src/public/components'),
-      'PublicContainers': path.resolve(__dirname, 'src/public/containers'),
+      'AdminComponents': path.resolve(__dirname, './src/js/admin/components'),
+      'AdminContainers': path.resolve(__dirname, './src/js/admin/containers'),
+      'PublicComponents': path.resolve(__dirname, './src/js/public/components'),
+      'PublicContainers': path.resolve(__dirname, './src/js/public/containers'),
     }
   },
   plugins: [new VueLoaderPlugin()],
@@ -83,7 +84,7 @@ const config = {
             loader: 'sass-loader',
             options: {
               outputStyle: 'expanded',
-              sourceMap: true,
+              sourceMap: true
             }
           }
         ]

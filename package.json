@@ -1,11 +1,10 @@
 {
-  "name": "vue_markdown",
+  "name": "first-vue",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev:watch": "webpack --watch --progress",
-    "dev:server": "DEBUG=first-vue:* ./node_modules/.bin/nodemon -L ./server/www",
+    "dev:watch": "NODE_ENV=development webpack --watch --progres",    "dev:server": "DEBUG=first-vue:* ./node_modules/.bin/nodemon -L ./server/www",
     "build": "NODE_ENV=production webpack --progress"
   },
   "browserslist": [
@@ -14,7 +13,7 @@
     "IE >= 9"
   ],
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
+    "@babel/register": "^7.4.0",
     "cookie-parser": "^1.4.4",
     "core-js": "^3.0.1",
     "ejs": "^2.6.1",
@@ -25,10 +24,11 @@
     "vuex": "^3.1.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/register": "^7.0.0",
+    "@babel/core": "^7.4.3",
+    "@babel/polyfill": "^7.4.3",
+    "@babel/preset-env": "^7.4.3",
     "autoprefixer": "^9.4.7",
+    "axios": "^0.18.0",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.1.0",

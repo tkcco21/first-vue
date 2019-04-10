@@ -12,10 +12,10 @@
     import/resolver: {
       alias: {
         map: [
-          ["AdminComponents", "./src/admin/components"],
-          ["AdminContainers", "./src/admin/containers"],
-          ["PublicComponents", "./src/public/components"],
-          ["PublicContainers", "./src/public/containers"]
+          ["AdminComponents", "./src/js/admin/components"],
+          ["AdminContainers", "./src/js/admin/containers"],
+          ["PublicComponents", "./src/js/public/components"],
+          ["PublicContainers", "./src/js/public/containers"]
         ],
         extensions: ['.vue', '.js', '.json']
       }
