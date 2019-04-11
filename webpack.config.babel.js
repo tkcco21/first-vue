@@ -94,8 +94,8 @@ const config = {
 };
 
 if (isDev) {
-  config.entry.admin.unshift('webpack-hot-middleware/client');
-  config.entry.public.unshift('webpack-hot-middleware/client');
+  config.entry.admin.unshift('webpack-hot-middleware/client?reload=true');
+  config.entry.public.unshift('webpack-hot-middleware/client?reload=true');
   config.output = Object.assign({}, config.output, {
     hotUpdateChunkFilename: 'js/.hot/[id].[hash].hot-update.js',
     hotUpdateMainFilename: 'js/.hot/[hash].hot-update.json'

@@ -14,18 +14,6 @@ const isDev = nodeEnv === 'development';
 
 const app = express();
 
-// =========================================================
-if (isDev) {
-  const webpack = require('webpack');
-  const webpackConfig = require('../webpack.config.babel.js').default;
-  const compiler = webpack(webpackConfig);
-  app.use(require('webpack-dev-middleware')(compiler, {
-    noInfo: true, publicPath: webpackConfig.output.publicPath
-  }));
-  app.use(require('webpack-hot-middleware')(compiler));
-}
-// =========================================================
-
 app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.json());
@@ -38,22 +26,35 @@ app.use(function(req, res, next) {
   next();
 });
 
+// =========================================================
+if (isDev) {
+  const webpack = require('webpack');
+  const webpackConfig = require('../webpack.config.babel').default;
+  const compiler = webpack(webpackConfig);
+  app.use(require('webpack-dev-middleware')(compiler, {
+    noInfo: true,
+    publicPath: webpackConfig.output.publicPath,
+    hot: true,
+    // quiet: true,
+    watchOptions: {
+      ignored: ['node_modules'],
+      aggregateTimeout: 300,
+      poll: true
+    }
+  }));
+  app.use(require('webpack-hot-middleware')(compiler));
+}
+// =========================================================
+
 // view engine setup
 app.set('views', path.join(__dirname, '../dist/views'));
 app.set('view engine', 'ejs');
 
 app.use(express.static(path.join(__dirname, '../dist')));
 
-// app.get('/api/test', (req, res) => {
-//   res.send({
-//     message: "Hello World!!"
-//   });
-// });
-
 app.use('/admin', adminRouter);
 // app.use('/api', apiRouter);
 app.use('/', publicRouter);
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

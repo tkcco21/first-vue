@@ -5,8 +5,7 @@
   },
   extends: ["airbnb-base"],
   plugins: [
-    "vue",
-    "vue-a11y"
+    "vue"
   ],
   settings: {
     import/resolver: {
