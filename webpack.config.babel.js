@@ -5,14 +5,6 @@ import path from 'path';
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
 
-console.log('*******************************************************');
-console.log('***');
-console.log('*** nodeEnv ==> ', nodeEnv);
-console.log('*** isDev ==> ', isDev);
-console.log('*** ', __dirname);
-console.log('***');
-console.log('*******************************************************');
-
 const src = path.resolve(__dirname, './src');
 const dist = path.resolve(__dirname, './dist');
 
@@ -22,16 +14,16 @@ const config = {
   resolve: {
     extensions: ['.vue', '.js', '.json'],
     alias: {
-      'AdminComponents': path.resolve(__dirname, './src/js/admin/components'),
-      'AdminContainers': path.resolve(__dirname, './src/js/admin/containers'),
-      'PublicComponents': path.resolve(__dirname, './src/js/public/components'),
-      'PublicContainers': path.resolve(__dirname, './src/js/public/containers'),
+      'AdminComponents': path.resolve(__dirname, './src/client/js/admin/components'),
+      'AdminContainers': path.resolve(__dirname, './src/client/js/admin/containers'),
+      'PublicComponents': path.resolve(__dirname, './src/client/js/public/components'),
+      'PublicContainers': path.resolve(__dirname, './src/client/js/public/containers'),
     }
   },
   plugins: [new VueLoaderPlugin()],
   entry: {
-    public: ['./src/js/public/index.js'],
-    admin: ['./src/js/admin/index.js']
+    public: ['./src/client/js/public/index.js'],
+    admin: ['./src/client/js/admin/index.js']
   },
   output: {
     filename: 'js/[name].bundle.js',

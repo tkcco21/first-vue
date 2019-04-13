@@ -1,22 +1,18 @@
-# First Vue (ver. TODO)
+# First Vue
 
-developブランチに切り替え
-```
-git checkout -b develop origin/develop
-```
 package.jsonに記載のあるパッケージのインストール
 ```
-yarn
+npm i
 ```
 
 インストールしたら下記2つを別タブで実行
 
 ```
-yarn dev:server
+npm run dev:server
 ```
 
 ```
-yarn dev:watch
+npm run dev:watch
 ```
 
 ## ESlint
