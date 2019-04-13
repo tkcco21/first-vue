@@ -1,5 +1,7 @@
+import pool from '@config/mysql'
+
 export default {
-  getBooks() {
-    console.log('test');
-  };
+  getAllBooks() {
+    // console.log(connection);
+  },
 };

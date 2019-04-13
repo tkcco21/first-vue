@@ -6,6 +6,7 @@ import createError from 'http-errors';
 
 import adminRouter from './routes/admin'
 import publicRouter from './routes/public'
+import apiRouter from './routes/api'
 
 const debug = require('debug')('first-vue:server');
 const nodeEnv = process.env.NODE_ENV;
@@ -54,7 +55,7 @@ app.set('view engine', 'ejs');
 app.use(express.static(`${rootDir}dist/`));
 
 app.use('/admin', adminRouter);
-// app.use('/api', apiRouter);
+app.use('/api', apiRouter);
 app.use('/', publicRouter);
 
 // catch 404 and forward to error handler

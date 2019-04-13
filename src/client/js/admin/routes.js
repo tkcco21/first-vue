@@ -1,3 +1,4 @@
+import Sample from 'AdminContainers/Sample';
 import Home from 'AdminContainers/Home';
 import SignIn from 'AdminContainers/SignIn';
 import SignOut from 'AdminContainers/SignOut';
@@ -8,6 +9,11 @@ const routes = [
     name: 'home',
     path: '/admin',
     component: Home,
+  },
+  {
+    name: 'sample',
+    path: '/admin/sample',
+    component: Sample,
   },
   {
     name: 'signin',
