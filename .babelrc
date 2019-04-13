@@ -13,7 +13,10 @@
       "module-resolver",
       {
         "alias": {
-          "@config": "./config"
+          "@Config": "./config",
+          "@Server": "./src/server",
+          "@Admin": "./src/client/js/admin",
+          "@Public": "./src/client/js/public"
         }
       }
     ]

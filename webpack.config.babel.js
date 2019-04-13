@@ -14,12 +14,6 @@ const config = {
   devtool: isDev ? 'source-map' : 'eval',
   resolve: {
     extensions: ['.vue', '.js', '.json', '.scss'],
-    alias: {
-      'AdminComponents': path.resolve(__dirname, './src/client/js/admin/components'),
-      'AdminContainers': path.resolve(__dirname, './src/client/js/admin/containers'),
-      'PublicComponents': path.resolve(__dirname, './src/client/js/public/components'),
-      'PublicContainers': path.resolve(__dirname, './src/client/js/public/containers'),
-    }
   },
   plugins: [
     new VueLoaderPlugin(),

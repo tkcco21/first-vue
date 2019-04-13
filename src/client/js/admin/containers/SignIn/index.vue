@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import AuthComponents from 'AdminComponents/Auth';
+import AuthComponents from '@Admin/components/Auth';
 
 export default {
   components: {

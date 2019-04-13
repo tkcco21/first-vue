@@ -1,4 +1,4 @@
-import pool from '@config/mysql'
+import pool from '@Config/mysql'
 
 export default {
   getAllBooks() {

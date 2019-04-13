@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import MyApp from 'PublicComponents/App';
+import MyApp from '@Public/components/App';
 
 new Vue({
   el: '#app',

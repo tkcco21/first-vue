@@ -1,8 +1,8 @@
-import Sample from 'AdminContainers/Sample';
-import Home from 'AdminContainers/Home';
-import SignIn from 'AdminContainers/SignIn';
-import SignOut from 'AdminContainers/SignOut';
-import SignUp from 'AdminContainers/SignUp';
+import Sample from '@Admin/containers/Sample';
+import Home from '@Admin/containers/Home';
+import SignIn from '@Admin/containers/SignIn';
+import SignOut from '@Admin/containers/SignOut';
+import SignUp from '@Admin/containers/SignUp';
 
 const routes = [
   {

@@ -9,10 +9,10 @@
     "import/resolver": {
       "alias": {
         "map": [
-          ["AdminComponents", "./src/client/js/admin/components"],
-          ["AdminContainers", "./src/client/js/admin/containers"],
-          ["PublicComponents", "./src/client/js/public/components"],
-          ["PublicContainers", "./src/client/js/public/containers"]
+          ["@Config", "./config"],
+          ["@Server", "./src/server"],
+          ["@Admin", "./src/client/js/admin"],
+          ["@Public", "./src/client/js/public"]
         ],
         "extensions": ['.vue', '.js', '.json', '.scss']
       }
@@ -39,6 +39,7 @@
       }
     ],
     "import/no-named-as-default": "off",
+    "import/no-extraneous-dependencies": "off",
     "no-param-reassign": [
       "error",
       {

@@ -2,9 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuex from 'vuex';
 
-import MyApp from 'AdminContainers';
-import routes from './routes';
-import storeObj from './store';
+import MyApp from '@Admin/containers';
+import routes from '@Admin/routes';
+import storeObj from '@Admin/store';
 
 import '../../scss/global';
 
