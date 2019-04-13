@@ -6,6 +6,8 @@ import MyApp from 'AdminContainers';
 import routes from './routes';
 import storeObj from './store';
 
+import '../../scss/global';
+
 Vue.use(VueRouter);
 Vue.use(Vuex);
 const router = new VueRouter({

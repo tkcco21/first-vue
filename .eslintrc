@@ -14,7 +14,7 @@
           ["PublicComponents", "./src/client/js/public/components"],
           ["PublicContainers", "./src/client/js/public/containers"]
         ],
-        "extensions": ['.vue', '.js', '.json']
+        "extensions": ['.vue', '.js', '.json', '.scss']
       }
     }
   },

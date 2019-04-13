@@ -1,6 +1,7 @@
-const { VueLoaderPlugin } = require("vue-loader");
 import webpack from 'webpack';
 import path from 'path';
+import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import { VueLoaderPlugin } from 'vue-loader';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
@@ -12,7 +13,7 @@ const config = {
   mode: nodeEnv,
   devtool: isDev ? 'source-map' : 'eval',
   resolve: {
-    extensions: ['.vue', '.js', '.json'],
+    extensions: ['.vue', '.js', '.json', '.scss'],
     alias: {
       'AdminComponents': path.resolve(__dirname, './src/client/js/admin/components'),
       'AdminContainers': path.resolve(__dirname, './src/client/js/admin/containers'),
@@ -20,7 +21,12 @@ const config = {
       'PublicContainers': path.resolve(__dirname, './src/client/js/public/containers'),
     }
   },
-  plugins: [new VueLoaderPlugin()],
+  plugins: [
+    new VueLoaderPlugin(),
+    new MiniCssExtractPlugin({
+      filename: 'css/[name].css',
+    }),
+  ],
   entry: {
     public: ['./src/client/js/public/index.js'],
     admin: ['./src/client/js/admin/index.js']
@@ -52,11 +58,10 @@ const config = {
       {
         test: /\.(css|sass|scss)$/,
         use: [
+          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
           {
-            loader: "style-loader"
-          },
-          {
-            loader: "css-loader"
+            loader: 'css-loader',
+            options: { sourceMap: true },
           },
           {
             loader: 'postcss-loader',
@@ -65,7 +70,7 @@ const config = {
                 require('autoprefixer')({
                   grid: true,
                   browsers: [
-                    'IE >= 9',
+                    'IE >= 11',
                     'last 2 versions'
                   ]
                 })
