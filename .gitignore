@@ -1,7 +1,7 @@
 node_modules/
 
-_vagrant/
 dist/js
+dist/css
 
 .DS_Store
 npm-debug.log*
