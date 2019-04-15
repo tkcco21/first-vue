@@ -1,8 +1,11 @@
-import Sample from '@Admin/containers/Sample';
 import Home from '@Admin/containers/Home';
-import SignIn from '@Admin/containers/SignIn';
-import SignOut from '@Admin/containers/SignOut';
-import SignUp from '@Admin/containers/SignUp';
+// -- Auth ---
+import SignIn from '@Admin/containers/Auth/SignIn';
+// import SignUp from '@Admin/containers/Auth/SignUp';
+// -- Books ---
+import Books from '@Admin/containers/Books';
+import BooksForm from '@Admin/containers/Books/Form';
+import BooksList from '@Admin/containers/Books/List';
 
 const routes = [
   {
@@ -11,24 +14,38 @@ const routes = [
     component: Home,
   },
   {
-    name: 'sample',
-    path: '/admin/sample',
-    component: Sample,
-  },
-  {
     name: 'signin',
     path: '/admin/signin',
     component: SignIn,
+    meta: { isPublic: true },
   },
+  // {
+  //   name: 'signup',
+  //   path: '/admin/signup',
+  //   component: SignUp,
+  //   meta: { isPublic: true },
+  // },
   {
-    name: 'logout',
-    path: '/admin/signout',
-    component: SignOut,
-  },
-  {
-    name: 'signup',
-    path: '/admin/signup',
-    component: SignUp,
+    // name: 'books',
+    path: '/admin/books',
+    component: Books,
+    children: [
+      {
+        name: 'booksList',
+        path: '',
+        component: BooksList,
+      },
+      {
+        name: 'booksDetail',
+        path: ':id',
+        component: BooksForm,
+      },
+      {
+        name: 'booksCreate',
+        path: 'create',
+        component: BooksForm,
+      },
+    ],
   },
 ];
 

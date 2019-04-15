@@ -1,11 +1,11 @@
 <template lang="html">
-  <div class="">
-    <p>This is signup</p>
-  </div>
+  <h1>Books Create & Edit</h1>
 </template>
 
 <script>
 export default {
+  created() {
+  },
 };
 </script>
 

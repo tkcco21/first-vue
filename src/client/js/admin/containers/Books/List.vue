@@ -1,11 +1,11 @@
 <template lang="html">
-  <div class="auth-title">
-    <h1>First Vue</h1>
-  </div>
+  <h1>Books List</h1>
 </template>
 
 <script>
 export default {
+  created() {
+  },
 };
 </script>
 

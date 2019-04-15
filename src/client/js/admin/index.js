@@ -17,6 +17,17 @@ const router = new VueRouter({
 });
 const store = new Vuex.Store(storeObj);
 
+router.beforeEach((to, from, next) => {
+  const publicPageArray = routes.filter(route => route.meta && route.meta.isPublic);
+  const authRequired = !publicPageArray.some(page => page.name === to.name);
+
+  if (authRequired && !store.state.loggedIn) {
+    next({ path: '/admin/signin', query: { redirect: to.fullPath } });
+  } else {
+    next();
+  }
+});
+
 new Vue({
   el: '#app',
   router,

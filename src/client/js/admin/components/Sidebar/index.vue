@@ -1,6 +1,6 @@
 <template lang="html">
-  <div class="">
-    <p>This is signout</p>
+  <div class="sidebar">
+    <h1 class="sidebar-title">Admin 👉 First Vue</h1>
   </div>
 </template>
 

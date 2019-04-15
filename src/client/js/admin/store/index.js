@@ -3,8 +3,11 @@ import axios from 'axios';
 export default {
   strict: process.env.NODE_ENV !== 'production',
   state: {
-    counter: 0,
-    sample: '',
+    counter: 0, // サンプル
+    sample: '', // サンプル
+    loggedIn: false,
+    books: [],
+    redirectUrl: '',
   },
   getters: {
     doubleCounter: state => state.counter * 2,
@@ -16,7 +19,9 @@ export default {
     updateValue(state, value) {
       state.sample = value;
     },
-    submitSample() {},
+    getBooks(state, payload) {
+      console.log(payload);
+    },
   },
   actions: {
     increments({ commit }) {
@@ -25,8 +30,12 @@ export default {
     updateValue({ commit }, value) {
       commit('updateValue', value);
     },
-    submitSample() {
-      axios.get('/api/books');
+    getBooks({ commit }) {
+      axios.get('/api/books').then((data) => {
+        commit('getBooks', data);
+      }).catch((err) => {
+        console.log(err);
+      });
     },
   },
 };

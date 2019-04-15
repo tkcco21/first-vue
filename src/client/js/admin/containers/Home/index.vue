@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="">
-    <p>This is Home</p>
+    <h1>Home画面</h1>
     <button type="button" @click="increments">BUTTON</button>
     <p>{{ counter }}</p>
     <p>{{ doubleCounter }}</p>
