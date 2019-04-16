@@ -1,13 +1,12 @@
-import Home from '@Admin/containers/Home';
+import Home from '@Admin/Pages/Home';
 // -- Auth ---
-import SignIn from '@Admin/containers/Auth/SignIn';
-// import SignUp from '@Admin/containers/Auth/SignUp';
+import Signin from '@Admin/Pages/Signin';
 // -- Books ---
-import Books from '@Admin/containers/Books';
-import BooksForm from '@Admin/containers/Books/Form';
-import BooksList from '@Admin/containers/Books/List';
+import Books from '@Admin/Pages/Books';
+import BooksForm from '@Admin/Pages/Books/Form';
+import BooksList from '@Admin/Pages/Books/List';
 
-const routes = [
+export default [
   {
     name: 'home',
     path: '/admin',
@@ -16,17 +15,10 @@ const routes = [
   {
     name: 'signin',
     path: '/admin/signin',
-    component: SignIn,
+    component: Signin,
     meta: { isPublic: true },
   },
-  // {
-  //   name: 'signup',
-  //   path: '/admin/signup',
-  //   component: SignUp,
-  //   meta: { isPublic: true },
-  // },
   {
-    // name: 'books',
     path: '/admin/books',
     component: Books,
     children: [
@@ -48,5 +40,3 @@ const routes = [
     ],
   },
 ];
-
-export default routes;

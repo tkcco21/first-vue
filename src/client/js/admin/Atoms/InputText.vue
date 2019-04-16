@@ -1,8 +1,8 @@
 <template lang="html">
   <div class="inputText">
-    <p class="inputText-label">{{ label }}</p>
+    <p class="label">{{ label }}</p>
     <input
-      :class="['inputText-input', className]"
+      :class="['input', className]"
       :type="inputType"
       :name="name"
       value=""
@@ -34,15 +34,20 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.inputText {
-  &-label {
-    font-size: 20px;
-  }
-  &-input {
-    padding: 15px;
-    width: 100%;
-    font-size: 20px;
-    border: 1px solid #ccc;
+.label {
+  font-size: 18px;
+}
+.input {
+  padding: 10px;
+  width: 100%;
+  font-size: 18px;
+}
+
+.signin-input {
+  border-bottom: 1px solid #ccc;
+  transition: all .5s;
+  &:focus {
+    border-bottom-color: #00a381;
   }
 }
 </style>

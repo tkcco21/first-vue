@@ -23,7 +23,7 @@ const config = {
   ],
   entry: {
     public: ['./src/client/js/public/index.js'],
-    admin: ['./src/client/js/admin/index.js']
+    admin: ['./src/client/js/admin/app.js']
   },
   output: {
     filename: 'js/[name].bundle.js',
