@@ -1,6 +1,6 @@
 <template lang="html">
   <li>
-    <router-link :to="{ path: '/' }">
+    <router-link :to="{ path: linkPath }">
       {{ linkText }}
     </router-link>
   </li>
@@ -12,6 +12,10 @@ export default {
     linkText: {
       type: String,
       default: 'リンク',
+    },
+    linkPath: {
+      type: String,
+      default: '',
     },
   },
 };

@@ -2,17 +2,12 @@
   <aside class="sidebar">
     <h1 class="sidebar-title">First Vue</h1>
     <ul class="sidebar-list">
-      <!-- <li>
-        <router-link :to="{ path: '/admin' }">TOP</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/admin/books' }">本一覧</router-link>
-      </li>
-      <li>
-        <router-link :to="{ path: '/admin/books/create' }">本追加</router-link>
-      </li> -->
-      <atoms-list-link />
-      <p>{{ routes }}</p>
+      <atoms-list-link
+        v-for="routeLink in routesLinkArray"
+        :key="routeLink.id"
+        :link-text="routeLink.name"
+        :link-path="routeLink.path"
+      />
     </ul>
   </aside>
 </template>
@@ -26,9 +21,8 @@ export default {
     atomsListLink,
   },
   computed: {
-    routes() {
-      console.log(routesLinkArray);
-      return 'test';
+    routesLinkArray() {
+      return routesLinkArray;
     },
   },
 };
