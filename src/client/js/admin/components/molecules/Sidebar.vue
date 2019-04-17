@@ -3,26 +3,28 @@
     <h1 class="sidebar-title">First Vue</h1>
     <ul class="sidebar-list">
       <atoms-list-link
-        v-for="routeLink in routesLinkArray"
+        v-for="routeLink in routeLinksArray"
         :key="routeLink.id"
-        :link-text="routeLink.name"
-        :link-path="routeLink.path"
-      />
+      >
+        <router-link :to="routeLink.path">
+          {{ routeLink.name }}
+        </router-link>
+      </atoms-list-link>
     </ul>
   </aside>
 </template>
 
 <script>
-import routesLinkArray from '@Admin/_helper/routesLinkArray';
-import atomsListLink from '@Admin/Atoms/ListLink';
+import routeLinksArray from '@Admin/_helper/routeLinksArray';
+import atomsListLink from '@Admin/components/atoms/ListItem';
 
 export default {
   components: {
     atomsListLink,
   },
   computed: {
-    routesLinkArray() {
-      return routesLinkArray;
+    routeLinksArray() {
+      return routeLinksArray;
     },
   },
 };

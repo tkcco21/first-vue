@@ -1,7 +1,7 @@
+import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { VueLoaderPlugin } from 'vue-loader';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
@@ -52,7 +52,10 @@ const config = {
       {
         test: /\.(css|sass|scss)$/,
         use: [
-          isDev ? 'style-loader' : MiniCssExtractPlugin.loader,
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: { hmr: isDev }
+          },
           {
             loader: 'css-loader',
             options: { sourceMap: true },
@@ -75,7 +78,8 @@ const config = {
             loader: 'sass-loader',
             options: {
               outputStyle: 'expanded',
-              sourceMap: true
+              sourceMap: true,
+              data: `@import './src/client/scss/_helpers/index.scss';`
             }
           }
         ]

@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import Sidebar from '@Admin/Molecules/Sidebar';
+import Sidebar from '@Admin/components/molecules/Sidebar';
 
 export default {
   components: {

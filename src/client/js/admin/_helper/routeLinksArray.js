@@ -6,7 +6,7 @@ export default [
   },
   {
     id: 2,
-    name: '本一覧',
+    name: '本',
     path: '/admin/books',
   },
 ];
