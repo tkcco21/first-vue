@@ -1,36 +1,66 @@
 <template lang="html">
-  <div class="sample">
-    <h1>Books</h1>
-    <router-view />
+  <div class="books">
+    <h1 class="books-title">Books</h1>
+    <div class="books-content">
+      <div class="books-form">
+        <atoms-input-text
+          class-name="books-input"
+          label="URL"
+          name="bookTitle"
+          inputType="text"
+        />
+      </div>
+      <div class="books-form">
+        <atoms-textarea
+          class-name="books-textarea"
+          label="概要・感想"
+          name="bookDetail"
+        />
+      </div>
+      <div class="books-foot">
+        <atoms-button
+          className="books-button"
+          name="addBookButton"
+          type="button"
+          text="追加する"
+        />
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
+import atomsInputText from '@Admin/components/atoms/InputText';
+import atomsTextarea from '@Admin/components/atoms/Textarea';
+import atomsButton from '@Admin/components/atoms/Button';
+
 export default {
+  components: {
+    atomsInputText,
+    atomsTextarea,
+    atomsButton,
+  },
   computed: {
-    sample: {
-      get() {
-        return this.$store.state.sample;
-      },
-      set(value) {
-        this.$store.dispatch('updateValue', value);
-      },
-    },
   },
   created() {
-    this.$store.dispatch('getBooks');
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.sample {
-  padding: 30px;
-  text-align: center;
-  input {
-    padding: 10px;
-    width: 80%;
-    border: 2px solid #ccc;
+.books {
+  &-title {
+    padding: 5px 15px;
+    font-size: 24px;
+    background-color: #efefef;
+  }
+  &-content {
+    margin-top: 20px;
+  }
+  &-form {
+    & + & {
+      margin-top: 20px;
+    }
   }
 }
 </style>

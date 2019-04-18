@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="form-signin">
     <div class="form-signin-content">
-      <atoms-input
+      <atoms-input-text
         class-name="signin-input"
         label="ユーザー名"
         name="username"
@@ -10,7 +10,7 @@
     </div>
 
     <div class="form-signin-content">
-      <atoms-input
+      <atoms-input-text
         class-name="signin-input"
         label="パスワード"
         name="password"
@@ -30,12 +30,12 @@
 </template>
 
 <script>
-import atomsInput from '@Admin/components/atoms/InputText';
+import atomsInputText from '@Admin/components/atoms/InputText';
 import atomsButton from '@Admin/components/atoms/Button';
 
 export default {
   components: {
-    atomsInput,
+    atomsInputText,
     atomsButton,
   },
 };

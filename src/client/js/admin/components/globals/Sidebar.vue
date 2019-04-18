@@ -41,5 +41,11 @@ export default {
     font-size: 24px;
     text-align: center;
   }
+  &-list {
+    > li > a {
+      display: block;
+      color: #fff;
+    }
+  }
 }
 </style>

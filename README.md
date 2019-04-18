@@ -18,5 +18,3 @@ npm run dev
 |:--|:--|
 | /admin | 管理画面TOP |
 | /admin/books | 本 - 一覧画面 |
-| /admin/books/:id | 本 - 詳細画面 |
-| /admin/books/create | 本 - 作成画面 |

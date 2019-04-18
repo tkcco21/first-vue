@@ -15,7 +15,7 @@ export default {
   props: {
     className: {
       type: String,
-      default: 'className',
+      default: '',
     },
     label: {
       type: String,
@@ -43,9 +43,11 @@ export default {
   font-size: 18px;
 }
 
-.signin-input {
+.signin-input,
+.books-input {
   border-bottom: 1px solid #ccc;
   transition: all .5s;
+  background-color: #f8f8f8;
   &:focus {
     border-bottom-color: #00a381;
   }

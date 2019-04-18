@@ -42,4 +42,11 @@ export default {
   font-size: 16px;
   background-color: #00a381;
 }
+.books-button {
+  margin-top: 20px;
+  padding: 10px 25px;
+  color: #fff;
+  font-size: 16px;
+  background-color: #00a381;
+}
 </style>

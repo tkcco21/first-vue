@@ -6,8 +6,6 @@ import Home from '@Admin/Pages/Home';
 import Signin from '@Admin/Pages/Signin';
 // -- Books ---
 import Books from '@Admin/Pages/Books';
-import BooksForm from '@Admin/Pages/Books/Form';
-import BooksList from '@Admin/Pages/Books/List';
 
 
 Vue.use(VueRouter);
@@ -29,23 +27,6 @@ export default new VueRouter({
     {
       path: '/admin/books',
       component: Books,
-      children: [
-        {
-          name: 'booksList',
-          path: '/',
-          component: BooksList,
-        },
-        {
-          name: 'booksDetail',
-          path: '/:id',
-          component: BooksForm,
-        },
-        {
-          name: 'booksCreate',
-          path: '/create',
-          component: BooksForm,
-        },
-      ],
     },
   ],
 });
