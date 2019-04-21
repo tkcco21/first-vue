@@ -4,7 +4,7 @@ const moment = require('moment');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Books', [
+    return queryInterface.bulkInsert('books', [
       {
         item_url: 'This is First URL of Item',
         description: 'This is First Description',

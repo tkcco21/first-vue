@@ -26,6 +26,9 @@ export default new Vuex.Store({
     getBooks(state, payload) {
       console.log(payload);
     },
+    addBook() {
+      console.log('add');
+    },
   },
   actions: {
     increments({ commit }) {
@@ -37,6 +40,14 @@ export default new Vuex.Store({
     getBooks({ commit }) {
       axios.get('/api/books').then((data) => {
         commit('getBooks', data);
+      }).catch((err) => {
+        console.log(err);
+      });
+    },
+    addBook({ commit }, book) {
+      console.log(book);
+      axios.post('/api/books', book).then(() => {
+        commit('addBook');
       }).catch((err) => {
         console.log(err);
       });

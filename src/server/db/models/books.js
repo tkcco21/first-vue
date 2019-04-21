@@ -1,6 +1,7 @@
 'use strict';
-module.exports = (sequelize, DataTypes) => {
-  const Books = sequelize.define('Books', {
+
+export default (sequelize, DataTypes) => {
+  const Books = sequelize.define('books', {
     item_url: DataTypes.STRING,
     description: DataTypes.STRING,
     completed_at: DataTypes.DATE,

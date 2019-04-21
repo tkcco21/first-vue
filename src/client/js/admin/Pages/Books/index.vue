@@ -6,23 +6,30 @@
         <atoms-input-text
           class-name="books-input"
           label="URL"
-          name="bookTitle"
-          inputType="text"
+          name="bookUrl"
+          input-type="text"
+          placeholder="本のURL"
+          :input-value="bookUrl"
+          @updateValue="updateValue"
         />
       </div>
       <div class="books-form">
         <atoms-textarea
           class-name="books-textarea"
           label="概要・感想"
-          name="bookDetail"
+          name="bookDescription"
+          placeholder="本の概要"
+          :input-value="bookDescription"
+          @updateValue="updateValue"
         />
       </div>
       <div class="books-foot">
         <atoms-button
-          className="books-button"
+          class-name="books-button"
           name="addBookButton"
           type="button"
           text="追加する"
+          @handleSubmit="handleSubmit"
         />
       </div>
     </div>
@@ -40,9 +47,25 @@ export default {
     atomsTextarea,
     atomsButton,
   },
-  computed: {
+  data() {
+    return {
+      bookUrl: '',
+      bookDescription: '',
+    };
   },
   created() {
+    this.$store.dispatch('getBooks');
+  },
+  methods: {
+    updateValue($event) {
+      this[$event.target.name] = $event.target.value;
+    },
+    handleSubmit() {
+      this.$store.dispatch('addBook', {
+        bookUrl: this.bookUrl,
+        bookDescription: this.bookDescription,
+      });
+    },
   },
 };
 </script>

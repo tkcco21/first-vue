@@ -7,6 +7,9 @@
       value=""
       rows="8"
       cols="80"
+      :placeholder="placeholder"
+      :value="inputValue"
+      @input="updateValue"
     />
   </div>
 </template>
@@ -25,6 +28,19 @@ export default {
     name: {
       type: String,
       default: 'Name',
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    inputValue: {
+      type: String,
+      default: '',
+    },
+  },
+  methods: {
+    updateValue($event) {
+      this.$emit('updateValue', $event);
     },
   },
 };

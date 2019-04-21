@@ -5,7 +5,9 @@
       :class="['input', className]"
       :type="inputType"
       :name="name"
-      value=""
+      :placeholder="placeholder"
+      :value="inputValue"
+      @input="updateValue"
     >
   </div>
 </template>
@@ -28,6 +30,19 @@ export default {
     inputType: {
       type: String,
       default: 'text',
+    },
+    placeholder: {
+      type: String,
+      default: '',
+    },
+    inputValue: {
+      type: String,
+      default: '',
+    },
+  },
+  methods: {
+    updateValue($event) {
+      this.$emit('updateValue', $event);
     },
   },
 };

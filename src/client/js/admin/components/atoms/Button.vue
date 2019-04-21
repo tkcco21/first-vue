@@ -3,6 +3,7 @@
     :class="['button', className]"
     :name="name"
     :type="buttonType"
+    @click="handleSubmit"
   >
     {{ text }}
   </button>
@@ -26,6 +27,11 @@ export default {
     buttonType: {
       type: String,
       default: 'button',
+    },
+  },
+  methods: {
+    handleSubmit() {
+      this.$emit('handleSubmit');
     },
   },
 };

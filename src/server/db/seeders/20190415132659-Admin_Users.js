@@ -4,7 +4,7 @@ const moment = require('moment');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('Admin_Users', [
+    return queryInterface.bulkInsert('admin_users', [
       {
         username: 'admin01',
         password: 'test123Admin',
