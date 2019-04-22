@@ -61,9 +61,9 @@ export default {
 .books-textarea {
   border: 1px solid #ccc;
   transition: all .5s;
-  background-color: #f8f8f8;
+  background-color: $superLightGray;
   &:focus {
-    border-color: #00a381;
+    border-color: $keycolor;
   }
 }
 </style>

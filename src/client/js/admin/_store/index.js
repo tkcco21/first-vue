@@ -33,11 +33,11 @@ export default new Vuex.Store({
     },
     addBook({ commit }, book) {
       console.log(book);
-      axios.post('/api/books', book).then(() => {
-        commit('addBook');
-      }).catch((err) => {
-        console.log(err);
-      });
+      // axios.post('/api/books', book).then(() => {
+      commit('addBook');
+      // }).catch((err) => {
+      //   console.log(err);
+      // });
     },
   },
 });

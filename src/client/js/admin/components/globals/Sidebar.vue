@@ -35,7 +35,7 @@ export default {
   padding: 20px 10px;
   width: 230px;
   height: 100%;
-  background-color: #00a381;
+  background-color: $keycolor;
   &-title {
     color: #fff;
     font-size: 24px;

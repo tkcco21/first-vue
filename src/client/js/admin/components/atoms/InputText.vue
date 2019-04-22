@@ -62,9 +62,9 @@ export default {
 .books-input {
   border-bottom: 1px solid #ccc;
   transition: all .5s;
-  background-color: #f8f8f8;
+  background-color: $superLightGray;
   &:focus {
-    border-bottom-color: #00a381;
+    border-bottom-color: $keycolor;
   }
 }
 </style>

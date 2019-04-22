@@ -13,6 +13,7 @@
           @updateValue="updateValue"
         />
       </div>
+
       <div class="books-form">
         <atoms-textarea
           class-name="books-textarea"
@@ -23,6 +24,26 @@
           @updateValue="updateValue"
         />
       </div>
+
+      <div class="books-form">
+        <atoms-select
+          class-name="books-select"
+          name="completedYear"
+          suffix="年"
+          :value="completedYear"
+          :options="yearOptions"
+          @updateValue="updateValue"
+        />
+        <atoms-select
+          class-name="books-select"
+          name="completedMonth"
+          suffix="月"
+          :value="completedMonth"
+          :options="monthOptions"
+          @updateValue="updateValue"
+        />
+      </div>
+
       <div class="books-foot">
         <atoms-button
           class-name="books-button"
@@ -32,36 +53,58 @@
           @handleSubmit="handleSubmit"
         />
       </div>
-      <ul>
-        <li v-for="book in books" :key="books.id">
-          {{ book.item_url }}
-          {{ book.description }}
-        </li>
-      </ul>
     </div>
+
+    <!-- リストは後で直す -->
+    <ul>
+      <li v-for="book in books" :key="books.id">
+        <p>{{ book.item_url }}</p>
+        <p>{{ book.description }}</p>
+      </li>
+    </ul>
   </div>
 </template>
 
 <script>
+import moment from 'moment';
 import atomsInputText from '@Admin/components/atoms/InputText';
 import atomsTextarea from '@Admin/components/atoms/Textarea';
 import atomsButton from '@Admin/components/atoms/Button';
+import atomsSelect from '@Admin/components/atoms/Select';
 
 export default {
   components: {
     atomsInputText,
     atomsTextarea,
     atomsButton,
+    atomsSelect,
   },
   data() {
     return {
       bookUrl: '',
       bookDescription: '',
+      completedYear: '',
+      completedMonth: '',
     };
   },
   computed: {
     books() {
       return this.$store.state.books;
+    },
+    yearOptions() {
+      const array = [];
+      for (let i = 2014, years = moment().year(); i < years; i += 1) {
+        array.push(i);
+      }
+      return array;
+    },
+    monthOptions() {
+      const array = [];
+      for (let i = 1; i <= 12; i += 1) {
+        const str = `${i}`;
+        array.push(str.padStart(2, '0'));
+      }
+      return array;
     },
   },
   created() {
@@ -72,9 +115,12 @@ export default {
       this[$event.target.name] = $event.target.value;
     },
     handleSubmit() {
+      const year = this.completedYear;
+      const month = this.completedMonth ? `-${this.completedMonth}` : '';
       this.$store.dispatch('addBook', {
         bookUrl: this.bookUrl,
         bookDescription: this.bookDescription,
+        completedAt: `${year + month}`,
       });
     },
   },
