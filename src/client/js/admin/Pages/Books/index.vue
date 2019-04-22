@@ -32,6 +32,12 @@
           @handleSubmit="handleSubmit"
         />
       </div>
+      <ul>
+        <li v-for="book in books" :key="books.id">
+          {{ book.item_url }}
+          {{ book.description }}
+        </li>
+      </ul>
     </div>
   </div>
 </template>
@@ -52,6 +58,11 @@ export default {
       bookUrl: '',
       bookDescription: '',
     };
+  },
+  computed: {
+    books() {
+      return this.$store.state.books;
+    },
   },
   created() {
     this.$store.dispatch('getBooks');

@@ -7,41 +7,28 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
-    counter: 0, // サンプル
-    sample: '', // サンプル
     loggedIn: false,
     books: [],
-    redirectUrl: '',
+    errorMessage: '',
   },
-  getters: {
-    doubleCounter: state => state.counter * 2,
-  },
+  getters: {},
   mutations: {
-    increments(state) {
-      state.counter += 1;
+    doneGetBooks(state, payload) {
+      state.books = payload.books;
     },
-    updateValue(state, value) {
-      state.sample = value;
-    },
-    getBooks(state, payload) {
-      console.log(payload);
+    failGetBooks(state) {
+      state.errorMessage = '本の情報を取得できませんでした。';
     },
     addBook() {
       console.log('add');
     },
   },
   actions: {
-    increments({ commit }) {
-      commit('increments');
-    },
-    updateValue({ commit }, value) {
-      commit('updateValue', value);
-    },
     getBooks({ commit }) {
-      axios.get('/api/books').then((data) => {
-        commit('getBooks', data);
+      axios.get('/api/books').then(({ data }) => {
+        commit('doneGetBooks', data);
       }).catch((err) => {
-        console.log(err);
+        commit('failGetBooks', err);
       });
     },
     addBook({ commit }, book) {
