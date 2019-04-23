@@ -11,9 +11,18 @@ export default {
     }
   },
   addBook(req, res) {
-    console.log(req.body);
-    Books.create(req.body).then(() => {
-      res.send({ test: 'test' });
-    });
+    try {
+      const { item_url, description, completed_at } = req.body;
+      Books.create({
+        item_url,
+        description,
+        completed_at,
+      }).then((data) => {
+        console.log(data);
+        return res.send({ test: 'test' });
+      });
+    } catch(err) {
+      res.send(err);
+    }
   },
 };

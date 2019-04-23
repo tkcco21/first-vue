@@ -1,18 +1,16 @@
 <template lang="html">
   <div class="form-signin">
     <div class="form-signin-content">
-      <atoms-input-text
-        class-name="signin-input"
-        label="ユーザー名"
+      <atoms-input
+        placeholder="ユーザー名"
         name="username"
         inputType="text"
       />
     </div>
 
     <div class="form-signin-content">
-      <atoms-input-text
-        class-name="signin-input"
-        label="パスワード"
+      <atoms-input
+        placeholder="パスワード"
         name="password"
         inputType="password"
       />
@@ -20,23 +18,22 @@
 
     <div class="form-signin-foot">
       <atoms-button
-        class-name="signin-button"
-        text="サインイン"
         name="signinButton"
         buttonType="button"
-      />
+      >
+        サインイン
+      </atoms-button>
     </div>
   </div>
 </template>
 
 <script>
-import atomsInputText from '@Admin/components/atoms/InputText';
-import atomsButton from '@Admin/components/atoms/Button';
+import { Button, Input } from '@Admin/components/atoms';
 
 export default {
   components: {
-    atomsInputText,
-    atomsButton,
+    atomsInput: Input,
+    atomsButton: Button,
   },
 };
 </script>

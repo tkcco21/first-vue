@@ -1,12 +1,12 @@
 <template lang="html">
-  <div :class="['select', className]">
+  <div class="select-wrapper">
     <select
-      class="select-body"
+      :class="classes"
       :name="name"
       :value="value"
       @change="handleChange"
     >
-      <option disabled value="">---</option>
+      <option disabled value="">--- {{ suffix }}</option>
       <option
         v-for="option in options"
         :key="option"
@@ -21,10 +21,6 @@
 <script>
 export default {
   props: {
-    className: {
-      type: String,
-      default: '',
-    },
     name: {
       type: String,
       default: 'Name',
@@ -42,6 +38,13 @@ export default {
       default: () => [],
     },
   },
+  computed: {
+    classes() {
+      return {
+        select: true,
+      };
+    },
+  },
   methods: {
     handleChange($event) {
       this.$emit('updateValue', $event);
@@ -52,15 +55,13 @@ export default {
 
 <style lang="scss" scoped>
 .select {
+  padding: 2px 25px 2px 10px;
+  font-size: 14px;
+  line-height: 1.4;
   background-color: $superLightGray;
-  &-body {
-    padding: 2px 25px 2px 10px;
-    font-size: 14px;
-    line-height: 1.4;
-  }
 }
 
-.books-select {
+.select-wrapper {
   display: inline-block;
   position: relative;
   border-radius: 5px;
