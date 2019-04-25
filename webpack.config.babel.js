@@ -2,6 +2,7 @@ import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
+import WebpackNotifierPlugin from 'webpack-notifier';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
@@ -19,6 +20,10 @@ const config = {
     new VueLoaderPlugin(),
     new MiniCssExtractPlugin({
       filename: 'css/[name].css',
+    }),
+    new WebpackNotifierPlugin({
+      excludeWarnings: true,
+      title: 'First Vue'
     }),
   ],
   entry: {
