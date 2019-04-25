@@ -6,8 +6,12 @@
     <!-- リストは後で直す -->
     <ul>
       <li v-for="book in books" :key="books.id">
-        <p>{{ book.item_url }}</p>
-        <p>{{ book.description }}</p>
+        <a :href="book.item_url" target="_blank">
+          <h2>{{ book.title }}</h2>
+          <img :src="book.image_url" alt="">
+          <p>{{ book.description }}</p>
+          <p>{{ book.completed_at }}</p>
+        </a>
       </li>
     </ul>
   </section>
@@ -28,7 +32,10 @@ export default {
     },
   },
   created() {
-    this.$store.dispatch('getBooks');
+    console.log(this.$store.state.books.length);
+    if (!this.$store.state.books.length) {
+      this.$store.dispatch('getBooks');
+    }
   },
 };
 </script>

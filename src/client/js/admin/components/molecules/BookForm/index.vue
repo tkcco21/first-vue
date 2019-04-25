@@ -2,6 +2,26 @@
   <div class="book-form">
     <div class="book-form-content">
       <atoms-input
+        name="bookTitle"
+        input-type="text"
+        placeholder="本のタイトル"
+        :input-value="bookTitle"
+        @updateValue="updateValue"
+      />
+    </div>
+
+    <div class="book-form-content">
+      <atoms-input
+        name="booktImage"
+        input-type="text"
+        placeholder="本の画像のURL"
+        :input-value="bookImage"
+        @updateValue="updateValue"
+      />
+    </div>
+
+    <div class="book-form-content">
+      <atoms-input
         name="bookUrl"
         input-type="text"
         placeholder="本のURL"
@@ -79,6 +99,8 @@ export default {
   },
   data() {
     return {
+      bookTitle: '',
+      bookImage: '',
       bookUrl: '',
       bookDescription: '',
       completedYear: '',
