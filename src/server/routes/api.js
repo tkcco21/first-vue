@@ -1,5 +1,5 @@
 import express from 'express';
-import books from '@Server/service/books';
+import books from '@Server/api/books';
 
 const router = express.Router();
 

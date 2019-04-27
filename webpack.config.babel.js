@@ -12,7 +12,8 @@ const dist = path.resolve(__dirname, './dist');
 
 const config = {
   mode: nodeEnv,
-  devtool: isDev ? 'source-map' : 'eval',
+  devtool: isDev ? 'eval-source-map' : 'eval',
+  // source-map
   resolve: {
     extensions: ['.vue', '.js', '.json', '.scss'],
   },
@@ -57,9 +58,8 @@ const config = {
       {
         test: /\.(css|sass|scss)$/,
         use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: { hmr: isDev }
+          isDev ? 'vue-style-loader' : {
+            loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
@@ -94,8 +94,8 @@ const config = {
 };
 
 if (isDev) {
-  config.entry.admin.unshift('webpack-hot-middleware/client?reload=true');
-  config.entry.public.unshift('webpack-hot-middleware/client?reload=true');
+  config.entry.admin.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000?reload=true');
+  config.entry.public.unshift('webpack-hot-middleware/client?path=/__webpack_hmr&timeout=20000?reload=true');
   config.output = Object.assign({}, config.output, {
     hotUpdateChunkFilename: 'js/.hot/[id].[hash].hot-update.js',
     hotUpdateMainFilename: 'js/.hot/[hash].hot-update.json'

@@ -1,16 +1,18 @@
 import { books as Books } from '@Server/db/models';
 
-export default {
-  getAllBooks(req, res) {
-    try {
-      Books.findAll().then((data) => {
-        return res.send({ books: JSON.parse(JSON.stringify(data)) });
-      });
-    } catch(err) {
-      return res.send(new Error(err.message));
-    }
+const books = {
+  findAll(req, res) {
+    return new Promise((resolve, reject) => {
+      try {
+        Books.findAll().then((data) => {
+          resolve({ books: JSON.parse(JSON.stringify(data)) });
+        });
+      } catch(err) {
+        reject(new Error(err.message));
+      }
+    });
   },
-  addBook(req, res) {
+  create(req, res) {
     try {
       const { item_url, description, completed_at } = req.body;
       Books.create({
@@ -26,3 +28,5 @@ export default {
     }
   },
 };
+
+export default books;
