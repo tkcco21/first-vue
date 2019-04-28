@@ -26,6 +26,7 @@ export default new Vuex.Store({
   actions: {
     getBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
+        console.log(data);
         commit('doneGetBooks', data);
       }).catch((err) => {
         commit('failGetBooks', err);
