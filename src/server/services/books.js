@@ -3,13 +3,13 @@ import { books as Books } from '@Server/db/models';
 const books = {
   findAll(req, res) {
     return new Promise((resolve, reject) => {
-      try {
-        Books.findAll().then((data) => {
-          resolve({ books: JSON.parse(JSON.stringify(data)) });
-        });
-      } catch(err) {
+      Books.findAll({
+        attributes: ['id', 'title', 'item_url', 'image_url', 'description', 'completed_at']
+      }).then((data) => {
+        resolve({ books: JSON.parse(JSON.stringify(data)) });
+      }).catch((err) => {
         reject(new Error(err.message));
-      }
+      });
     });
   },
   create(req, res) {

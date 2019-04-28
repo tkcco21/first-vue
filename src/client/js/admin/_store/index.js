@@ -26,10 +26,10 @@ export default new Vuex.Store({
   actions: {
     getBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
-        console.log(data);
+        console.log('data => ', data);
         commit('doneGetBooks', data);
       }).catch((err) => {
-        commit('failGetBooks', err);
+        commit('failGetBooks', err.response.data.message);
       });
     },
     addBook({ commit }, book) {
