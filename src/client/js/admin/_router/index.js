@@ -5,7 +5,7 @@ import Home from '@Admin/Pages/Home';
 // -- Auth ---
 import Signin from '@Admin/Pages/Signin';
 // -- Books ---
-import Books from '@Admin/Pages/Books';
+import { BooksForm, BooksList } from '@Admin/Pages/Books';
 
 
 Vue.use(VueRouter);
@@ -25,8 +25,14 @@ export default new VueRouter({
       meta: { isPublic: true },
     },
     {
+      name: 'booksList',
       path: '/admin/books',
-      component: Books,
+      component: BooksList,
+    },
+    {
+      name: 'booksForm',
+      path: '/admin/books/post',
+      component: BooksForm,
     },
   ],
 });

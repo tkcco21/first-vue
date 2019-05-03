@@ -1,9 +1,5 @@
 <template lang="html">
   <section class="books">
-    <atoms-heading :level="1">Books</atoms-heading>
-    <mole-book-form />
-
-    <!-- リストは後で直す -->
     <mole-book-list
       v-for="date in completedDate"
       :key="date"
@@ -14,12 +10,11 @@
 
 <script>
 import { Heading } from '@Admin/components/atoms';
-import { BookForm, BookList } from '@Admin/components/molecules';
+import { BookList } from '@Admin/components/molecules';
 
 export default {
   components: {
     atomsHeading: Heading,
-    moleBookForm: BookForm,
     moleBookList: BookList,
   },
   computed: {
