@@ -2,7 +2,9 @@
   <div class="wrapper">
     <Sidebar />
     <main class="content">
-      <router-view />
+      <div class="content__inner">
+        <router-view />
+      </div>
     </main>
   </div>
 </template>
@@ -19,11 +21,13 @@ export default {
 
 <style lang="scss" scoped>
 .wrapper {
-  display: flex;
   height: 100vh;
 }
 .content {
-  padding: 20px;
-  width: 100%;
+  padding-left: $sidebarWidth;
+  &__inner {
+    padding: 20px;
+    width: 100%;
+  }
 }
 </style>

@@ -35,8 +35,11 @@ export default {
 
 <style lang="scss" scoped>
 .sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   padding: 20px 10px;
-  width: 230px;
+  width: $sidebarWidth;
   height: 100%;
   background-color: $keycolor;
   &-list {
