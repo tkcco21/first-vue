@@ -11,10 +11,12 @@ export default new Vuex.Store({
     books: [],
     errorMessage: '',
   },
-  getters: {},
+  getters: {
+    completedDate: state => Object.keys(state.books),
+  },
   mutations: {
     doneGetBooks(state, payload) {
-      state.books = payload.books;
+      state.books = payload;
     },
     failGetBooks(state) {
       state.errorMessage = '本の情報を取得できませんでした。';
@@ -26,7 +28,6 @@ export default new Vuex.Store({
   actions: {
     getBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
-        console.log('data => ', data);
         commit('doneGetBooks', data);
       }).catch((err) => {
         commit('failGetBooks', err.response.data.message);
