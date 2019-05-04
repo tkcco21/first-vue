@@ -28,7 +28,7 @@ const config = {
     }),
   ],
   entry: {
-    public: ['./src/client/js/public/index.js'],
+    public: ['./src/client/js/public/app.js'],
     admin: ['./src/client/js/admin/app.js']
   },
   output: {
