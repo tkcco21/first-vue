@@ -20,10 +20,28 @@ export default {
 
       res.send(filteredBooksArray);
     }).catch(({ message }) => {
-      res.status(500).send({ message })
+      res.status(500).send({ message });
     });
   },
   addBook(req, res) {
-    return res.send({ test: 'test' });
+    const {
+      book_title,
+      book_url,
+      book_image,
+      book_description,
+      completed_at,
+    } = req.body;
+
+    books.create({
+      title: book_title,
+      item_url: book_url,
+      image_url: book_image,
+      description: book_description,
+      completed_at,
+    }).then((data) => {
+      res.send(data.book);
+    }).catch(({ message }) => {
+      res.status(500).send({ message })
+    });
   },
 };

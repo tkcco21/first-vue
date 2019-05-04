@@ -12,7 +12,7 @@
 
     <div class="book-form-content">
       <atoms-input
-        name="booktImage"
+        name="bookImage"
         input-type="text"
         placeholder="本の画像のURL"
         :input-value="bookImage"
@@ -132,8 +132,10 @@ export default {
       const year = this.completedYear;
       const month = this.completedMonth ? `-${this.completedMonth}` : '';
       this.$store.dispatch('addBook', {
-        item_url: this.bookUrl,
-        description: this.bookDescription,
+        book_title: this.bookTitle,
+        book_image: this.bookImage,
+        book_url: this.bookUrl,
+        book_description: this.bookDescription,
         completed_at: `${year + month}`,
       });
     },

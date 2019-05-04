@@ -6,7 +6,7 @@
       :value="value"
       @change="handleChange"
     >
-      <option disabled value="">--- {{ suffix }}</option>
+      <option value="">--- {{ suffix }}</option>
       <option
         v-for="option in options"
         :key="option"

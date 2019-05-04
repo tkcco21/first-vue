@@ -62,18 +62,19 @@ export default {
 .heading-tertiary {
   padding: 5px 30px;
   font-size: 22px;
-  position: relative;
-  &:before {
-    position: absolute;
-    top: 50%;
-    left: 0;
-    width: 10px;
-    height: 10px;
-    border-bottom: 2px solid #ccc;
-    border-right: 2px solid #ccc;
-    transform: translateY(-50%) rotate(-45deg);
-    content: "";
-  }
+  // position: relative;
+  border-left: 2px solid #ccc;
+  // &:before {
+  //   position: absolute;
+  //   top: 50%;
+  //   left: 0;
+  //   width: 10px;
+  //   height: 10px;
+  //   border-bottom: 2px solid #ccc;
+  //   border-right: 2px solid #ccc;
+  //   transform: translateY(-50%) rotate(-45deg);
+  //   content: "";
+  // }
 }
 .heading-quaternary {}
 .heading-quinary {}

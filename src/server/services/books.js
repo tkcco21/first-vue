@@ -1,7 +1,7 @@
 import { books as Books } from '@Server/db/models';
 
 const books = {
-  findAll(req, res) {
+  findAll() {
     return new Promise((resolve, reject) => {
       Books.findAll({
         attributes: ['id', 'title', 'item_url', 'image_url', 'description', 'completed_at']
@@ -12,20 +12,14 @@ const books = {
       });
     });
   },
-  create(req, res) {
-    try {
-      const { item_url, description, completed_at } = req.body;
-      Books.create({
-        item_url,
-        description,
-        completed_at,
-      }).then((data) => {
-        console.log(data);
-        return res.send({ test: 'test' });
+  create(book) {
+    return new Promise((resolve, reject) => {
+      Books.create(book).then((data) => {
+        resolve({ book: JSON.parse(JSON.stringify(data)) });
+      }).catch((err) => {
+        reject(new Error(err.message));
       });
-    } catch(err) {
-      res.send(err);
-    }
+    });
   },
 };
 

@@ -66,8 +66,9 @@ export default {
     margin-top: 20px;
     &__title {
       padding: 5px;
+      color: #efefef;
       font-size: 18px;
-      border-bottom: 1px solid #fff;
+      border-bottom: 1px solid #efefef;
     }
     &__item {
       display: block;

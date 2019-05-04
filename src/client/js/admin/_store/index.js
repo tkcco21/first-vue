@@ -15,13 +15,14 @@ export default new Vuex.Store({
     completedDate: state => Object.keys(state.books),
   },
   mutations: {
+    failRequest(state, { message }) {
+      state.errorMessage = message;
+    },
     doneGetBooks(state, payload) {
       state.books = payload;
     },
-    failGetBooks(state) {
-      state.errorMessage = '本の情報を取得できませんでした。';
-    },
-    addBook() {
+    addBook(state, payload) {
+      console.log(payload);
       console.log('add');
     },
   },
@@ -30,17 +31,15 @@ export default new Vuex.Store({
       axios.get('/api/books').then(({ data }) => {
         commit('doneGetBooks', data);
       }).catch((err) => {
-        commit('failGetBooks', err.response.data.message);
+        commit('failRequest', { message: err.response.data.message });
       });
     },
     addBook({ commit }, book) {
-      console.log(book);
-      axios.post('/api/books', book);
-      // axios.post('/api/books', book).then(() => {
-      commit('addBook');
-      // }).catch((err) => {
-      //   console.log(err);
-      // });
+      axios.post('/api/books', book).then(({ data }) => {
+        commit('addBook', data);
+      }).catch((err) => {
+        commit('failRequest', { message: err.response.data.message });
+      });
     },
   },
 });
