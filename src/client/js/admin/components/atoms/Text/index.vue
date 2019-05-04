@@ -9,12 +9,17 @@ export default {
       type: Boolean,
       default: false,
     },
+    error: {
+      type: Boolean,
+      default: false,
+    },
   },
   computed: {
     classes() {
       return {
         text: true,
         'text--small': this.small,
+        'text--error': this.error,
       };
     },
   },
@@ -24,6 +29,9 @@ export default {
 <style lang="scss" scoped>
 .text {
   font-size: 16px;
+}
+.text--error {
+  color: $errorColor;
 }
 .text--small {
   font-size: 14px;

@@ -108,6 +108,12 @@ export default {
     };
   },
   computed: {
+    doneMessage() {
+      return this.$store.state.doneMessage;
+    },
+    errorMessage() {
+      return this.$store.state.errorMessage;
+    },
     yearOptions() {
       const array = [];
       for (let i = 2014, years = moment().year(); i < years; i += 1) {
@@ -126,6 +132,9 @@ export default {
   },
   methods: {
     updateValue($event) {
+      if (this.doneMessage || this.errorMessage) {
+        this.$store.dispatch('clearMessage');
+      }
       this[$event.target.name] = $event.target.value;
     },
     handleSubmit() {
@@ -138,6 +147,12 @@ export default {
         book_description: this.bookDescription,
         completed_at: `${year + month}`,
       });
+      this.bookTitle = '';
+      this.bookImage = '';
+      this.bookUrl = '';
+      this.bookDescription = '';
+      this.completedYear = '';
+      this.completedMonth = '';
     },
   },
 };

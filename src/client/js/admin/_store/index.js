@@ -9,24 +9,31 @@ export default new Vuex.Store({
   state: {
     loggedIn: false,
     books: [],
+    doneMessage: '',
     errorMessage: '',
   },
   getters: {
     completedDate: state => Object.keys(state.books),
   },
   mutations: {
+    clearMessage(state) {
+      state.errorMessage = '';
+      state.doneMessage = '';
+    },
     failRequest(state, { message }) {
       state.errorMessage = message;
     },
     doneGetBooks(state, payload) {
       state.books = payload;
     },
-    addBook(state, payload) {
-      console.log(payload);
-      console.log('add');
+    addBook(state) {
+      state.doneMessage = '新しい本を追加しました';
     },
   },
   actions: {
+    clearMessage({ commit }) {
+      commit('clearMessage');
+    },
     getBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
         commit('doneGetBooks', data);
