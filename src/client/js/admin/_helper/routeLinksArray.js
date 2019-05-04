@@ -7,6 +7,17 @@ export default [
   {
     id: 2,
     name: '本',
-    path: '/admin/books',
+    children: [
+      {
+        id: 1,
+        name: '本の一覧',
+        path: '/admin/books',
+      },
+      {
+        id: 2,
+        name: '本の追加',
+        path: '/admin/books/post',
+      },
+    ],
   },
 ];

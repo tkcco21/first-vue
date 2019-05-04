@@ -79,7 +79,7 @@ export default {
 .heading-quinary {}
 .heading-senary {}
 
-.sidebar-title {
+.sidebar__title {
   color: #fff;
   font-size: 24px;
   text-align: center;

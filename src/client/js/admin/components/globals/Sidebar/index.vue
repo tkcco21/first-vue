@@ -1,16 +1,36 @@
 <template lang="html">
   <aside class="sidebar">
-    <atoms-heading :level="1" className="sidebar-title">
+    <atoms-heading :level="1" className="sidebar__title">
       First Vue
     </atoms-heading>
-    <ul class="sidebar-list">
+    <ul class="sidebar__list">
       <atoms-list-item
         v-for="routeLink in routeLinksArray"
         :key="routeLink.id"
       >
-        <router-link :to="routeLink.path">
+        <router-link
+          :to="routeLink.path"
+          v-if="routeLink.path"
+          class="sidebar__list__item"
+        >
           {{ routeLink.name }}
         </router-link>
+        <div v-else>
+          <p class="sidebar__list__title">{{ routeLink.name }}</p>
+          <ul>
+            <atoms-list-item
+              v-for="routeChildLink in routeLink.children"
+              :key="routeChildLink.id"
+            >
+              <router-link
+                :to="routeChildLink.path"
+                class="sidebar__list__item"
+              >
+                {{ routeChildLink.name }}
+              </router-link>
+            </atoms-list-item>
+          </ul>
+        </div>
       </atoms-list-item>
     </ul>
   </aside>
@@ -42,10 +62,19 @@ export default {
   width: $sidebarWidth;
   height: 100%;
   background-color: $keycolor;
-  &-list {
-    > li > a {
+  &__list {
+    margin-top: 20px;
+    &__title {
+      padding: 5px;
+      font-size: 18px;
+      border-bottom: 1px solid #fff;
+    }
+    &__item {
       display: block;
+      padding: 5px 15px;
+      padding-left: 20px;
       color: #fff;
+      font-size: 16px;
     }
   }
 }
