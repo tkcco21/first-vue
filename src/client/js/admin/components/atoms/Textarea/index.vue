@@ -2,7 +2,6 @@
   <textarea
     :class="classes"
     :name="name"
-    value=""
     rows="8"
     :placeholder="placeholder"
     :value="inputValue"

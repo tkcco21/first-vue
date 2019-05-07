@@ -9,12 +9,10 @@
 </template>
 
 <script>
-import { Heading } from '@Admin/components/atoms';
 import { BookList } from '@Admin/components/molecules';
 
 export default {
   components: {
-    atomsHeading: Heading,
     moleBookList: BookList,
   },
   computed: {

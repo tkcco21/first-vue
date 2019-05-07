@@ -4,7 +4,7 @@
       <atoms-input
         placeholder="ユーザー名"
         name="username"
-        inputType="text"
+        input-type="text"
       />
     </div>
 
@@ -12,14 +12,14 @@
       <atoms-input
         placeholder="パスワード"
         name="password"
-        inputType="password"
+        input-type="password"
       />
     </div>
 
     <div class="form-signin-foot">
       <atoms-button
         name="signinButton"
-        buttonType="button"
+        button-type="button"
       >
         サインイン
       </atoms-button>

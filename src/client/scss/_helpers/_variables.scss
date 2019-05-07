@@ -1,5 +1,9 @@
 // ---  幅・高さ ---------
+// admin
 $sidebarWidth: 230px;
+// public
+$publicMaxWidth: 1100px;
+$publicContentWidth: 900px;
 
 // ---  色 ---------
 $keycolor: #00a381;
@@ -7,6 +11,8 @@ $errorColor: #ff2828;
 $disabledColor: #d4dcd6;
 $cautionColor: #fcc800;
 
+$gray: #b0b0b0;
+$lightGray: #ececec;
 $superLightGray: #f8f8f8;
 
 // ---  フォントの太さ ---------

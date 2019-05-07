@@ -1,6 +1,6 @@
 <template lang="html">
   <aside class="sidebar">
-    <atoms-heading :level="1" className="sidebar__title">
+    <atoms-heading :level="1" class-name="sidebar__title">
       First Vue
     </atoms-heading>
     <ul class="sidebar__list">
@@ -9,8 +9,8 @@
         :key="routeLink.id"
       >
         <router-link
-          :to="routeLink.path"
           v-if="routeLink.path"
+          :to="routeLink.path"
           class="sidebar__list__item"
         >
           {{ routeLink.name }}
