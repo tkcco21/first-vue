@@ -1,28 +1,29 @@
 <template lang="html">
   <header class="header">
     <div class="header__inner">
-      <atoms-heading :level="1" class-name="header__title">
-        First Vue
-      </atoms-heading>
+      <h1 class="header__title">First Vue</h1>
     </div>
   </header>
 </template>
 
 <script>
-import { Heading } from '@Public/components/atoms';
-
 export default {
-  components: {
-    atomsHeading: Heading,
-  },
 };
 </script>
 
 <style lang="scss" scoped>
 .header {
-  padding: 40px 0 20px;
   &__inner {
+    padding: 50px 0 30px;
     text-align: center;
+  }
+  &__title {
+    display: inline-block;
+    padding: 0 50px;
+    font-weight: $bold;
+    font-size: 48px;
+    line-height: 1;
+    border-bottom: 1px solid $keycolor;
   }
 }
 </style>

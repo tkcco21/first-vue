@@ -2,27 +2,34 @@
   <div class="wrapper">
     <app-header />
     <app-menu />
-    <div class="inner">
+    <main class="content">
       <router-view />
-    </div>
+    </main>
+    <app-socials />
     <app-footer />
   </div>
 </template>
 
 <script>
-import { Header, Menu, Footer } from '@Public/components/globals';
+import {
+  Header,
+  Menu,
+  Socials,
+  Footer,
+} from '@Public/components/_globals';
 
 export default {
   components: {
     appHeader: Header,
     appMenu: Menu,
+    appSocials: Socials,
     appFooter: Footer,
   },
 };
 </script>
 
 <style lang="scss" scoped>
-.inner {
+.content {
   margin: 0 auto;
   padding: 30px;
   max-width: $publicContentWidth;

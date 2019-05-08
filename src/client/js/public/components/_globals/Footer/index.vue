@@ -1,20 +1,13 @@
 <template lang="html">
   <footer class="footer">
     <div class="footer__inner">
-      <atoms-text ex-small ex-bold white>
-        © tkcco21
-      </atoms-text>
+      <p class="footer__copyright">© tkcco21</p>
     </div>
   </footer>
 </template>
 
 <script>
-import { Text } from '@Public/components/atoms';
-
 export default {
-  components: {
-    atomsText: Text,
-  },
 };
 </script>
 
@@ -26,6 +19,11 @@ export default {
     padding: 10px 20px;
     max-width: $publicMaxWidth;
     text-align: right;
+  }
+  &__copyright {
+    color: #fff;
+    font-weight: $black;
+    font-size: 12px;
   }
 }
 </style>

@@ -1,11 +1,16 @@
 <template lang="html">
-  <div>
-    BOOKS
+  <div class="socials">
+    <socials-list />
   </div>
 </template>
 
 <script>
+import List from './List';
+
 export default {
+  components: {
+    SocialsList: List,
+  },
 };
 </script>
 

@@ -1,8 +1,8 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import Home from '@Public/Pages/Home';
-import Books from '@Public/Pages/Books';
+import Home from '@Public/components/Home';
+import Books from '@Public/components/Books';
 
 Vue.use(VueRouter);
 
@@ -16,7 +16,7 @@ export default new VueRouter({
     },
     {
       name: 'books',
-      path: '',
+      path: '/books',
       component: Books,
     },
   ],
