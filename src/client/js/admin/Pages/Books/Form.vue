@@ -1,22 +1,19 @@
 <template lang="html">
   <section class="books">
-    <atoms-heading :level="1">Books</atoms-heading>
+    <h1 class="heading-primary">Books</h1>
     <mole-book-form />
-    <atoms-text v-if="doneMessage">{{ doneMessage }}</atoms-text>
-    <atoms-text v-if="errorMessage" error>
+    <p v-if="doneMessage">{{ doneMessage }}</p>
+    <p v-if="errorMessage">
       {{ errorMessage }}
-    </atoms-text>
+    </p>
   </section>
 </template>
 
 <script>
-import { Heading, Text } from '@Admin/components/atoms';
 import { BookForm } from '@Admin/components/molecules';
 
 export default {
   components: {
-    atomsHeading: Heading,
-    atomsText: Text,
     moleBookForm: BookForm,
   },
   computed: {
@@ -31,4 +28,10 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.heading-primary {
+  padding: 5px 15px;
+  font-size: 26px;
+  background-color: #efefef;
+  border-left: 5px solid $keycolor;
+}
 </style>

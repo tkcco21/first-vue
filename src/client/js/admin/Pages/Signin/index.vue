@@ -1,40 +1,21 @@
 <template lang="html">
   <div class="form-signin">
-    <div class="form-signin-content">
-      <atoms-input
-        placeholder="ユーザー名"
-        name="username"
-        input-type="text"
-      />
-    </div>
-
-    <div class="form-signin-content">
-      <atoms-input
-        placeholder="パスワード"
-        name="password"
-        input-type="password"
-      />
-    </div>
-
+    <v-text-field label="ユーザー名" type="text" color="green" />
+    <v-text-field label="パスワード" type="password" color="green" />
     <div class="form-signin-foot">
-      <atoms-button
-        name="signinButton"
-        button-type="button"
+      <v-btn
+        color="success"
+        block
+        depressed
       >
         サインイン
-      </atoms-button>
+      </v-btn>
     </div>
   </div>
 </template>
 
 <script>
-import { Button, Input } from '@Admin/components/atoms';
-
 export default {
-  components: {
-    atomsInput: Input,
-    atomsButton: Button,
-  },
 };
 </script>
 
@@ -43,11 +24,6 @@ export default {
   margin: 20% auto 0;
   width: 50%;
   min-width: 300px;
-  &-content {
-    & + & {
-      margin-top: 20px;
-    }
-  }
   &-foot {
     margin-top: 40px;
     text-align: center;

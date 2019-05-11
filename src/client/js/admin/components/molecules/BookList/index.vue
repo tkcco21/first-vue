@@ -1,12 +1,12 @@
 <template lang="html">
   <div class="book__list">
-    <atoms-heading :level="2">{{ date }}</atoms-heading>
+    <h2>{{ date }}</h2>
     <ul class="book__list__group">
       <li v-for="book in books[date]" :key="book.id">
         <a :href="book.item_url" target="_blank">
           <img :src="[book.image_url || 'https://placehold.jp/231x335.png?text=画像未登録']" alt="">
-          <atoms-heading :level="3">{{ book.title }}</atoms-heading>
-          <atoms-text>{{ book.description }}</atoms-text>
+          <h3>{{ book.title }}</h3>
+          <p>{{ book.description }}</p>
         </a>
       </li>
     </ul>
@@ -15,13 +15,8 @@
 
 <script>
 import moment from 'moment';
-import { Heading, Text } from '@Admin/components/atoms';
 
 export default {
-  components: {
-    atomsHeading: Heading,
-    atomsText: Text,
-  },
   props: {
     date: {
       type: String,

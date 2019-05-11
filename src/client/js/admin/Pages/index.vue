@@ -1,12 +1,12 @@
 <template lang="html">
-  <div class="wrapper">
+  <v-app class="wrapper">
     <Sidebar />
     <main class="content">
       <div class="content__inner">
         <router-view />
       </div>
     </main>
-  </div>
+  </v-app>
 </template>
 
 <script>

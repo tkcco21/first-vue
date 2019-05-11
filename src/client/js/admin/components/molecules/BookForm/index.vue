@@ -1,79 +1,59 @@
 <template lang="html">
   <div class="book-form">
     <div class="book-form-content">
-      <atoms-input
-        name="bookTitle"
-        input-type="text"
-        placeholder="本のタイトル"
-        :input-value="bookTitle"
-        @updateValue="updateValue"
-      />
+      <v-text-field background-color="">本のタイトル</v-text-field>
     </div>
 
     <div class="book-form-content">
-      <atoms-input
-        name="bookImage"
-        input-type="text"
-        placeholder="本の画像のURL"
-        :input-value="bookImage"
-        @updateValue="updateValue"
-      />
+      <v-text-field background-color="">本の画像のURL</v-text-field>
     </div>
 
     <div class="book-form-content">
-      <atoms-input
-        name="bookUrl"
-        input-type="text"
-        placeholder="本のURL"
-        :input-value="bookUrl"
-        @updateValue="updateValue"
-      />
+      <v-text-field background-color="">本のURL</v-text-field>
     </div>
 
     <div class="book-form-content">
-      <atoms-textarea
-        name="bookDescription"
+      <textarea
         placeholder="本の感想・概要"
-        :input-value="bookDescription"
-        @updateValue="updateValue"
+        name="bookDescription"
+        rows="8"
       />
     </div>
 
     <div class="book-form-content book-form-content--inline">
       <div class="book-form-date">
         <div class="book-form-date-select">
-          <atoms-text>読了</atoms-text>
+          <p>読了</p>
         </div>
         <div class="book-form-date-select">
-          <atoms-select
+          <select class="" name="">
+            <option value=""> --- </option>
+          </select>
+          <!-- <atoms-select
             name="completedYear"
             suffix="年"
             :value="completedYear"
             :options="yearOptions"
             @updateValue="updateValue"
-          />
+          /> -->
         </div>
 
         <div class="book-form-date-select">
-          <atoms-select
+          <select class="" name="">
+            <option value=""> --- </option>
+          </select>
+          <!-- <atoms-select
             name="completedMonth"
             suffix="月"
             :value="completedMonth"
             :options="monthOptions"
             @updateValue="updateValue"
-          />
+          /> -->
         </div>
       </div>
 
       <div class="book-form-button">
-        <atoms-button
-          name="addBookButton"
-          type="button"
-          inline
-          @handleSubmit="handleSubmit"
-        >
-          追加する
-        </atoms-button>
+        <button>追加する</button>
       </div>
     </div>
   </div>
@@ -81,22 +61,8 @@
 
 <script>
 import moment from 'moment';
-import {
-  Button,
-  Input,
-  Select,
-  Text,
-  Textarea,
-} from '@Admin/components/atoms';
 
 export default {
-  components: {
-    atomsButton: Button,
-    atomsInput: Input,
-    atomsSelect: Select,
-    atomsText: Text,
-    atomsTextarea: Textarea,
-  },
   data() {
     return {
       bookTitle: '',
