@@ -3,6 +3,7 @@
     <h1 class="sidebar__title">First Vue</h1>
     <v-list class="sidebar__list">
       <template v-for="routeLink in routeLinksArray">
+        <!-- 子要素なし -->
         <router-link
           v-if="routeLink.path"
           :key="routeLink.id"
@@ -12,8 +13,13 @@
         >
           {{ routeLink.name }}
         </router-link>
+        <!-- 子要素なし -->
+        <!-- 子要素あり -->
         <div v-else :key="routeLink.id">
-          <p class="sidebar__list__title">{{ routeLink.name }}</p>
+          <p class="sidebar__list__title">
+            <v-icon dark>mdi-book-open</v-icon>
+            {{ routeLink.name }}
+          </p>
           <v-list class="sidebar__list__children">
             <template v-for="routeChildLink in routeLink.children">
               <router-link
@@ -27,6 +33,7 @@
             </template>
           </v-list>
         </div>
+        <!-- 子要素あり -->
       </template>
     </v-list>
   </aside>
@@ -67,7 +74,7 @@ export default {
     }
     &__title {
       margin: 0;
-      padding: 5px;
+      padding: 5px 0;
       color: #efefef;
       font-weight: $bold;
       font-size: 18px;

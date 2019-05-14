@@ -3,9 +3,6 @@ import Vuetify from 'vuetify';
 
 import '../../scss/global';
 import 'vuetify/dist/vuetify.min.css';
-// for material-design-icons-iconfont
-// import 'material-design-icons-iconfont/dist/material-design-icons.css';
-// for @mdi/font
 import '@mdi/font/css/materialdesignicons.css';
 
 import MyApp from '@Admin/Pages';

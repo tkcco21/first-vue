@@ -1,61 +1,56 @@
 <template lang="html">
   <div class="book-form">
-    <div class="book-form-content">
-      <v-text-field background-color="">本のタイトル</v-text-field>
-    </div>
+    <v-text-field label="本のタイトル" name="bookTitle" />
+    <v-text-field label="本の画像のURL" name="bookImage" />
+    <v-text-field label="本のURL" name="bookUrl" />
+    <v-textarea
+      name="bookDescription"
+      label="本の感想・概要"
+      value=""
+      rows="8"
+    />
 
-    <div class="book-form-content">
-      <v-text-field background-color="">本の画像のURL</v-text-field>
-    </div>
-
-    <div class="book-form-content">
-      <v-text-field background-color="">本のURL</v-text-field>
-    </div>
-
-    <div class="book-form-content">
-      <textarea
-        placeholder="本の感想・概要"
-        name="bookDescription"
-        rows="8"
-      />
-    </div>
-
-    <div class="book-form-content book-form-content--inline">
-      <div class="book-form-date">
-        <div class="book-form-date-select">
-          <p>読了</p>
-        </div>
-        <div class="book-form-date-select">
-          <select class="" name="">
-            <option value=""> --- </option>
-          </select>
-          <!-- <atoms-select
+    <v-container grid-list-md fluid class="pa-0">
+      <v-layout justify-start align-center>
+        <v-flex xs1>
+          <p class="subheading text-xs-center ma-0">読了</p>
+        </v-flex>
+        <v-flex md3>
+          <v-select
+            :items="yearOptions"
+            label="年"
+          />
+          <!--
             name="completedYear"
-            suffix="年"
             :value="completedYear"
             :options="yearOptions"
             @updateValue="updateValue"
-          /> -->
-        </div>
-
-        <div class="book-form-date-select">
-          <select class="" name="">
-            <option value=""> --- </option>
-          </select>
-          <!-- <atoms-select
+          -->
+        </v-flex>
+        <v-flex md3>
+          <v-select
+            :items="monthOptions"
+            label="月"
+          />
+          <!--
             name="completedMonth"
-            suffix="月"
             :value="completedMonth"
             :options="monthOptions"
             @updateValue="updateValue"
-          /> -->
-        </div>
-      </div>
-
-      <div class="book-form-button">
-        <button>追加する</button>
-      </div>
-    </div>
+          -->
+        </v-flex>
+        <v-flex md3>
+          <v-btn
+            color="green"
+            block
+            dark
+            depressed
+          >
+            追加する
+          </v-btn>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </div>
 </template>
 
@@ -83,7 +78,7 @@ export default {
     yearOptions() {
       const array = [];
       for (let i = 2014, years = moment().year(); i < years; i += 1) {
-        array.push(i);
+        array.push(`${i}年`);
       }
       return array;
     },
@@ -91,7 +86,7 @@ export default {
       const array = [];
       for (let i = 1; i <= 12; i += 1) {
         const str = `${i}`;
-        array.push(str.padStart(2, '0'));
+        array.push(`${str.padStart(2, '0')}月`);
       }
       return array;
     },
@@ -127,18 +122,7 @@ export default {
 <style lang="scss" scoped>
 .book-form {
   margin-top: 20px;
-  &-content {
-    & + & {
-      margin-top: 20px;
-    }
-    &--inline {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-  }
   &-date {
-    font-size: 0;
     &-select {
       display: inline-block;
       vertical-align: middle;

@@ -18,3 +18,7 @@ npm run dev
 |:--|:--|
 | /admin | 管理画面TOP |
 | /admin/books | 本 - 一覧画面 |
+
+## アイコン
+
+http://code.meta-platform.com/assets/mdi/preview.html
