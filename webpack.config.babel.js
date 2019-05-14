@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
+// import Jarvis from 'webpack-jarvis';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
@@ -13,7 +14,6 @@ const dist = path.resolve(__dirname, './dist');
 const config = {
   mode: nodeEnv,
   devtool: isDev ? 'eval-source-map' : 'eval',
-  // source-map
   resolve: {
     extensions: ['.vue', '.js', '.json', '.scss'],
   },
@@ -26,6 +26,7 @@ const config = {
       excludeWarnings: true,
       title: 'First Vue'
     }),
+    // new Jarvis({ port: 1337 }),
   ],
   entry: {
     public: ['./src/client/js/public/app.js'],

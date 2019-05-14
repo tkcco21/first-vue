@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import VeeValidate from 'vee-validate';
 import Vuetify from 'vuetify';
 
 import '../../scss/global';
@@ -9,6 +10,7 @@ import MyApp from '@Admin/Pages';
 import router from '@Admin/_router';
 import store from '@Admin/_store';
 
+Vue.use(VeeValidate);
 Vue.use(Vuetify, {
   iconfont: 'mdi',
 });
@@ -25,6 +27,9 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
   el: '#app',
+  $_veeValidate: {
+    validator: 'new',
+  },
   router,
   store,
   render: h => h(MyApp),
