@@ -21,7 +21,7 @@
           ["@Admin", "./src/client/js/admin"],
           ["@Public", "./src/client/js/public"]
         ],
-        "extensions": ['.vue', '.js', '.json', '.scss']
+        "extensions": ['.vue', '.js', '.json', '.css']
       }
     }
   },

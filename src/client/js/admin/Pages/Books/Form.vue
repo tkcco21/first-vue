@@ -27,7 +27,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .heading-primary {
   padding: 5px 15px;
   font-size: 26px;

@@ -15,7 +15,7 @@ const config = {
   mode: nodeEnv,
   devtool: isDev ? 'eval-source-map' : 'eval',
   resolve: {
-    extensions: ['.vue', '.js', '.json', '.scss'],
+    extensions: ['.vue', '.js', '.json', '.css'],
   },
   plugins: [
     new VueLoaderPlugin(),
@@ -57,37 +57,33 @@ const config = {
         loader: 'vue-loader',
       },
       {
-        test: /\.(css|sass|scss)$/,
+        test: /\.css$/,
         use: [
           isDev ? 'vue-style-loader' : {
             loader: MiniCssExtractPlugin.loader
           },
           {
             loader: 'css-loader',
-            options: { sourceMap: true },
+            options: { sourceMap: true, importLoaders: 1 },
           },
           {
             loader: 'postcss-loader',
             options: {
-              plugins: [
-                require('autoprefixer')({
-                  grid: true,
-                  browsers: [
-                    'IE >= 11',
-                    'last 2 versions'
-                  ]
-                })
-              ]
-            }
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              outputStyle: 'expanded',
               sourceMap: true,
-              data: `@import './src/client/scss/_helpers/index.scss';`
-            }
-          }
+              plugins: () => [
+                require('postcss-import')(),
+                require('postcss-nested')(),
+                require('postcss-custom-media')(),
+                require('postcss-mixins')(),
+                require('postcss-custom-properties')({
+                  preserve: false,
+                  importFrom: 'src/client/css/_helpers/_variables.css'
+                }),
+                require('postcss-color-function')(),
+                require('autoprefixer')(),
+              ],
+            },
+          },
         ]
       },
       {

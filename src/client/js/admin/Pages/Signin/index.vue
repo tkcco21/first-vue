@@ -19,7 +19,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .form-signin {
   margin: 20% auto 0;
   width: 50%;

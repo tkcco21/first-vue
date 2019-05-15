@@ -151,7 +151,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .book-form {
   margin-top: 20px;
   &-date {

@@ -25,7 +25,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .date-list {
   margin-top: 20px;
   & > li {

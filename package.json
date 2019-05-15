@@ -53,11 +53,15 @@
     "eslint-plugin-vue": "^5.1.0",
     "file-loader": "^3.0.1",
     "mini-css-extract-plugin": "^0.6.0",
-    "node-sass": "^4.12.0",
     "nodemon": "^1.18.11",
+    "postcss-color-function": "^4.1.0",
+    "postcss-custom-media": "^7.0.8",
+    "postcss-custom-properties": "^8.0.10",
+    "postcss-import": "^12.0.1",
     "postcss-loader": "^3.0.0",
+    "postcss-mixins": "^6.2.1",
+    "postcss-nested": "^4.1.2",
     "rimraf": "^2.6.3",
-    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "vue-loader": "^15.6.2",
     "vue-style-loader": "^4.1.2",
@@ -66,7 +70,6 @@
     "webpack-cli": "^3.2.1",
     "webpack-dev-middleware": "^3.6.2",
     "webpack-hot-middleware": "^2.24.3",
-    "webpack-jarvis": "^0.3.2",
     "webpack-notifier": "^1.7.0"
   }
 }

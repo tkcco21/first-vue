@@ -20,7 +20,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .books {
   &__title {
     font-size: 24px;

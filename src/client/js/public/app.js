@@ -1,6 +1,6 @@
 import Vue from 'vue';
 
-import '../../scss/global';
+import '../../css/global';
 
 import MyApp from '@Public/components';
 import router from '@Public/_router';

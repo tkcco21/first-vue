@@ -3,6 +3,7 @@ import path from 'path';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import createError from 'http-errors';
+// import DashboardPlugin from 'webpack-dashboard/plugin';
 
 import adminRouter from './routes/admin'
 import publicRouter from './routes/public'
@@ -34,6 +35,7 @@ if (isDev) {
   const webpack = require('webpack');
   const webpackConfig = require(`${rootDir}webpack.config.babel`).default;
   const compiler = webpack(webpackConfig);
+  // compiler.apply(new DashboardPlugin());
   app.use(require('webpack-dev-middleware')(compiler, {
     noInfo: true,
     publicPath: webpackConfig.output.publicPath,

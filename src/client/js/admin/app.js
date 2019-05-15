@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VeeValidate from 'vee-validate';
 import Vuetify from 'vuetify';
 
-import '../../scss/global';
+import '../../css/global';
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons.css';
 

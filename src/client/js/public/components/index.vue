@@ -28,7 +28,7 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .content {
   margin: 0 auto;
   padding: 30px;

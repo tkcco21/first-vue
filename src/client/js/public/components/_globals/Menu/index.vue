@@ -39,17 +39,17 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="css" scoped>
 .menu {
   margin: 0 auto;
   padding: 0 20px;
-  max-width: $publicMaxWidth;
+  max-width: var(--publicMaxWidth);
   text-align: right;
   &__list {
     overflow: hidden;
     position: relative;
     padding-top: 31px;
-    border-bottom: 1px solid $keycolor;
+    border-bottom: 1px solid var(--keycolor);
     .slide-enter, .slide-leave-to {
       top: 31px;
     }
@@ -60,11 +60,11 @@ export default {
   &__button {
     display: inline-block;
     padding: 2px 15px;
-    color: $keycolor;
+    color: var(--keycolor);
     color: #fff;
-    font-weight: $black;
+    font-weight: var(--black);
     font-size: 12px;
-    background-color: $keycolor;
+    background-color: var(--keycolor);
     cursor: pointer;
     transition: all .5s;
     &.active {
