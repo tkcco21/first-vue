@@ -23,7 +23,6 @@ export default {
     font-weight: $bold;
     font-size: 48px;
     line-height: 1;
-    border-bottom: 1px solid $keycolor;
   }
 }
 </style>

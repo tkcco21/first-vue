@@ -17,12 +17,12 @@ export default {
   &__inner {
     margin: 0 auto;
     padding: 10px 20px;
-    max-width: $publicMaxWidth;
+    max-width: var(--publicMaxWidth);
     text-align: right;
   }
   &__copyright {
     color: #fff;
-    font-weight: $black;
+    font-weight: var(--black);
     font-size: 12px;
   }
 }

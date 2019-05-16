@@ -32,6 +32,6 @@ export default {
   padding: 5px 15px;
   font-size: 26px;
   background-color: #efefef;
-  border-left: 5px solid $keycolor;
+  border-left: 5px solid var(--keycolor);
 }
 </style>

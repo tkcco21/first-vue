@@ -3,6 +3,7 @@
     <h1 class="sidebar__title">First Vue</h1>
     <v-list class="sidebar__list">
       <template v-for="routeLink in routeLinksArray">
+
         <!-- 子要素なし -->
         <router-link
           v-if="routeLink.path"
@@ -14,11 +15,12 @@
           {{ routeLink.name }}
         </router-link>
         <!-- 子要素なし -->
+
         <!-- 子要素あり -->
         <div v-else :key="routeLink.id">
           <p class="sidebar__list__title">
-            <v-icon dark>mdi-book-open</v-icon>
-            {{ routeLink.name }}
+            <v-icon class="mr-2" dark>mdi-book-open</v-icon>
+            <span>{{ routeLink.name }}</span>
           </p>
           <v-list class="sidebar__list__children">
             <template v-for="routeChildLink in routeLink.children">
@@ -34,6 +36,7 @@
           </v-list>
         </div>
         <!-- 子要素あり -->
+
       </template>
     </v-list>
   </aside>
@@ -57,9 +60,9 @@ export default {
   top: 0;
   left: 0;
   padding: 20px 10px;
-  width: $sidebarWidth;
+  width: var(--sidebarWidth);
   height: 100%;
-  background-color: $keycolor;
+  background-color: var(--keycolor);
   &__title {
     color: #fff;
     font-size: 24px;
@@ -68,15 +71,17 @@ export default {
   &__list {
     margin-top: 20px;
     padding: 0;
-    background-color: $keycolor;
+    background-color: var(--keycolor);
     &__children {
-      background-color: $keycolor;
+      background-color: var(--keycolor);
     }
     &__title {
+      display: flex;
+      align-items: center;
       margin: 0;
       padding: 5px 0;
       color: #efefef;
-      font-weight: $bold;
+      font-weight: var(--bold);
       font-size: 18px;
       border-bottom: 2px solid #efefef;
     }
@@ -85,11 +90,16 @@ export default {
       padding: 5px 15px;
       padding-left: 20px;
       color: #fff;
-      font-weight: $bold;
+      font-weight: var(--bold);
       font-size: 16px;
+      transition: all .5s;
+      &:hover {
+        background-color: rgba(220, 220, 220, .3);
+      }
       &.router-link-active {
-        color: $keycolor;
+        color: var(--keycolor);
         background-color: #fff;
+        cursor: default;
       }
     }
   }

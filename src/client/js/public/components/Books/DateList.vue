@@ -37,7 +37,7 @@ export default {
   &__title {
     padding: 5px 20px;
     font-size: 20px;
-    background-color: $lightGray;
+    background-color: var(--lightGray);
   }
 }
 </style>

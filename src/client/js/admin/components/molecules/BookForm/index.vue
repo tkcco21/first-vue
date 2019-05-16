@@ -11,6 +11,7 @@
       />
       <v-text-field
         v-model="bookImage"
+        data-vv-name="bookImage"
         label="本の画像のURL"
       />
       <v-text-field
@@ -50,6 +51,7 @@
           <v-flex md3>
             <v-select
               v-model="completedMonth"
+              data-vv-name="completedMonth"
               :items="monthOptions"
               suffix="月"
             />
@@ -60,7 +62,7 @@
               block
               dark
               depressed
-              @click="submit"
+              @click="handleSubmit"
             >
               追加する
             </v-btn>
@@ -126,12 +128,11 @@ export default {
     this.$validator.localize('ja', this.dictionary);
   },
   methods: {
-    submit() {
-      console.log(this.$validator);
-      this.$validator.validateAll();
-    },
     handleSubmit() {
-      const year = this.completedYear;
+      this.$validator.validate();
+      // this.$validator.reset();
+
+      /* const year = this.completedYear;
       const month = this.completedMonth ? `-${this.completedMonth}` : '';
       this.$store.dispatch('addBook', {
         book_title: this.bookTitle,
@@ -145,7 +146,7 @@ export default {
       this.bookUrl = '';
       this.bookDescription = '';
       this.completedYear = '';
-      this.completedMonth = '';
+      this.completedMonth = ''; */
     },
   },
 };

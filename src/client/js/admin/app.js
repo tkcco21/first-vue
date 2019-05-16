@@ -27,9 +27,7 @@ router.beforeEach((to, from, next) => {
 
 new Vue({
   el: '#app',
-  $_veeValidate: {
-    validator: 'new',
-  },
+  $_veeValidate: { validator: 'new' },
   router,
   store,
   render: h => h(MyApp),

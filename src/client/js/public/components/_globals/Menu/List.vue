@@ -43,12 +43,12 @@ export default {
     padding: 5px 20px;
     color: $gray;
     font-size: 12px;
-    border: 1px solid $lightGray;
+    border: 1px solid var(--lightGray);
     border-bottom: none;
     transition: all .5s;
     &.active {
-      color: $keycolor;
-      border-color: $keycolor;
+      color: var(--keycolor);
+      border-color: var(--keycolor);
     }
   }
 }

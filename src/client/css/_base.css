@@ -15,7 +15,7 @@ body {
   position: relative;
   color: #333;
   font-family: "Noto", Arial, "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;
-  font-weight: $normal;
+  font-weight: var(--normal);
   line-height: 1.7;
   background-color: #fff;
 }

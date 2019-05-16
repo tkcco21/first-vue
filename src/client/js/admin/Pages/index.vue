@@ -24,7 +24,7 @@ export default {
   height: 100vh;
 }
 .content {
-  padding-left: $sidebarWidth;
+  padding-left: var(--sidebarWidth);
   &__inner {
     padding: 20px;
     width: 100%;

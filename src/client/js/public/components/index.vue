@@ -32,7 +32,7 @@ export default {
 .content {
   margin: 0 auto;
   padding: 30px;
-  max-width: $publicContentWidth;
+  max-width: var(--publicContentWidth);
   box-sizing: content-box;
 }
 </style>
