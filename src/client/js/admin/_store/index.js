@@ -16,6 +16,9 @@ export default new Vuex.Store({
     completedDate: state => Object.keys(state.books),
   },
   mutations: {
+    invalidate(state, payload) {
+      state.errorMessage = payload.message;
+    },
     clearMessage(state) {
       state.errorMessage = '';
       state.doneMessage = '';
@@ -31,6 +34,9 @@ export default new Vuex.Store({
     },
   },
   actions: {
+    invalidate({ commit }, message) {
+      commit('invalidate', { message });
+    },
     clearMessage({ commit }) {
       commit('clearMessage');
     },

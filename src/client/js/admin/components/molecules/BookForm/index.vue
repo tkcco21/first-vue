@@ -129,24 +129,26 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$validator.validate();
-      // this.$validator.reset();
+      this.$validator.validate().then((isValid) => {
+        if (!isValid) this.$store.dispatch('invalidate', '必須項目が未入力か、ちゃんとした値が入力されてないよ。');
+      });
 
-      /* const year = this.completedYear;
+      const year = this.completedYear;
       const month = this.completedMonth ? `-${this.completedMonth}` : '';
       this.$store.dispatch('addBook', {
         book_title: this.bookTitle,
         book_image: this.bookImage,
-        book_url: this.bookUrl,
+        book_url: this.bookUrl && null,
         book_description: this.bookDescription,
         completed_at: `${year + month}`,
       });
+      this.$validator.reset();
       this.bookTitle = '';
       this.bookImage = '';
       this.bookUrl = '';
       this.bookDescription = '';
       this.completedYear = '';
-      this.completedMonth = ''; */
+      this.completedMonth = '';
     },
   },
 };
