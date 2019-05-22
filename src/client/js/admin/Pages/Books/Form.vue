@@ -3,9 +3,7 @@
     <h1 class="heading-primary">Books</h1>
     <mole-book-form />
     <p v-if="doneMessage">{{ doneMessage }}</p>
-    <p v-if="errorMessage">
-      {{ errorMessage }}
-    </p>
+    <p v-if="errorMessage">{{ errorMessage }}</p>
   </section>
 </template>
 

@@ -40,7 +40,7 @@
           <v-flex md3>
             <v-select
               v-model="completedYear"
-              v-validate="'required'"
+              v-validate="'required|numeric'"
               data-vv-name="completedYear"
               :error-messages="errors.collect('completedYear')"
               :items="yearOptions"
@@ -51,7 +51,9 @@
           <v-flex md3>
             <v-select
               v-model="completedMonth"
+              v-validate="'numeric'"
               data-vv-name="completedMonth"
+              :error-messages="errors.collect('completedMonth')"
               :items="monthOptions"
               suffix="月"
             />
@@ -96,7 +98,11 @@ export default {
           required: () => '必須項目です。本の感想・概要を入力してください。',
         },
         completedYear: {
-          required: () => '必須項目です。読んだ年をを入力してください。',
+          required: () => '必須項目です。読んだ年を入力してください。',
+          numeric: () => '半角の数字で年を入力してください。',
+        },
+        completedMonth: {
+          numeric: () => '半角の数字（01~12）を入力してください。',
         },
       },
     },
@@ -129,26 +135,31 @@ export default {
   },
   methods: {
     handleSubmit() {
-      this.$validator.validate().then((isValid) => {
-        if (!isValid) this.$store.dispatch('invalidate', '必須項目が未入力か、ちゃんとした値が入力されてないよ。');
-      });
+      this.$store.dispatch('clearMessage');
 
-      const year = this.completedYear;
-      const month = this.completedMonth ? `-${this.completedMonth}` : '';
-      this.$store.dispatch('addBook', {
-        book_title: this.bookTitle,
-        book_image: this.bookImage,
-        book_url: this.bookUrl && null,
-        book_description: this.bookDescription,
-        completed_at: `${year + month}`,
+      this.$validator.validate().then((valid) => {
+        if (!valid) {
+          this.$store.dispatch('invalidate', '必須項目が未入力か、ちゃんとした値が入力されてないよ。');
+        } else {
+          const year = this.completedYear;
+          const month = this.completedMonth ? `-${this.completedMonth}` : '';
+          this.$store.dispatch('addBook', {
+            book_title: this.bookTitle,
+            book_image: this.bookImage,
+            book_url: this.bookUrl && null,
+            book_description: this.bookDescription,
+            completed_at: `${year + month}`,
+          });
+
+          this.$validator.reset();
+          this.bookTitle = '';
+          this.bookImage = '';
+          this.bookUrl = '';
+          this.bookDescription = '';
+          this.completedYear = '';
+          this.completedMonth = '';
+        }
       });
-      this.$validator.reset();
-      this.bookTitle = '';
-      this.bookImage = '';
-      this.bookUrl = '';
-      this.bookDescription = '';
-      this.completedYear = '';
-      this.completedMonth = '';
     },
   },
 };
