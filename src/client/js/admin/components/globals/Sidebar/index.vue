@@ -3,7 +3,6 @@
     <h1 class="sidebar__title">First Vue</h1>
     <v-list class="sidebar__list">
       <template v-for="routeLink in routeLinksArray">
-
         <!-- 子要素なし -->
         <router-link
           v-if="routeLink.path"
@@ -36,7 +35,6 @@
           </v-list>
         </div>
         <!-- 子要素あり -->
-
       </template>
     </v-list>
   </aside>

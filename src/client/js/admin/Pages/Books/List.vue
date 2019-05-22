@@ -1,11 +1,7 @@
 <template lang="html">
-  <section class="books">
-    <mole-book-list
-      v-for="date in completedDate"
-      :key="date"
-      :date="date"
-    />
-  </section>
+  <div class="books">
+    <mole-book-list :completedDate="completedDate" />
+  </div>
 </template>
 
 <script>

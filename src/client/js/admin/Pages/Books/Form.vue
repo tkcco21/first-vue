@@ -1,9 +1,20 @@
 <template lang="html">
-  <section class="books">
-    <h1 class="heading-primary">Books</h1>
+  <section class="books-form">
     <mole-book-form />
-    <p v-if="doneMessage">{{ doneMessage }}</p>
-    <p v-if="errorMessage">{{ errorMessage }}</p>
+    <v-alert
+      v-if="doneMessage"
+      :value="true"
+      type="success"
+    >
+      {{ doneMessage }}
+    </v-alert>
+    <v-alert
+      v-if="errorMessage"
+      :value="true"
+      type="error"
+    >
+      {{ errorMessage }}
+    </v-alert>
   </section>
 </template>
 
@@ -26,10 +37,4 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.heading-primary {
-  padding: 5px 15px;
-  font-size: 26px;
-  background-color: #efefef;
-  border-left: 5px solid var(--keycolor);
-}
 </style>

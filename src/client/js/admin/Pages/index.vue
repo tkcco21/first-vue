@@ -21,7 +21,6 @@ export default {
 
 <style lang="css" scoped>
 .wrapper {
-  height: 100vh;
 }
 .content {
   padding-left: var(--sidebarWidth);

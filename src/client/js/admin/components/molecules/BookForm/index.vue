@@ -146,7 +146,7 @@ export default {
           this.$store.dispatch('addBook', {
             book_title: this.bookTitle,
             book_image: this.bookImage,
-            book_url: this.bookUrl && null,
+            book_url: this.bookUrl || null,
             book_description: this.bookDescription,
             completed_at: `${year + month}`,
           });
@@ -167,7 +167,6 @@ export default {
 
 <style lang="css" scoped>
 .book-form {
-  margin-top: 20px;
   &-date {
     &-select {
       display: inline-block;
