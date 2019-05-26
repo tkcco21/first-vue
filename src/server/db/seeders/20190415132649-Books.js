@@ -10,7 +10,7 @@ module.exports = {
         imageUrl: 'https://images-na.ssl-images-amazon.com/images/I/51IJAgUjVLL._SX344_BO1,204,203,200_.jpg',
         itemUrl: 'https://www.amazon.co.jp/dp/B07NMP97HW/ref=dp-kindle-redirect?_encoding=UTF8&btkr=1',
         description: '「とんでもなくわかりやすいだけでなく、とんでもなくおもしろい」\n「知的好奇心を刺激するドラマチックな展開に、ぐいぐい引き込まれる」\n「一冊で仮想通貨や公的債務の是非、環境問題まで網羅しているのも驚き」と大絶賛！',
-        completedAt: moment('2015-01').format('YYYY-MM-DD HH:mm'),
+        completedAt: moment('2017-01').format('YYYY-MM-DD HH:mm'),
         createdAt: moment().format('YYYY-MM-DD HH:mm'),
         updatedAt: moment().format('YYYY-MM-DD HH:mm')
       },
@@ -28,7 +28,7 @@ module.exports = {
         imageUrl: '',
         itemUrl: '',
         description: 'ピアノコンクールを舞台に、人間の才能と運命、そして音楽を描き切った青春群像小説。',
-        completedAt: moment('2017-01').format('YYYY-MM-DD HH:mm'),
+        completedAt: moment('2015-01').format('YYYY-MM-DD HH:mm'),
         createdAt: moment().format('YYYY-MM-DD HH:mm'),
         updatedAt: moment().format('YYYY-MM-DD HH:mm')
       },
@@ -47,6 +47,51 @@ module.exports = {
         itemUrl: '',
         description: 'れはいい！！',
         completedAt: moment('2018-01').format('YYYY-MM-DD HH:mm'),
+        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        updatedAt: moment().format('YYYY-MM-DD HH:mm')
+      },
+      {
+        title: 'tkcco21',
+        imageUrl: 'http://tkcco21.github.io/introduce/myprofile/assets/images/gallery/photo1.jpg',
+        itemUrl: 'http://tkcco21.github.io/introduce/myprofile/gallery/index.html',
+        description: 'test',
+        completedAt: moment('2018-03').format('YYYY-MM-DD HH:mm'),
+        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        updatedAt: moment().format('YYYY-MM-DD HH:mm')
+      },
+      {
+        title: 'tkcco21-2',
+        imageUrl: 'http://tkcco21.github.io/introduce/myprofile/assets/images/gallery/photo2.jpg',
+        itemUrl: 'http://tkcco21.github.io/introduce/myprofile/gallery/index.html',
+        description: 'test',
+        completedAt: moment('2018-03').format('YYYY-MM-DD HH:mm'),
+        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        updatedAt: moment().format('YYYY-MM-DD HH:mm')
+      },
+      {
+        title: 'tkcco21-3',
+        imageUrl: 'http://tkcco21.github.io/introduce/myprofile/assets/images/gallery/photo3.jpg',
+        itemUrl: 'http://tkcco21.github.io/introduce/myprofile/gallery/index.html',
+        description: 'test',
+        completedAt: moment('2018-03').format('YYYY-MM-DD HH:mm'),
+        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        updatedAt: moment().format('YYYY-MM-DD HH:mm')
+      },
+      {
+        title: 'tkcco21-4',
+        imageUrl: 'http://tkcco21.github.io/introduce/myprofile/assets/images/gallery/photo4.jpg',
+        itemUrl: 'http://tkcco21.github.io/introduce/myprofile/gallery/index.html',
+        description: 'test',
+        completedAt: moment('2018-03').format('YYYY-MM-DD HH:mm'),
+        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        updatedAt: moment().format('YYYY-MM-DD HH:mm')
+      },
+      {
+        title: 'tkcco21-5',
+        imageUrl: 'http://tkcco21.github.io/introduce/myprofile/assets/images/gallery/photo5.jpg',
+        itemUrl: 'http://tkcco21.github.io/introduce/myprofile/gallery/index.html',
+        description: 'test',
+        completedAt: moment('2018-03').format('YYYY-MM-DD HH:mm'),
         createdAt: moment().format('YYYY-MM-DD HH:mm'),
         updatedAt: moment().format('YYYY-MM-DD HH:mm')
       },

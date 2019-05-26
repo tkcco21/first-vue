@@ -26,10 +26,10 @@
         >
           <v-card>
             <v-img
-              :src="book.image_url || `https://placehold.jp/300x250.png?text=${book.title}の画像があれば...`"
+              :src="book.imageUrl || `https://placehold.jp/300x250.png?text=${book.title}の画像があれば...`"
               aspect-ratio="1.25"
               max-height="100"
-              :contain="book.image_url ? true : false"
+              :contain="book.imageUrl ? true : false"
             />
             <v-card-title class="pl-2 pr-2 pt-3 pb-0">
               <h3 class="subheading font-weight-bold mb-0">{{ book.title }}</h3>
@@ -50,7 +50,7 @@
               <v-btn
                 class="font-weight-bold caption"
                 tag="a"
-                :href="book.item_url"
+                :href="book.itemUrl"
                 target="_blank"
                 color="blue"
                 block
@@ -78,7 +78,7 @@ export default {
   },
   created() {
     if (!this.$store.state.books.length) {
-      this.$store.dispatch('getBooks');
+      this.$store.dispatch('getAllBooks');
     }
   },
 };

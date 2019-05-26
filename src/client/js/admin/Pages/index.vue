@@ -16,6 +16,11 @@ export default {
   components: {
     Sidebar,
   },
+  watch: {
+    $route() {
+      this.$store.dispatch('clearMessage');
+    },
+  },
 };
 </script>
 

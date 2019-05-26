@@ -9,6 +9,14 @@ export default new Vuex.Store({
   state: {
     loggedIn: false,
     books: [],
+    targetBook: {
+      id: null,
+      title: '',
+      itemUrl: '',
+      imageUrl: '',
+      description: '',
+      updatedAt: '',
+    },
     doneMessage: '',
     errorMessage: '',
   },
@@ -26,10 +34,13 @@ export default new Vuex.Store({
     failRequest(state, { message }) {
       state.errorMessage = message;
     },
-    doneGetBooks(state, payload) {
+    doneGetAllBooks(state, payload) {
       state.books = payload;
     },
-    addBook(state) {
+    doneGetBook(state, payload) {
+      Object.assign(state.targetBook, payload);
+    },
+    doneAddBook(state) {
       state.doneMessage = '新しい本を追加しました';
     },
   },
@@ -40,16 +51,23 @@ export default new Vuex.Store({
     clearMessage({ commit }) {
       commit('clearMessage');
     },
-    getBooks({ commit }) {
+    getAllBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
-        commit('doneGetBooks', data);
+        commit('doneGetAllBooks', data);
+      }).catch((err) => {
+        commit('failRequest', { message: err.response.data.message });
+      });
+    },
+    getBook({ commit }, { id }) {
+      axios.get(`/api/books/${id}`).then(({ data }) => {
+        commit('doneGetBook', data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
     addBook({ commit }, book) {
       axios.post('/api/books', book).then(({ data }) => {
-        commit('addBook', data);
+        commit('doneAddBook', data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
