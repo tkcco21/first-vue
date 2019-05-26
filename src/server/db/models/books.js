@@ -3,14 +3,12 @@
 export default (sequelize, DataTypes) => {
   const Books = sequelize.define('books', {
     title: DataTypes.STRING,
-    item_url: DataTypes.STRING,
-    image_url: DataTypes.STRING,
+    itemUrl: DataTypes.STRING,
+    imageUrl: DataTypes.STRING,
     description: DataTypes.STRING,
-    completed_at: DataTypes.DATE,
-    deleted_at: DataTypes.DATE
-  }, {
-    underscored: true,
-  });
+    completedAt: DataTypes.DATE,
+    deletedAt: DataTypes.DATE
+  }, {});
   Books.associate = function(models) {
     // associations can be defined here
   };

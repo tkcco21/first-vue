@@ -4,18 +4,18 @@ const moment = require('moment');
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.bulkInsert('admin_users', [
+    return queryInterface.bulkInsert('adminUsers', [
       {
         username: 'admin01',
-        password: 'test123Admin',
-        created_at: moment().format('YYYY-MM-DD HH:mm'),
-        updated_at: moment().format('YYYY-MM-DD HH:mm')
+        password: '123Admin',
+        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        updatedAt: moment().format('YYYY-MM-DD HH:mm')
       },
       {
         username: 'admin02',
-        password: '123TKC123test',
-        created_at: moment().format('YYYY-MM-DD HH:mm'),
-        updated_at: moment().format('YYYY-MM-DD HH:mm')
+        password: '123Tkc',
+        createdAt: moment().format('YYYY-MM-DD HH:mm'),
+        updatedAt: moment().format('YYYY-MM-DD HH:mm')
       }
     ], {});
   },

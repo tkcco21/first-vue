@@ -11,26 +11,26 @@ module.exports = {
       title: {
         type: Sequelize.STRING
       },
-      item_url: {
+      itemUrl: {
         type: Sequelize.STRING
       },
-      image_url: {
+      imageUrl: {
         type: Sequelize.STRING
       },
       description: {
         type: Sequelize.STRING
       },
-      completed_at: {
+      completedAt: {
         type: Sequelize.DATE
       },
-      deleted_at: {
+      deletedAt: {
         type: Sequelize.DATE
       },
-      created_at: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATE
       },
-      updated_at: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }
