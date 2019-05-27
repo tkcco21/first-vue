@@ -37,17 +37,6 @@
             <!-- <v-card-text class="pa-2">{{ book.description }}</v-card-text> -->
             <v-card-actions>
               <v-btn
-                class="font-weight-bold"
-                :to="{ path: `books/${book.id}` }"
-                color="green"
-                block
-                dark
-              >
-                詳細
-              </v-btn>
-            </v-card-actions>
-            <v-card-actions class="pt-0">
-              <v-btn
                 class="font-weight-bold caption"
                 tag="a"
                 :href="book.itemUrl"
@@ -55,8 +44,35 @@
                 color="blue"
                 block
                 dark
+                small
               >
                 アマゾン
+              </v-btn>
+            </v-card-actions>
+            <v-card-actions class="pt-0">
+              <v-btn
+                class="font-weight-bold"
+                :to="{ path: `books/${book.id}` }"
+                color="green"
+                block
+                dark
+                small
+              >
+                詳細
+              </v-btn>
+            </v-card-actions>
+            <v-card-actions class="pt-0">
+              <v-btn
+                class="font-weight-bold caption"
+                tag="button"
+                type="button"
+                target="_blank"
+                color="red"
+                block
+                dark
+                small
+              >
+                削除
               </v-btn>
             </v-card-actions>
           </v-card>

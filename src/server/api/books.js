@@ -24,15 +24,37 @@ export default {
     });
   },
   getBook(req, res) {
-    const { id } = req.param;
+    const { id } = req.params;
     books.findOne(id).then(({ book }) => {
-      res.send(book);
+      const { title, imageUrl, itemUrl, description, completedAt } = book;
+      const completedYear = parseInt(moment(completedAt).format('YYYY'), 10);
+      const completedMonth = parseInt(moment(completedAt).format('MM'), 10);
+      const targetBook = Object.assign({}, {
+        id,
+        title,
+        imageUrl,
+        itemUrl,
+        description,
+        completedYear,
+        completedMonth,
+      });
+      res.send(targetBook);
     }).catch(({ message }) => {
       res.status(400).send({ message });
     });
   },
   addBook(req, res) {
-    const { title, imageUrl, itemUrl, description, completedAt } = req.body;
+    const {
+      title,
+      imageUrl,
+      itemUrl,
+      description,
+      completedYear,
+      completedMonth
+    } = req.body;
+    const year = completedYear;
+    const month = completedMonth ? `-${completedMonth}` : '';
+    const completedAt = `${year + month}`
 
     books
       .create({ title, itemUrl, imageUrl, description, completedAt })

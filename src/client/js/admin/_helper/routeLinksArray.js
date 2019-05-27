@@ -18,6 +18,12 @@ export default [
         name: '本の追加',
         path: '/admin/books/post',
       },
+      {
+        id: 3,
+        name: '本の詳細',
+        path: '/admin/books/:id',
+        disable: true,
+      },
     ],
   },
 ];

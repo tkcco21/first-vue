@@ -2,34 +2,41 @@
   <div class="book-form">
     <v-form>
       <v-text-field
-        v-model="book.title"
         v-validate="'required'"
         data-vv-name="title"
+        name="title"
         :error-messages="errors.collect('title')"
         label="本のタイトル"
         required
+        :value="targetBook.title"
+        @input="updateValue($event, 'title')"
       />
       <v-text-field
-        v-model="book.imageUrl"
-        data-vv-name="bookImage"
         label="本の画像のURL"
+        name="imageUrl"
+        :value="targetBook.imageUrl"
+        @input="updateValue($event, 'imageUrl')"
       />
       <v-text-field
-        v-model="book.itemUrl"
         v-validate="'required'"
         data-vv-name="itemUrl"
+        name="itemUrl"
         :error-messages="errors.collect('itemUrl')"
         label="本のURL"
         required
+        :value="targetBook.itemUrl"
+        @input="updateValue($event, 'itemUrl')"
       />
       <v-textarea
-        v-model="book.description"
         v-validate="'required'"
         data-vv-name="description"
+        name="description"
         :error-messages="errors.collect('description')"
         label="本の感想・概要"
         rows="8"
         required
+        :value="targetBook.description"
+        @input="updateValue($event, 'description')"
       />
 
       <v-container grid-list-md fluid class="pa-0">
@@ -39,23 +46,27 @@
           </v-flex>
           <v-flex md3>
             <v-select
-              v-model="book.completedYear"
               v-validate="'required|numeric'"
               data-vv-name="completedYear"
+              name="completedYear"
               :error-messages="errors.collect('completedYear')"
               :items="yearOptions"
               suffix="年"
               required
+              :value="targetBook.completedYear"
+              @input="updateValue($event, 'completedYear')"
             />
           </v-flex>
           <v-flex md3>
             <v-select
-              v-model="book.completedMonth"
               v-validate="'numeric'"
               data-vv-name="completedMonth"
               :error-messages="errors.collect('completedMonth')"
+              name="completedMonth"
               :items="monthOptions"
               suffix="月"
+              :value="targetBook.completedMonth"
+              @input="updateValue($event, 'completedMonth')"
             />
           </v-flex>
           <v-flex md3 class="ml-5">
@@ -90,39 +101,37 @@
 </template>
 
 <script>
-import moment from 'moment';
-
 export default {
-  data: () => ({
-    book: {
-      title: '',
-      imageUrl: '',
-      itemUrl: '',
-      description: '',
-      completedYear: '',
-      completedMonth: '',
+  props: {
+    bookDetail: {
+      type: Object,
+      default: () => ({}),
     },
-    dictionary: {
-      custom: {
-        title: {
-          required: () => '必須項目です。本のタイトルを入力してください。',
-        },
-        itemUrl: {
-          required: () => '必須項目です。本のURLを入力してください。',
-        },
-        description: {
-          required: () => '必須項目です。本の感想・概要を入力してください。',
-        },
-        completedYear: {
-          required: () => '必須項目です。読んだ年を入力してください。',
-          numeric: () => '半角の数字で年を入力してください。',
-        },
-        completedMonth: {
-          numeric: () => '半角の数字（01~12）を入力してください。',
+  },
+  data() {
+    return {
+      dictionary: {
+        custom: {
+          title: {
+            required: () => '必須項目です。本のタイトルを入力してください。',
+          },
+          itemUrl: {
+            required: () => '必須項目です。本のURLを入力してください。',
+          },
+          description: {
+            required: () => '必須項目です。本の感想・概要を入力してください。',
+          },
+          completedYear: {
+            required: () => '必須項目です。読んだ年を入力してください。',
+            numeric: () => '半角の数字で年を入力してください。',
+          },
+          completedMonth: {
+            numeric: () => '半角の数字（01~12）を入力してください。',
+          },
         },
       },
-    },
-  }),
+    };
+  },
   computed: {
     doneMessage() {
       return this.$store.state.doneMessage;
@@ -130,9 +139,19 @@ export default {
     errorMessage() {
       return this.$store.state.errorMessage;
     },
+    targetBook() {
+      return {
+        title: this.$store.state.targetBook.title,
+        imageUrl: this.$store.state.targetBook.imageUrl,
+        itemUrl: this.$store.state.targetBook.itemUrl,
+        description: this.$store.state.targetBook.description,
+        completedYear: this.$store.state.targetBook.completedYear,
+        completedMonth: this.$store.state.targetBook.completedMonth,
+      };
+    },
     yearOptions() {
       const array = [];
-      for (let i = 2014, years = moment().year(); i < years; i += 1) {
+      for (let i = 2014, years = new Date().getFullYear(); i <= years; i += 1) {
         array.push(i);
       }
       return array;
@@ -140,8 +159,7 @@ export default {
     monthOptions() {
       const array = [];
       for (let i = 1; i <= 12; i += 1) {
-        const str = `${i}`;
-        array.push(str.padStart(2, '0'));
+        array.push(i);
       }
       return array;
     },
@@ -150,6 +168,9 @@ export default {
     this.$validator.localize('ja', this.dictionary);
   },
   methods: {
+    updateValue(value, name) {
+      this.$store.dispatch('updateValue', { value, name });
+    },
     handleSubmit() {
       this.$store.dispatch('clearMessage');
 
@@ -157,24 +178,9 @@ export default {
         if (!valid) {
           this.$store.dispatch('invalidate', '必須項目が未入力か、ちゃんとした値が入力されてないよ。');
         } else {
-          const { book } = this;
-          const year = book.completedYear;
-          const month = book.completedMonth ? `-${book.completedMonth}` : '';
-          this.$emit('handleSubmit', {
-            title: book.title,
-            imageUrl: book.imageUrl,
-            itemUrl: book.itemUrl || null,
-            description: book.description,
-            completedAt: `${year + month}`,
-          });
-
+          this.$emit('handleSubmit', this.targetBook);
+          this.$store.dispatch('resetForm');
           this.$validator.reset();
-          book.title = '';
-          book.imageUrl = '';
-          book.itemUrl = '';
-          book.description = '';
-          book.completedYear = '';
-          book.completedMonth = '';
         }
       });
     },

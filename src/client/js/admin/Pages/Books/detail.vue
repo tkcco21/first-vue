@@ -1,21 +1,12 @@
 <template lang="html">
-  <div class="books-detail">
-    <v-alert
-      v-if="errorMessage"
-      :value="true"
-      type="error"
-    >
-      {{ errorMessage }}
-    </v-alert>
-
-    <template v-else>
-      {{ book }}
-    </template>
-  </div>
+  <book-form :book-detail="book" @handleSubmit="handleSubmit" />
 </template>
 
 <script>
+import BookForm from '@Admin/components/Molecules';
+
 export default {
+  components: { BookForm },
   computed: {
     errorMessage() {
       return this.$store.state.errorMessage;
@@ -27,8 +18,10 @@ export default {
   created() {
     this.$store.dispatch('getBook', { id: this.$route.params.id });
   },
+  methods: {
+    handleSubmit() {
+      // console.log('edit book');
+    },
+  },
 };
 </script>
-
-<style lang="css" scoped>
-</style>

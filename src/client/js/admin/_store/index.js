@@ -15,7 +15,8 @@ export default new Vuex.Store({
       itemUrl: '',
       imageUrl: '',
       description: '',
-      updatedAt: '',
+      completedYear: '',
+      completedMonth: '',
     },
     doneMessage: '',
     errorMessage: '',
@@ -30,6 +31,20 @@ export default new Vuex.Store({
     clearMessage(state) {
       state.errorMessage = '';
       state.doneMessage = '';
+    },
+    resetForm(state) {
+      Object.assign(state.targetBook, {
+        id: null,
+        title: '',
+        itemUrl: '',
+        imageUrl: '',
+        description: '',
+        completedYear: '',
+        completedMonth: '',
+      });
+    },
+    updateValue(state, { value, name }) {
+      state.targetBook[name] = value;
     },
     failRequest(state, { message }) {
       state.errorMessage = message;
@@ -50,6 +65,12 @@ export default new Vuex.Store({
     },
     clearMessage({ commit }) {
       commit('clearMessage');
+    },
+    resetForm({ commit }) {
+      commit('resetForm');
+    },
+    updateValue({ commit }, input) {
+      commit('updateValue', input);
     },
     getAllBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {

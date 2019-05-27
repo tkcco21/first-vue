@@ -19,6 +19,7 @@ export default {
   watch: {
     $route() {
       this.$store.dispatch('clearMessage');
+      this.$store.dispatch('resetForm');
     },
   },
 };

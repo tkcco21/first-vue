@@ -15,7 +15,7 @@ const books = {
   findOne(id) {
     return new Promise((resolve, reject) => {
       Books.findOne({
-        where: id,
+        where: { id },
         attributes: [
           'id',
           'title',
@@ -23,7 +23,6 @@ const books = {
           'imageUrl',
           'description',
           'completedAt',
-          'updatedAt',
         ],
       }).then((book) => {
         resolve({ book: JSON.parse(JSON.stringify(book)) });

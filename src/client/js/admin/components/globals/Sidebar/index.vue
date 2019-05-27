@@ -26,7 +26,10 @@
               <router-link
                 :key="routeChildLink.id"
                 :to="routeChildLink.path"
-                class="sidebar__list__item"
+                :class="[
+                  'sidebar__list__item',
+                  routeChildLink.disable ? 'is-disable' : ''
+                ]"
                 exact
               >
                 {{ routeChildLink.name }}
@@ -98,6 +101,10 @@ export default {
         color: var(--keycolor);
         background-color: #fff;
         cursor: default;
+      }
+      &.is-disable {
+        cursor: default;
+        pointer-events: none;
       }
     }
   }
