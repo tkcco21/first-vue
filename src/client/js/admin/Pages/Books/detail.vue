@@ -19,8 +19,8 @@ export default {
     this.$store.dispatch('getBook', { id: this.$route.params.id });
   },
   methods: {
-    handleSubmit() {
-      // console.log('edit book');
+    handleSubmit(book) {
+      this.$store.dispatch('editBook', book);
     },
   },
 };

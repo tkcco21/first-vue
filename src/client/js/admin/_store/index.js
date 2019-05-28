@@ -58,6 +58,10 @@ export default new Vuex.Store({
     doneAddBook(state) {
       state.doneMessage = '新しい本を追加しました';
     },
+    doneEditBook(state, payload) {
+      state.doneMessage = '本の情報を更新しました';
+      Object.assign(state.targetBook, payload);
+    },
   },
   actions: {
     invalidate({ commit }, message) {
@@ -89,6 +93,14 @@ export default new Vuex.Store({
     addBook({ commit }, book) {
       axios.post('/api/books', book).then(({ data }) => {
         commit('doneAddBook', data);
+      }).catch((err) => {
+        commit('failRequest', { message: err.response.data.message });
+      });
+    },
+    editBook({ commit }, book) {
+      axios.patch(`/api/books/${book.id}`, book).then(({ data }) => {
+        commit('doneEditBook', data);
+        console.log(data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });

@@ -18,10 +18,8 @@ export default {
         });
       });
 
-      res.send(filteredBooksArray);
-    }).catch(({ message }) => {
-      res.status(500).send({ message });
-    });
+      return res.send(filteredBooksArray);
+    }).catch(({ message }) => res.status(404).send({ message }));
   },
   getBook(req, res) {
     const { id } = req.params;
@@ -29,7 +27,7 @@ export default {
       const { title, imageUrl, itemUrl, description, completedAt } = book;
       const completedYear = parseInt(moment(completedAt).format('YYYY'), 10);
       const completedMonth = parseInt(moment(completedAt).format('MM'), 10);
-      const targetBook = Object.assign({}, {
+      return res.send({
         id,
         title,
         imageUrl,
@@ -38,10 +36,7 @@ export default {
         completedYear,
         completedMonth,
       });
-      res.send(targetBook);
-    }).catch(({ message }) => {
-      res.status(400).send({ message });
-    });
+    }).catch(({ message }) => res.status(404).send({ message }));
   },
   addBook(req, res) {
     const {
@@ -58,11 +53,34 @@ export default {
 
     books
       .create({ title, itemUrl, imageUrl, description, completedAt })
-      .then((data) => {
-        res.send(data.book);
-      })
-      .catch(({ message }) => {
-        res.status(500).send({ message })
-      });
+      .then((data) => res.send(data.book))
+      .catch(({ message }) => res.status(404).send({ message }));
+  },
+  editBook(req, res) {
+    const {
+      id,
+      title,
+      imageUrl,
+      itemUrl,
+      description,
+      completedYear,
+      completedMonth,
+    } = req.body;
+    const year = completedYear;
+    const month = completedMonth ? `-${completedMonth}` : '';
+    const completedAt = `${year + month}`
+
+    books
+      .update({ id, title, imageUrl, itemUrl, description, completedAt })
+      .then(() => res.send({
+        id,
+        title,
+        imageUrl,
+        itemUrl,
+        description,
+        completedYear,
+        completedMonth,
+      }))
+      .catch(({ message }) => res.status(404).send({ message }));
   },
 };

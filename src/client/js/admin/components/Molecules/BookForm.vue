@@ -141,6 +141,7 @@ export default {
     },
     targetBook() {
       return {
+        id: this.$store.state.targetBook.id,
         title: this.$store.state.targetBook.title,
         imageUrl: this.$store.state.targetBook.imageUrl,
         itemUrl: this.$store.state.targetBook.itemUrl,

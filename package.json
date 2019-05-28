@@ -4,8 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "dev": "NODE_ENV=development DEBUG=first-vue:* nodemon -L ./src/server/index.js",
-    "build": "rimraf ./dist/js ./dist/css && NODE_ENV=production webpack --progress",
+    "migrate": "sequelize db:migrate",
+    "dev": "DEBUG=first-vue:* nodemon -L ./src/server/index.js",
+    "build": "rimraf ./dist/js ./dist/css && NODE_ENV=production webpack",
+    "eslint:server": "eslint ./src/server/**",
     "prd": "pm2 start --image-name first-vue --env production",
     "list": "pm2 list",
     "show": "pm2 show first-vue",

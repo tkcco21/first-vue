@@ -40,6 +40,17 @@ const books = {
       });
     });
   },
+  update(book) {
+    return new Promise((resolve, reject) => {
+      Books
+        .update(book, { where: { id: book.id } })
+        .then((data) => {
+          resolve();
+        }).catch((err) => {
+          reject(new Error(err.message));
+        });
+    });
+  },
 };
 
 export default books;
