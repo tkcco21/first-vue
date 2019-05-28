@@ -25,12 +25,26 @@
           xs4
         >
           <v-card>
-            <v-img
-              :src="book.imageUrl || `https://placehold.jp/300x250.png?text=${book.title}の画像があれば...`"
-              aspect-ratio="1.25"
-              max-height="100"
-              :contain="book.imageUrl ? true : false"
-            />
+            <template v-if="book.imageUrl">
+              <v-img
+                :src="book.imageUrl"
+                aspect-ratio="1.25"
+                max-height="100"
+                :contain="book.imageUrl ? true : false"
+              />
+            </template>
+            <template v-else>
+              <v-card
+                class="grey lighten-3 caption font-weight-bold px-2 py-4"
+                style="text-align: center;"
+                flat
+              >
+                <v-card-text class="pa-0">
+                  画像未登録
+                </v-card-text>
+              </v-card>
+            </template>
+
             <v-card-title class="pl-2 pr-2 pt-3 pb-0">
               <h3 class="subheading font-weight-bold mb-0">{{ book.title }}</h3>
             </v-card-title>
