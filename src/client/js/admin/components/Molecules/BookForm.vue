@@ -1,40 +1,41 @@
 <template lang="html">
   <div class="book-form">
-    <v-form>
+    <v-form @submit.prevent="handleSubmit">
       <v-text-field
         v-validate="'required'"
         data-vv-name="title"
-        name="title"
         :error-messages="errors.collect('title')"
         label="本のタイトル"
-        required
+        name="title"
+        type="text"
         :value="targetBook.title"
         @input="updateValue($event, 'title')"
       />
       <v-text-field
         label="本の画像のURL"
         name="imageUrl"
+        type="text"
         :value="targetBook.imageUrl"
         @input="updateValue($event, 'imageUrl')"
       />
       <v-text-field
         v-validate="'required'"
         data-vv-name="itemUrl"
-        name="itemUrl"
         :error-messages="errors.collect('itemUrl')"
         label="本のURL"
-        required
+        name="itemUrl"
+        type="text"
         :value="targetBook.itemUrl"
         @input="updateValue($event, 'itemUrl')"
       />
       <v-textarea
         v-validate="'required'"
         data-vv-name="description"
-        name="description"
         :error-messages="errors.collect('description')"
         label="本の感想・概要"
+        name="description"
+        type="text"
         rows="8"
-        required
         :value="targetBook.description"
         @input="updateValue($event, 'description')"
       />
@@ -48,11 +49,11 @@
             <v-select
               v-validate="'required|numeric'"
               data-vv-name="completedYear"
-              name="completedYear"
               :error-messages="errors.collect('completedYear')"
               :items="yearOptions"
               suffix="年"
-              required
+              name="completedYear"
+              type="number"
               :value="targetBook.completedYear"
               @input="updateValue($event, 'completedYear')"
             />
@@ -62,20 +63,21 @@
               v-validate="'numeric'"
               data-vv-name="completedMonth"
               :error-messages="errors.collect('completedMonth')"
-              name="completedMonth"
               :items="monthOptions"
+              name="completedMonth"
               suffix="月"
+              type="number"
               :value="targetBook.completedMonth"
               @input="updateValue($event, 'completedMonth')"
             />
           </v-flex>
           <v-flex md3 class="ml-5">
             <v-btn
+              type="submit"
               color="green"
               block
               dark
               depressed
-              @click="handleSubmit"
             >
               追加する
             </v-btn>
