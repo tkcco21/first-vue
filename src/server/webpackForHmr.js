@@ -1,11 +1,14 @@
+import webpack from 'webpack';
+import webpackConfig from '../../webpack.config.babel';
+import webpackDevMiddleware from 'webpack-dev-middleware';
+import webpackHotMiddleware from 'webpack-hot-middleware';
+
 export default (app, rootDir) => {
-  const webpack = require('webpack');
   // const DashboardPlugin = require('webpack-dashboard/plugin');
-  const webpackConfig = require(`${rootDir}webpack.config.babel`).default;
   const compiler = webpack(webpackConfig);
   // compiler.apply(new DashboardPlugin());
   compiler.apply(new webpack.ProgressPlugin());
-  app.use(require('webpack-dev-middleware')(compiler, {
+  app.use(webpackDevMiddleware(compiler, {
     noInfo: true,
     hot: true,
     publicPath: webpackConfig.output.publicPath,
@@ -15,5 +18,5 @@ export default (app, rootDir) => {
       poll: true
     }
   }));
-  app.use(require('webpack-hot-middleware')(compiler));
+  app.use(webpackHotMiddleware(compiler));
 };

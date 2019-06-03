@@ -18,7 +18,7 @@ const app = express();
 
 // =========================================================
 // For Hot Module Replacement
-if (isDev) require('./webpackForHmr').default(app, rootDir);
+if (isDev) require('./webpackForHmr').default(app);
 // =========================================================
 
 app.use(logger('dev'));
