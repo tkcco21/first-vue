@@ -100,7 +100,6 @@ export default new Vuex.Store({
     editBook({ commit }, book) {
       axios.patch(`/api/books/${book.id}`, book).then(({ data }) => {
         commit('doneEditBook', data);
-        console.log(data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });

@@ -1,5 +1,6 @@
 import Vue from 'vue';
-import VeeValidate from 'vee-validate';
+import ja from 'vee-validate/dist/locale/ja';
+import VeeValidate, { Validator } from 'vee-validate';
 import Vuetify from 'vuetify';
 
 import '../../css/global';
@@ -11,6 +12,7 @@ import router from '@Admin/_router';
 import store from '@Admin/_store';
 
 Vue.use(VeeValidate);
+Validator.localize('ja', ja);
 Vue.use(Vuetify, {
   iconfont: 'mdi',
 });
@@ -19,15 +21,14 @@ router.beforeEach((to, from, next) => {
   const isPublic = to.matched.some(route => route.meta.isPublic);
 
   if (!isPublic) { //  && !store.state.signedin
-    // return next({ path: '/admin/signin', query: { redirect: to.fullPath } });
-    return next();
+    return next({ path: '/admin/signin', query: { redirect: to.fullPath } });
+    // return next();
   }
   return next();
 });
 
 new Vue({
   el: '#app',
-  $_veeValidate: { validator: 'new' },
   router,
   store,
   render: h => h(MyApp),

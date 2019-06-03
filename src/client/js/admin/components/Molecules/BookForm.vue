@@ -166,6 +166,8 @@ export default {
     },
   },
   mounted() {
+    /* Overwraiteing Error Messages */
+    /* https://baianat.github.io/vee-validate/guide/messages.html#message-generators */
     this.$validator.localize('ja', this.dictionary);
   },
   methods: {
