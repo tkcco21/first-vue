@@ -1,6 +1,6 @@
 import { books as Books } from '@Server/db/models';
 
-const books = {
+export default {
   findAll() {
     return new Promise((resolve, reject) => {
       Books.findAll({
@@ -52,5 +52,3 @@ const books = {
     });
   },
 };
-
-export default books;
