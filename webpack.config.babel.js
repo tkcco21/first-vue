@@ -57,7 +57,7 @@ const config = {
         loader: 'vue-loader',
       },
       {
-        test: /\.css$/,
+        test: /\.(post)?css$/,
         use: [
           isDev ? 'vue-style-loader' : {
             loader: MiniCssExtractPlugin.loader

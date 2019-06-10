@@ -12,6 +12,7 @@ export default {
       });
     });
   },
+
   findOne(id) {
     return new Promise((resolve, reject) => {
       Books.findOne({
@@ -31,6 +32,7 @@ export default {
       });
     });
   },
+
   create(book) {
     return new Promise((resolve, reject) => {
       Books.create(book).then((data) => {
@@ -40,6 +42,7 @@ export default {
       });
     });
   },
+
   update(book) {
     return new Promise((resolve, reject) => {
       Books

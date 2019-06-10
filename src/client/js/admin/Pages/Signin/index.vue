@@ -1,49 +1,21 @@
 <template lang="html">
-  <v-form class="form-signin" @submit.prevent="signin">
-    <v-text-field
-      v-model="username"
-      v-validate="'required'"
-      data-vv-name="ユーザー名"
-      :error-messages="errors.collect('ユーザー名')"
-      label="ユーザー名"
-      name="username"
-      type="text"
-      color="green"
-    />
-    <v-text-field
-      v-model="password"
-      v-validate="'required'"
-      data-vv-name="パスワード"
-      :error-messages="errors.collect('パスワード')"
-      label="パスワード"
-      name="password"
-      type="password"
-      color="green"
-    />
-
-    <div class="form-signin-foot">
-      <v-btn
-        color="success"
-        type="submit"
-        block
-        depressed
-      >
-        サインイン
-      </v-btn>
-    </div>
-
-    <v-alert
-      v-if="errorMessage"
-      :value="true"
-      type="error"
-    >
-      {{ errorMessage }}
-    </v-alert>
-  </v-form>
+  <signin-form
+    :loading="loading"
+    :error-message="errorMessage"
+    :username="username"
+    :password="password"
+    @updateValue="updateValue"
+    @clearMessage="clearMessage"
+    @applySignin="applySignin"
+    @signin="signin"
+  />
 </template>
 
 <script>
+import { SigninForm } from '@Admin/components/Molecules';
+
 export default {
+  components: { SigninForm },
   data() {
     return {
       username: '',
@@ -51,35 +23,34 @@ export default {
     };
   },
   computed: {
+    loading() {
+      return this.$store.state.auth.loading;
+    },
+    token() {
+      return this.$store.state.auth.token;
+    },
     errorMessage() {
       return this.$store.state.auth.errorMessage;
     },
   },
+  watch: {
+    token() {
+      this.$router.push(this.$route.query.redirect || '/admin');
+    },
+  },
   methods: {
-    signin() {
+    updateValue(target) {
+      this[target.name] = target.value;
+    },
+    clearMessage() {
       this.$store.dispatch('clearMessage');
-      this.$validator.validate().then((valid) => {
-        if (valid) {
-          this.$store.dispatch('signin', {
-            username: this.username,
-            password: this.password,
-          });
-          this.$validator.reset();
-        }
-      });
+    },
+    applySignin() {
+      this.$store.dispatch('applySignin');
+    },
+    signin(auth) {
+      this.$store.dispatch('signin', auth);
     },
   },
 };
 </script>
-
-<style lang="css" scoped>
-.form-signin {
-  margin: 20% auto 0;
-  width: 50%;
-  min-width: 300px;
-  &-foot {
-    margin-top: 40px;
-    text-align: center;
-  }
-}
-</style>

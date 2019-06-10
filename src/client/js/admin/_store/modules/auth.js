@@ -2,30 +2,37 @@ import axios from 'axios';
 
 export default {
   state: {
-    username: '',
-    password: '',
+    token: '',
+    loading: false,
     errorMessage: '',
   },
   getters: {},
   mutations: {
+    applySignin(state) {
+      state.loading = true;
+    },
     clearMessage(state) {
       state.errorMessage = '';
     },
-    successSignin() {
-      console.log('successSignin');
+    successSignin(state, { token }) {
+      state.token = token;
+      state.loading = false;
     },
     failSignin(state, { message }) {
       state.errorMessage = message;
+      state.loading = false;
     },
   },
   actions: {
     clearMessage({ commit }) {
       commit('clearMessage');
     },
+    applySignin({ commit }) {
+      commit('applySignin');
+    },
     signin({ commit }, adminUser) {
-      axios.post('/api/admin/signin', adminUser).then((data) => {
-        console.log('data - ', data);
-        commit('successSignin');
+      axios.post('/api/admin/signin', adminUser).then(({ data }) => {
+        commit('successSignin', { token: data.token });
       }).catch((err) => {
         commit('failSignin', { message: err.response.data.message });
       });
