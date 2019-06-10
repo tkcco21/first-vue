@@ -105,7 +105,15 @@
 <script>
 export default {
   props: {
-    bookDetail: {
+    doneMessage: {
+      type: String,
+      default: '',
+    },
+    errorMessage: {
+      type: String,
+      default: '',
+    },
+    targetBook: {
       type: Object,
       default: () => ({}),
     },
@@ -128,30 +136,13 @@ export default {
             numeric: () => '半角の数字で年を入力してください。',
           },
           completedMonth: {
-            numeric: () => '半角の数字（01~12）を入力してください。',
+            numeric: () => '半角の数字（1~12）を入力してください。',
           },
         },
       },
     };
   },
   computed: {
-    doneMessage() {
-      return this.$store.state.doneMessage;
-    },
-    errorMessage() {
-      return this.$store.state.errorMessage;
-    },
-    targetBook() {
-      return {
-        id: this.$store.state.targetBook.id,
-        title: this.$store.state.targetBook.title,
-        imageUrl: this.$store.state.targetBook.imageUrl,
-        itemUrl: this.$store.state.targetBook.itemUrl,
-        description: this.$store.state.targetBook.description,
-        completedYear: this.$store.state.targetBook.completedYear,
-        completedMonth: this.$store.state.targetBook.completedMonth,
-      };
-    },
     yearOptions() {
       const array = [];
       for (let i = 2014, years = new Date().getFullYear(); i <= years; i += 1) {
@@ -174,17 +165,16 @@ export default {
   },
   methods: {
     updateValue(value, name) {
-      this.$store.dispatch('updateValue', { value, name });
+      this.$emit('updateValue', { value, name });
     },
     handleSubmit() {
-      this.$store.dispatch('clearMessage');
+      this.$emit('clear');
 
       this.$validator.validate().then((valid) => {
         if (!valid) {
-          this.$store.dispatch('invalidate', '必須項目が未入力か、ちゃんとした値が入力されてないよ。');
+          this.$emit('invalidateSubmit');
         } else {
           this.$emit('handleSubmit', this.targetBook);
-          this.$store.dispatch('resetForm');
           this.$validator.reset();
         }
       });

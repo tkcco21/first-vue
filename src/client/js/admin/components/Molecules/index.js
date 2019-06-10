@@ -1,3 +1,7 @@
 import BookForm from './BookForm';
+import BookList from './BookList';
 
-export default BookForm;
+export {
+  BookForm,
+  BookList,
+};

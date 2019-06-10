@@ -18,8 +18,8 @@ export default new Vuex.Store({
       itemUrl: '',
       imageUrl: '',
       description: '',
-      completedYear: '',
-      completedMonth: '',
+      completedYear: null,
+      completedMonth: null,
     },
     doneMessage: '',
     errorMessage: '',
@@ -36,14 +36,14 @@ export default new Vuex.Store({
       state.doneMessage = '';
     },
     resetForm(state) {
-      Object.assign(state.targetBook, {
+      state.targetBook = Object.assign({}, {
         id: null,
         title: '',
         itemUrl: '',
         imageUrl: '',
         description: '',
-        completedYear: '',
-        completedMonth: '',
+        completedYear: null,
+        completedMonth: null,
       });
     },
     updateValue(state, { value, name }) {
@@ -56,14 +56,14 @@ export default new Vuex.Store({
       state.books = payload;
     },
     doneGetBook(state, payload) {
-      Object.assign(state.targetBook, payload);
+      state.targetBook = Object.assign({}, payload);
     },
     doneAddBook(state) {
       state.doneMessage = '新しい本を追加しました';
     },
     doneEditBook(state, payload) {
       state.doneMessage = '本の情報を更新しました';
-      Object.assign(state.targetBook, payload);
+      state.targetBook = Object.assign({}, payload);
     },
   },
   actions: {

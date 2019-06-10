@@ -21,6 +21,7 @@ export default {
       return res.send(filteredBooksArray);
     }).catch(({ message }) => res.status(404).send({ message }));
   },
+
   getBook(req, res) {
     const { id } = req.params;
     books.findOne(id).then(({ book }) => {
@@ -38,6 +39,7 @@ export default {
       });
     }).catch(({ message }) => res.status(404).send({ message }));
   },
+
   addBook(req, res) {
     const {
       title,
@@ -49,13 +51,14 @@ export default {
     } = req.body;
     const year = completedYear;
     const month = completedMonth ? `-${completedMonth}` : '';
-    const completedAt = `${year + month}`
+    const completedAt = `${year + month}`;
 
     books
       .create({ title, itemUrl, imageUrl, description, completedAt })
       .then((data) => res.send(data.book))
       .catch(({ message }) => res.status(404).send({ message }));
   },
+
   editBook(req, res) {
     const {
       id,
@@ -68,7 +71,7 @@ export default {
     } = req.body;
     const year = completedYear;
     const month = completedMonth ? `-${completedMonth}` : '';
-    const completedAt = `${year + month}`
+    const completedAt = `${year + month}`;
 
     books
       .update({ id, title, imageUrl, itemUrl, description, completedAt })
