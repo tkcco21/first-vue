@@ -1,33 +1,36 @@
-import jwt from 'jsonwebtoken';
-import config from '../db/config/config';
+import encrypt from '@Server/utils/hash';
+import { sign, decode } from '@Server/utils/jsonwebtoken';
 import adminUsers from '@Server/db/entity/adminUsers';
 
 export default {
-  postSignin(req, res) {
+  checkToken(req, res) {
+    const token = req.cookies['user-token']
+    const decoded = decode(token);
+
+    if (!decoded) return res.status(401).send({ message: 'ログインしてください。' });
+
+    const { username } = decoded;
+
+    adminUsers.findOne(username).then(({ user }) => {
+      if (!user) throw new Error('ログインしてください。');
+      res.send({ token });
+    }).catch(({ message }) => res.status(400).send({ message }));
+  },
+  signin(req, res) {
     const { username, password } = req.body;
     adminUsers.findOne(username).then(({ user }) => {
-      if (!user) throw new Error('ユーザーが存在しません');
+      const reqEncryptedPassword = encrypt(password);
 
-      if (user.username !== username || user.password !== password) {
+      if (!user || user.password !== reqEncryptedPassword) {
         throw new Error('違います！！');
       }
 
-      console.log('===============================');
-      console.log('成功！！');
-
-      const token = jwt.sign(
-        { username },
-        config.secretKey,
-        { expiresIn: "2 days"}
-      );
-
-      console.log(token);
-      console.log('===============================');
+      const token = sign(username);
 
       if (!token) throw new Error('トークンが発行できません。');
 
       res
-        .cookie('user-token', token, { maxAge: 172800 })
+        .cookie('user-token', token, { maxAge: 60 * 60 * 24 * 1000 * 2 })
         .send({ token });
     }).catch(({ message }) => res.status(400).send({ message }));
   },

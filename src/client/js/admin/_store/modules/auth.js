@@ -22,6 +22,10 @@ export default {
       state.errorMessage = message;
       state.loading = false;
     },
+    failCheckToken(state) {
+      state.token = '';
+      state.loading = false;
+    },
   },
   actions: {
     clearMessage({ commit }) {
@@ -35,6 +39,13 @@ export default {
         commit('successSignin', { token: data.token });
       }).catch((err) => {
         commit('failSignin', { message: err.response.data.message });
+      });
+    },
+    checkToken({ commit }) {
+      axios.get('/api/admin/token').then(({ data }) => {
+        commit('successSignin', { token: data.token });
+      }).catch(() => {
+        commit('failCheckToken');
       });
     },
   },
