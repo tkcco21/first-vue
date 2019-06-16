@@ -3,6 +3,7 @@ import webpack from 'webpack';
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
+import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 // import Jarvis from 'webpack-jarvis';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -26,6 +27,7 @@ const config = {
       excludeWarnings: true,
       title: 'First Vue'
     }),
+    new HardSourceWebpackPlugin()
     // new Jarvis({ port: 1337 }),
   ],
   entry: {
