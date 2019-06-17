@@ -42,10 +42,14 @@ export default {
       });
     },
     checkToken({ commit }) {
-      axios.get('/api/admin/token').then(({ data }) => {
-        commit('successSignin', { token: data.token });
-      }).catch(() => {
-        commit('failCheckToken');
+      return new Promise((resolve, reject) => {
+        axios.get('/api/admin/token').then(({ data }) => {
+          resolve();
+          commit('successSignin', { token: data.token });
+        }).catch(() => {
+          reject();
+          commit('failCheckToken');
+        });
       });
     },
   },

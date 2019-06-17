@@ -5,7 +5,7 @@ export function sign(username) {
   return jwt.sign(
     { username },
     config.secretKey,
-    { expiresIn: "2 days"},
+    { expiresIn: '2 days' },
   )
 };
 

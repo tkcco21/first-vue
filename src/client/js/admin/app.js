@@ -20,13 +20,13 @@ Vue.use(Vuetify, {
 router.beforeEach((to, from, next) => {
   const isPublic = to.matched.some(route => route.meta.isPublic);
 
-  // TODO: ここどうにかリダイレクトさせる前にどうにかしたい
   if (!isPublic && !store.state.auth.token) {
-    store.dispatch('checkToken').then(() => next({
-      path: '/admin/signin',
-      query: { redirect: to.fullPath },
-    }));
-    // return next();
+    return store.dispatch('checkToken')
+      .then(() => next())
+      .catch(() => next({
+        path: '/admin/signin',
+        query: { redirect: to.fullPath },
+      }));
   }
   return next();
 });

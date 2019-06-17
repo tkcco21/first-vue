@@ -30,7 +30,7 @@ export default {
       if (!token) throw new Error('トークンが発行できません。');
 
       res
-        .cookie('user-token', token, { maxAge: 60 * 60 * 24 * 1000 * 2 })
+        .cookie('user-token', token, { maxAge: 2 * 24 * 60 * 60 * 1000 })
         .send({ token });
     }).catch(({ message }) => res.status(400).send({ message }));
   },
