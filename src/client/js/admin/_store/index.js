@@ -11,7 +11,7 @@ export default new Vuex.Store({
   modules: { auth },
   state: {
     loggedIn: false,
-    books: [],
+    books: {},
     targetBook: {
       id: null,
       title: '',

@@ -104,8 +104,8 @@ export default {
       default: () => [],
     },
     books: {
-      type: Array,
-      default: () => [],
+      type: Object,
+      default: () => ({}),
     },
   },
 };

@@ -3,6 +3,7 @@ node_modules/
 dist/js
 dist/css
 
+config/*
 src/server/db/config/
 
 .DS_Store

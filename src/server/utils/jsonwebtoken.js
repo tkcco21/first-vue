@@ -1,4 +1,4 @@
-import config from '@Server/db/config/config';
+import config from 'config';
 import jwt from 'jsonwebtoken';
 
 export function sign(username) {
