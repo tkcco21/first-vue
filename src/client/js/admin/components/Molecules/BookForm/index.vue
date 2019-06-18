@@ -79,7 +79,12 @@
               dark
               depressed
             >
-              追加する
+              <template v-if="targetBook.id">
+                <span>更新する</span>
+              </template>
+              <template v-else>
+                <span>追加する</span>
+              </template>
             </v-btn>
           </v-flex>
         </v-layout>
