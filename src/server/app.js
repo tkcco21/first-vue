@@ -1,6 +1,7 @@
 import express from 'express';
 import path from 'path';
 import cookieParser from 'cookie-parser';
+import helmet from 'helmet';
 import logger from 'morgan';
 import createError from 'http-errors';
 
@@ -22,6 +23,7 @@ if (isDev) require('./webpackForHmr').default(app);
 // =========================================================
 
 app.use(logger('dev'));
+app.use(helmet());
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
