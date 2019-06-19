@@ -1,16 +1,27 @@
 <template lang="html">
   <section class="books">
     <h2 class="books__title">読んだ本たち</h2>
-    <date-list />
+    <books-list
+      :date-array="dateArray"
+      :books="books"
+    />
   </section>
 </template>
 
 <script>
-import DateList from './DateList';
+import BooksList from '@Public/components/Molecules';
 
 export default {
   components: {
-    DateList,
+    BooksList,
+  },
+  computed: {
+    dateArray() {
+      return this.$store.getters.completedDate;
+    },
+    books() {
+      return this.$store.state.books;
+    },
   },
   created() {
     if (!this.$store.getters.completedDate.length) {
@@ -20,7 +31,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="postcss" scoped>
 .books {
   &__title {
     font-size: 24px;

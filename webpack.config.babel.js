@@ -27,9 +27,6 @@ const config = {
       excludeWarnings: true,
       title: 'First Vue'
     }),
-    // NOTE: https://github.com/mzgoddard/hard-source-webpack-plugin/issues/120
-    // めちゃめちゃ遅くなったから保留
-    // new HardSourceWebpackPlugin()
     // new Jarvis({ port: 1337 }),
   ],
   entry: {

@@ -5,7 +5,7 @@
     <main class="content">
       <router-view />
     </main>
-    <app-socials />
+    <!-- <app-socials /> -->
     <app-footer />
   </div>
 </template>
@@ -14,7 +14,7 @@
 import {
   Header,
   Menu,
-  Socials,
+  // Socials,
   Footer,
 } from '@Public/components/_globals';
 
@@ -22,7 +22,7 @@ export default {
   components: {
     appHeader: Header,
     appMenu: Menu,
-    appSocials: Socials,
+    // appSocials: Socials,
     appFooter: Footer,
   },
 };
