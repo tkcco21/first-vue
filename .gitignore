@@ -1,10 +1,11 @@
-node_modules/
+/node_modules
 
-dist/js
-dist/css
+/dist/js
+/dist/css
+/dist/assets
 
-config/*
-src/server/db/config/
+/config/*
+/src/server/db/config
 
 .DS_Store
 npm-debug.log*
