@@ -25,44 +25,13 @@
           xs4
         >
           <v-card>
-            <template v-if="book.imageUrl">
-              <v-img
-                :src="book.imageUrl"
-                aspect-ratio="1.25"
-                max-height="100"
-                :contain="book.imageUrl ? true : false"
-              />
-            </template>
-            <template v-else>
-              <v-card
-                class="grey lighten-3 caption font-weight-bold px-2 py-4"
-                style="text-align: center;"
-                flat
-              >
-                <v-card-text class="pa-0">
-                  画像未登録
-                </v-card-text>
-              </v-card>
-            </template>
+            <!-- <div v-html="book.itemUrl" />
+            {{ book.itemUrl }} -->
 
             <v-card-title class="pl-2 pr-2 pt-3 pb-0">
               <h3 class="subheading font-weight-bold mb-0">{{ book.title }}</h3>
             </v-card-title>
             <!-- <v-card-text class="pa-2">{{ book.description }}</v-card-text> -->
-            <v-card-actions>
-              <v-btn
-                class="font-weight-bold caption"
-                tag="a"
-                :href="book.itemUrl"
-                target="_blank"
-                color="blue"
-                block
-                dark
-                small
-              >
-                アマゾン
-              </v-btn>
-            </v-card-actions>
             <v-card-actions class="pt-0">
               <v-btn
                 class="font-weight-bold"

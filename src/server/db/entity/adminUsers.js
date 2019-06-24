@@ -10,4 +10,14 @@ export default {
       });
     });
   },
+
+  create(user) {
+    return new Promise(() => {
+      AdminUsers.create(user).then((data) => {
+        console.log(JSON.parse(JSON.stringify(data)));
+      }).catch((err) => {
+        console.error(err.message);
+      })
+    });
+  }
 };

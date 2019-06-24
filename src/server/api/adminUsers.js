@@ -20,6 +20,14 @@ export default {
 
   signin(req, res) {
     const { username, password } = req.body;
+
+    // console.log(username, password);
+    // const postUser = {
+    //   username,
+    //   password: encrypt(password),
+    // };
+    // adminUsers.create(postUser);
+
     adminUsers.findOne(username).then(({ user }) => {
       const reqEncryptedPassword = encrypt(password);
 

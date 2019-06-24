@@ -43,7 +43,6 @@ export default {
   addBook(req, res) {
     const {
       title,
-      imageUrl,
       itemUrl,
       description,
       completedYear,
@@ -54,7 +53,7 @@ export default {
     const completedAt = `${year + month}`;
 
     books
-      .create({ title, itemUrl, imageUrl, description, completedAt })
+      .create({ title, itemUrl, description, completedAt })
       .then((data) => res.send(data.book))
       .catch(({ message }) => res.status(404).send({ message }));
   },

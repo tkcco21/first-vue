@@ -12,13 +12,6 @@
         @input="updateValue($event, 'title')"
       />
       <v-text-field
-        label="本の画像のURL"
-        name="imageUrl"
-        type="text"
-        :value="targetBook.imageUrl"
-        @input="updateValue($event, 'imageUrl')"
-      />
-      <v-text-field
         v-validate="'required'"
         data-vv-name="itemUrl"
         :error-messages="errors.collect('itemUrl')"
@@ -174,6 +167,7 @@ export default {
     },
     handleSubmit() {
       this.$emit('clear');
+      console.log(Object.assign({}, this.targetBook));
 
       this.$validator.validate().then((valid) => {
         if (!valid) {
