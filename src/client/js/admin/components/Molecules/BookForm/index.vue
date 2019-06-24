@@ -167,7 +167,6 @@ export default {
     },
     handleSubmit() {
       this.$emit('clear');
-      console.log(Object.assign({}, this.targetBook));
 
       this.$validator.validate().then((valid) => {
         if (!valid) {

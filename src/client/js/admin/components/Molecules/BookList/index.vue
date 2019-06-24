@@ -25,8 +25,7 @@
           xs4
         >
           <v-card>
-            <!-- <div v-html="book.itemUrl" />
-            {{ book.itemUrl }} -->
+            <div v-html="book.itemUrl" />
 
             <v-card-title class="pl-2 pr-2 pt-3 pb-0">
               <h3 class="subheading font-weight-bold mb-0">{{ book.title }}</h3>
