@@ -7,7 +7,7 @@
   </section>
 </template>
 
-<style lang="css" scoped>
+<style lang="postcss" scoped>
 .heading-primary {
   padding: 5px 15px;
   font-size: 26px;

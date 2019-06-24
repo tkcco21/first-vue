@@ -11,7 +11,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="postcss" scoped>
 .header {
   &__inner {
     padding: 50px 0 30px;

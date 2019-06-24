@@ -39,7 +39,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="postcss" scoped>
 .menu {
   margin: 0 auto;
   padding: 0 20px;

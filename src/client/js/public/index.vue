@@ -28,7 +28,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="postcss" scoped>
 .content {
   margin: 0 auto;
   padding: 30px;

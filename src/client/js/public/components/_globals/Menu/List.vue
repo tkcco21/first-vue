@@ -24,7 +24,7 @@ export default {
 };
 </script>
 
-<style lang="css" scoped>
+<style lang="postcss" scoped>
 .menu-list {
   position: absolute;
   top: 0;
