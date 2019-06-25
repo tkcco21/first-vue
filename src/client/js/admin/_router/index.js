@@ -10,7 +10,7 @@ import Signin from '@Admin/Pages/Signin';
 import Books from '@Admin/Pages/Books';
 import BooksList from '@Admin/Pages/Books/List';
 import BookForm from '@Admin/Pages/Books/Form';
-import BookDetail from '@Admin/Pages/Books/Detail';
+import BookDetail from '../Pages/Books/Detail';
 
 Vue.use(VueRouter);
 
