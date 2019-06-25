@@ -13,7 +13,7 @@
     "dev": "DEBUG=first-vue:* nodemon -L ./src/server/index.js",
     "build": "rimraf ./dist/js ./dist/css && NODE_ENV=production webpack",
     "eslint:server": "eslint ./src/server/**",
-    "start": "pm2 start --image-name first-vue --env production",
+    "start": "pm2-runtime start ecosystem.config.js --image-name first-vue --env production",
     "list": "pm2 list",
     "show": "pm2 show first-vue",
     "stop": "pm2 stop first-vue"
