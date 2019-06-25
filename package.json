@@ -12,6 +12,7 @@
     "migrate:prd": "NODE_ENV=production sequelize db:migrate",
     "dev": "DEBUG=first-vue:* nodemon -L ./src/server/index.js",
     "build": "rimraf ./dist/js ./dist/css && NODE_ENV=production webpack",
+    "heroku-prebuild": "npm i",
     "heroku-postbuild": "NODE_ENV=production webpack",
     "eslint:server": "eslint ./src/server/**",
     "start": "pm2 start --image-name first-vue --env production",
