@@ -37,6 +37,7 @@
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
     "pm2": "^3.5.0",
+    "sanitize-html": "^1.20.1",
     "sequelize": "^5.8.12",
     "sequelize-cli": "^5.5.0",
     "vee-validate": "^2.2.7",

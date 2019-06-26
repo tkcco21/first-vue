@@ -10,11 +10,11 @@
           v-for="book in books[date]"
           :key="book.id"
         >
-          <a :href="book.itemUrl" class="book-card">
-            <img :src="book.imageUrl" :alt="book.title" class="book-card__image">
+          <div class="book-card">
+            <p v-html="book.itemUrl" />
             <h4 class="book-card__title">{{ book.title }}</h4>
             <p class="book-card__desc">{{ book.description }}</p>
-          </a>
+          </div>
         </li>
       </ul>
     </li>

@@ -24,14 +24,20 @@
           md3
           xs4
         >
-          <v-card>
-            <div v-html="book.itemUrl" />
+          <v-card class="pa-2">
+            <v-img
+              class="text-lg-center text-md-center text-sm-center"
+              height="180"
+              v-html="sanitizeHtml(book.itemUrl, {
+                allowedTags: ['a', 'img']
+              })"
+            />
 
-            <v-card-title class="pl-2 pr-2 pt-3 pb-0">
+            <v-card-title class="pa-0 mt-2">
               <h3 class="subheading font-weight-bold mb-0">{{ book.title }}</h3>
             </v-card-title>
-            <!-- <v-card-text class="pa-2">{{ book.description }}</v-card-text> -->
-            <v-card-actions class="pt-0">
+            <v-card-text class="pa-0 mt-1">{{ book.description }}</v-card-text>
+            <v-card-actions class="pa-0 mt-2">
               <v-btn
                 class="font-weight-bold"
                 :to="{ path: `books/${book.id}` }"
@@ -43,7 +49,7 @@
                 詳細
               </v-btn>
             </v-card-actions>
-            <v-card-actions class="pt-0">
+            <v-card-actions class="pa-0 mt-1">
               <v-btn
                 class="font-weight-bold caption"
                 tag="button"
@@ -65,6 +71,8 @@
 </template>
 
 <script>
+import sanitizeHtml from 'sanitize-html';
+
 export default {
   props: {
     completedDate: {
@@ -74,6 +82,11 @@ export default {
     books: {
       type: Object,
       default: () => ({}),
+    },
+  },
+  computed: {
+    sanitizeHtml() {
+      return sanitizeHtml;
     },
   },
 };
