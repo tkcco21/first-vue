@@ -1,1 +1,1 @@
-web: pm2-runtime start ecosystem.config.js --image-name first-vue --env production
+web: pm2-runtime start ecosystem.config.js --env production
