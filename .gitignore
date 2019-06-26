@@ -5,7 +5,7 @@
 /dist/assets
 
 # /config/*
-/src/server/db/config
+# /src/server/db/config
 
 .DS_Store
 npm-debug.log*
