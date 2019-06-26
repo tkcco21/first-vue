@@ -1,6 +1,7 @@
 <template lang="html">
   <section class="books">
     <h2 class="books__title">読んだ本たち</h2>
+    <p class="books__caution">※ 本のリンクはすべてアマゾンのアフィリエイトリンクになっています。</p>
     <books-list
       :date-array="dateArray"
       :books="books"
@@ -35,6 +36,10 @@ export default {
 .books {
   &__title {
     font-size: 24px;
+  }
+  &__caution {
+    font-size: 14px;
+    color: var(--darkGray);
   }
 }
 </style>

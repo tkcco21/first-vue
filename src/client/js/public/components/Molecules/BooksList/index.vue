@@ -11,7 +11,12 @@
           :key="book.id"
         >
           <div class="book-card">
-            <p v-html="book.itemUrl" />
+            <p
+              class="book-card__link"
+              v-html="sanitizeHtml(book.itemUrl, {
+                allowedTags: ['a', 'img']
+              })"
+            />
             <h4 class="book-card__title">{{ book.title }}</h4>
             <p class="book-card__desc">{{ book.description }}</p>
           </div>
@@ -22,6 +27,8 @@
 </template>
 
 <script>
+import sanitizeHtml from 'sanitize-html';
+
 export default {
   props: {
     dateArray: {
@@ -33,10 +40,15 @@ export default {
       default: () => ({}),
     },
   },
+  computed: {
+    sanitizeHtml() {
+      return sanitizeHtml;
+    },
+  },
 };
 </script>
 
-<style lang="postcss" scoped>
+<style lang="postcss">
 .books-list {
   margin-top: 20px;
   & > li {
@@ -80,14 +92,25 @@ export default {
   height: 100%;
   text-align: center;
   border-radius: 5px;
-  border: 1px solid var(--superLightGray);
+  border: 1px solid var(--lightGray);
   box-sizing: border-box;
-  transition: all .5s;
-  &:hover {
-    background-color: color(var(--keycolor) a(10%));
-  }
-  &__image {
-    width: 50%;
+  &__link {
+    font-size: 0;
+    a {
+      padding: 5px;
+      width: 100%;
+      box-sizing: border-box;
+      &:hover {
+        img {
+          box-shadow: 0 10px 7px 1px #aaa;
+          transform: scale(1.03);
+        }
+      }
+      img {
+        width: 70%;
+        transition: .5s;
+      }
+    }
   }
   &__title {
     margin-top: 10px;
