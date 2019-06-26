@@ -4,7 +4,7 @@
 /dist/css
 /dist/assets
 
-/config/*
+# /config/*
 /src/server/db/config
 
 .DS_Store
