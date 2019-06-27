@@ -33,8 +33,15 @@ export default {
   justify-content: flex-start;
   padding: 0 20px;
   width: 100%;
+  box-sizing: border-box;
+  @mixin mobile {
+    padding: 0 2%;
+  }
   & > li {
     margin-left: 10px;
+    @mixin mobile {
+      margin-left: 2%;
+    }
     &:first-child {
       margin-left: 0;
     }
@@ -46,6 +53,9 @@ export default {
     border: 1px solid var(--lightGray);
     border-bottom: none;
     transition: all .5s;
+    @mixin mobile {
+      padding: 2px 10px;
+    }
     &.active {
       color: var(--keycolor);
       border-color: var(--keycolor);

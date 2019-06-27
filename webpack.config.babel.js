@@ -3,7 +3,8 @@ import webpack from 'webpack';
 import path from 'path';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
-import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
+import StatsPlugin from 'stats-webpack-plugin';
+// import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
 // import Jarvis from 'webpack-jarvis';
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -26,6 +27,9 @@ const config = {
     new WebpackNotifierPlugin({
       excludeWarnings: true,
       title: 'First Vue'
+    }),
+    new StatsPlugin('stats.json', {
+      chunkModules: true,
     }),
     // new Jarvis({ port: 1337 }),
   ],
@@ -73,13 +77,17 @@ const config = {
               sourceMap: true,
               plugins: () => [
                 require('postcss-import')(),
-                require('postcss-nested')(),
-                require('postcss-custom-media')(),
-                require('postcss-mixins')(),
+                require('postcss-mixins')({
+                  mixinsFiles: 'src/client/css/_helpers/_mixins.css'
+                }),
+                require('postcss-custom-media')({
+                  importFrom: 'src/client/css/_helpers/_media.css'
+                }),
                 require('postcss-custom-properties')({
                   preserve: false,
                   importFrom: 'src/client/css/_helpers/_variables.css'
                 }),
+                require('postcss-nested')(),
                 require('postcss-color-function')(),
                 require('autoprefixer')(),
               ],

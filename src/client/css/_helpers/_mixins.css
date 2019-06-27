@@ -1,0 +1,17 @@
+@define-mixin mobile {
+  @media (--mobile-viewport) {
+    @mixin-content;
+  }
+}
+
+@define-mixin tab {
+  @media (--tab-viewport) {
+    @mixin-content;
+  }
+}
+
+@define-mixin pc {
+  @media (--pc-viewport) {
+    @mixin-content;
+  }
+}

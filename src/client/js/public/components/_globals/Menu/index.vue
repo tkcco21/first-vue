@@ -45,11 +45,22 @@ export default {
   padding: 0 20px;
   max-width: var(--publicMaxWidth);
   text-align: right;
+  @mixin tab {
+    padding: 0;
+    width: 97%;
+  }
+  @mixin mobile {
+    padding: 0;
+    width: 97%;
+  }
   &__list {
     overflow: hidden;
     position: relative;
     padding-top: 31px;
     border-bottom: 1px solid var(--keycolor);
+    @mixin mobile {
+      padding-top: 25px;
+    }
     .slide-enter, .slide-leave-to {
       top: 31px;
     }
@@ -60,7 +71,6 @@ export default {
   &__button {
     display: inline-block;
     padding: 2px 15px;
-    color: var(--keycolor);
     color: #fff;
     font-weight: var(--black);
     font-size: 12px;

@@ -36,10 +36,17 @@ export default {
 .books {
   &__title {
     font-size: 24px;
+    @mixin mobile {
+      font-size: 20px;
+    }
   }
   &__caution {
     font-size: 14px;
     color: var(--darkGray);
+    @mixin mobile {
+      font-size: 12px;
+      line-height: 1.4;
+    }
   }
 }
 </style>

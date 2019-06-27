@@ -1,0 +1,3 @@
+@custom-media --mobile-viewport (max-width: 540px);
+@custom-media --tab-viewport (min-width: 541px) and (max-width: 800px);
+@custom-media --pc-viewport (min-width: 801px);

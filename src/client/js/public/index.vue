@@ -34,5 +34,13 @@ export default {
   padding: 30px;
   max-width: var(--publicContentWidth);
   box-sizing: content-box;
+  @mixin tab {
+    padding: 20px 0 30px;
+    width: 95%;
+  }
+  @mixin mobile {
+    padding: 3% 0;
+    width: 97%;
+  }
 }
 </style>

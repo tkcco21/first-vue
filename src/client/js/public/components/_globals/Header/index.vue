@@ -14,15 +14,19 @@ export default {
 <style lang="postcss" scoped>
 .header {
   &__inner {
-    padding: 50px 0 30px;
+    padding: 50px 0 20px;
     text-align: center;
+    @mixin mobile {
+      padding: 5% 0;
+    }
   }
   &__title {
     display: inline-block;
-    padding: 0 50px;
-    font-weight: $bold;
     font-size: 48px;
     line-height: 1;
+    @mixin mobile {
+      font-size: 36px;
+    }
   }
 }
 </style>

@@ -4,7 +4,14 @@
       v-for="(date, index) in dateArray"
       :key="index"
     >
-      <h3 class="books-list__title">{{ date }}</h3>
+      <div class="books-list__title">
+        <h3 class="books-list__title__text">
+          {{ date }}
+        </h3>
+        <span class="books-list__title__number">
+          {{ books[date].length }}冊
+        </span>
+      </div>
       <ul class="books-list__date">
         <li
           v-for="book in books[date]"
@@ -48,7 +55,7 @@ export default {
 };
 </script>
 
-<style lang="postcss">
+<style lang="postcss" scoped>
 .books-list {
   margin-top: 20px;
   & > li {
@@ -58,13 +65,26 @@ export default {
     }
   }
   &__title {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
     padding: 5px 10px;
-    font-size: 20px;
     line-height: 1.2;
-    /* color: #fff; */
     background-color: var(--superLightGray);
     border-left: 8px solid var(--keycolor);
     border-bottom: 1px solid var(--keycolor);
+    &__text {
+      font-size: 22px;
+      @mixin mobile {
+        font-size: 20px;
+      }
+    }
+    &__number {
+      font-size: 16px;
+      @mixin mobile {
+        font-size: 14px;
+      }
+    }
   }
 
   &__date {
@@ -73,15 +93,45 @@ export default {
     align-items: stretch;
     flex-wrap: wrap;
     padding: 2%;
+    @mixin tab {
+      padding: 2% 0;
+    }
+    @mixin mobile {
+      padding: 2% 0;
+    }
     & > li {
-      margin-top: 1.2%;
-      margin-left: 1.2%;
-      width: 24.1%;
-      &:nth-child(4n+1) {
-        margin-left: 0;
+      @mixin pc {
+        margin-top: 1.2%;
+        margin-left: 1.2%;
+        width: 24.1%;
+        &:nth-child(-n+4) {
+          margin-top: 0;
+        }
+        &:nth-child(4n+1) {
+          margin-left: 0;
+        }
       }
-      &:nth-child(-n+4) {
-        margin-top: 0;
+      @mixin tab {
+        margin-top: 1.2%;
+        margin-left: 1.2%;
+        width: 24.1%;
+        &:nth-child(-n+4) {
+          margin-top: 0;
+        }
+        &:nth-child(4n+1) {
+          margin-left: 0;
+        }
+      }
+      @mixin mobile {
+        margin-top: 1.4%;
+        margin-left: 1.4%;
+        width: 32.4%;
+        &:nth-child(-n+3) {
+          margin-top: 0;
+        }
+        &:nth-child(3n+1) {
+          margin-left: 0;
+        }
       }
     }
   }
@@ -96,33 +146,60 @@ export default {
   box-sizing: border-box;
   &__link {
     font-size: 0;
-    a {
-      padding: 5px;
-      width: 100%;
-      box-sizing: border-box;
-      &:hover {
-        img {
-          box-shadow: 0 10px 7px 1px #aaa;
-          transform: scale(1.03);
-        }
-      }
-      img {
-        width: 70%;
-        transition: .5s;
-      }
-    }
   }
   &__title {
     margin-top: 10px;
     font-size: 16px;
     line-height: 1.4;
     text-align: left;
+    @mixin tab {
+      margin-top: 3%;
+    }
+    @mixin mobile {
+      margin-top: 2%;
+      font-size: 14px;
+    }
   }
   &__desc {
     margin-top: 10px;
     text-align: left;
     color: var(--darkGray);
     font-size: 12px;
+    @mixin tab {
+      margin-top: 3%;
+    }
+    @mixin mobile {
+      display: none;
+    }
+  }
+}
+</style>
+
+<style lang="postcss">
+.book-card__link {
+  a {
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+    @mixin pc {
+      &:hover {
+        img {
+          box-shadow: 0 10px 7px 1px #aaa;
+          transform: scale(1.03);
+        }
+      }
+    }
+    img {
+      width: 70%;
+      border: 1px solid var(--lightGray);
+      transition: .5s;
+      @mixin tab {
+        width: 75%;
+      }
+      @mixin mobile {
+        width: 80%;
+      }
+    }
   }
 }
 </style>
