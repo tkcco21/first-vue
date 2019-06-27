@@ -10,13 +10,13 @@
   "scripts": {
     "migrate:dev": "sequelize db:migrate",
     "migrate:prd": "NODE_ENV=production sequelize db:migrate",
-    "dev": "DEBUG=first-vue:* nodemon -L ./src/server/index.js",
-    "build": "rimraf ./dist/js ./dist/css && NODE_ENV=production webpack",
+    "rm:dist": "rimraf ./dist/js ./dist/css",
+    "dev": "npm run rm:dist && DEBUG=first-vue:* nodemon -L ./src/server/index.js",
+    "build": "npm run rm:dist && NODE_ENV=production webpack",
     "eslint:server": "eslint ./src/server/**",
     "start": "pm2-runtime start ecosystem.config.js --env production",
-    "list": "pm2 list",
-    "show": "pm2 show first-vue",
-    "stop": "pm2 stop first-vue"
+    "stats": "webpack --profile --json > dist/stats.json",
+    "analyze": "webpack-bundle-analyzer dist/stats.json --port 8765"
   },
   "browserslist": [
     "last 2 version",
@@ -74,11 +74,13 @@
     "postcss-mixins": "^6.2.1",
     "postcss-nested": "^4.1.2",
     "rimraf": "^2.6.3",
+    "stats-webpack-plugin": "^0.7.0",
     "style-loader": "^0.23.1",
     "vue-loader": "^15.6.2",
     "vue-style-loader": "^4.1.2",
     "vue-template-compiler": "^2.6.6",
     "webpack": "^4.34.0",
+    "webpack-bundle-analyzer": "^3.3.2",
     "webpack-cli": "^3.3.4",
     "webpack-dev-middleware": "^3.7.0",
     "webpack-hot-middleware": "^2.25.0",

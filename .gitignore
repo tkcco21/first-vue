@@ -3,6 +3,7 @@
 /dist/js
 /dist/css
 /dist/assets
+/dist/stats.json
 
 # /config/*
 # /src/server/db/config
