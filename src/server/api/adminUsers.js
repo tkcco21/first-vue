@@ -21,27 +21,27 @@ export default {
   signin(req, res) {
     const { username, password } = req.body;
 
-    // console.log(username, password);
-    // const postUser = {
-    //   username,
-    //   password: encrypt(password),
-    // };
-    // adminUsers.create(postUser);
+    console.log(username, password);
+    const postUser = {
+      username,
+      password: encrypt(password),
+    };
+    adminUsers.create(postUser);
 
-    adminUsers.findOne(username).then(({ user }) => {
-      const reqEncryptedPassword = encrypt(password);
+    // adminUsers.findOne(username).then(({ user }) => {
+    //   const reqEncryptedPassword = encrypt(password);
 
-      if (!user || user.password !== reqEncryptedPassword) {
-        throw new Error('違います！！');
-      }
+    //   if (!user || user.password !== reqEncryptedPassword) {
+    //     throw new Error('違います！！');
+    //   }
 
-      const token = sign(username);
+    //   const token = sign(username);
 
-      if (!token) throw new Error('トークンが発行できません。');
+    //   if (!token) throw new Error('トークンが発行できません。');
 
-      res
-        .cookie(config.token.key, token, { maxAge: 2 * 24 * 60 * 60 * 1000 })
-        .send({ token });
-    }).catch(({ message }) => res.status(400).send({ message }));
+    //   res
+    //     .cookie(config.token.key, token, { maxAge: 2 * 24 * 60 * 60 * 1000 })
+    //     .send({ token });
+    // }).catch(({ message }) => res.status(400).send({ message }));
   },
 };
