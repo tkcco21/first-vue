@@ -5,9 +5,9 @@ export default {
   getAllBooks(req, res) {
     books.findAll().then((data) => {
       const dateArray = data.books
-        .map(book => moment(book.completedAt).format('YYYY-MM'))
+        .map(book => moment(book.completedAt).format('YYYY'))
         .filter((book, index, self) => self.indexOf(book) === index)
-        .sort((prev, next) => prev > next ? 1 : -1);
+        .sort((prev, next) => prev > next ? -1 : 1);
 
       let filteredBooksArray = {};
 
