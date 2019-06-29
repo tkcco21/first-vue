@@ -2,10 +2,7 @@
   <section class="books">
     <h2 class="books__title">読んだ本たち</h2>
     <p class="books__caution">※ 本のリンクはすべてアマゾンのアフィリエイトリンクになっています。</p>
-    <books-list
-      :date-array="dateArray"
-      :books="books"
-    />
+    <books-list :books="books" />
   </section>
 </template>
 
@@ -17,17 +14,12 @@ export default {
     BooksList,
   },
   computed: {
-    dateArray() {
-      return this.$store.getters.completedDate;
-    },
     books() {
       return this.$store.state.books;
     },
   },
   created() {
-    if (!this.$store.getters.completedDate.length) {
-      this.$store.dispatch('getBooks');
-    }
+    this.$store.dispatch('getBooks');
   },
 };
 </script>

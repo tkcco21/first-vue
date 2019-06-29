@@ -1,36 +1,47 @@
 <template lang="html">
-  <ul class="books-list">
-    <li
-      v-for="(date, index) in dateArray"
-      :key="index"
+  <div class="books-inner">
+    <div
+      v-for="(yearly, yearIndex) in books"
+      :key="yearIndex"
+      class="books-list"
     >
-      <div class="books-list__title">
-        <h3 class="books-list__title__text">
-          {{ date }}
-        </h3>
-        <span class="books-list__title__number">
-          {{ books[date].length }}冊
-        </span>
-      </div>
-      <ul class="books-list__date">
-        <li
-          v-for="book in books[date]"
-          :key="book.id"
-        >
-          <div class="book-card">
-            <p
-              class="book-card__link"
-              v-html="sanitizeHtml(book.itemUrl, {
-                allowedTags: ['a', 'img']
-              })"
-            />
-            <h4 class="book-card__title">{{ book.title }}</h4>
-            <p class="book-card__desc">{{ book.description }}</p>
-          </div>
-        </li>
-      </ul>
-    </li>
-  </ul>
+      <template v-for="(everyBooks, year, everyBooksIndex) in yearly">
+        <div :key="year" class="books-list__year">
+          <h3 class="books-list__year__text">{{ year }}年</h3>
+          <!--
+            // TODO: 冊数入れたいな
+          -->
+          <!-- <span>{{ }}冊</span> -->
+        </div>
+
+        <ul :key="everyBooksIndex" class="books-list__month">
+          <li
+            v-for="(monthlyBooks, month, monthIndex) in everyBooks"
+            :key="monthIndex"
+          >
+            <h4 class="books-list__month__title">{{ month }}月</h4>
+            <ul class="books-list__month__books">
+              <li
+                v-for="book in monthlyBooks"
+                :key="book.id"
+              >
+                <div class="book-card">
+                  <p
+                    class="book-card__link"
+                    v-html="sanitizeHtml(book.itemUrl, {
+                      allowedTags: ['a', 'img']
+                    })"
+                  />
+                  <h5 class="book-card__title">{{ book.title }}</h5>
+                  <p class="book-card__desc">{{ book.description }}</p>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </template>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -38,13 +49,9 @@ import sanitizeHtml from 'sanitize-html';
 
 export default {
   props: {
-    dateArray: {
+    books: {
       type: Array,
       default: () => [],
-    },
-    books: {
-      type: Object,
-      default: () => ({}),
     },
   },
   computed: {
@@ -64,40 +71,68 @@ export default {
       margin-top: 0;
     }
   }
-  &__title {
-    display: flex;
-    align-items: flex-end;
-    justify-content: space-between;
-    padding: 5px 10px;
-    line-height: 1.2;
-    background-color: var(--superLightGray);
-    border-left: 8px solid var(--keycolor);
-    border-bottom: 1px solid var(--keycolor);
-    &__text {
-      font-size: 22px;
-      @mixin mobile {
-        font-size: 20px;
-      }
+}
+.books-list__year {
+  padding: 10px;
+  line-height: 1.2;
+  border-left: 8px solid color(var(--keycolor) a(70%));
+  border-bottom: 1px solid color(var(--keycolor) a(70%));
+  background-color: var(--superLightGray);
+  &__text {
+    font-size: 26px;
+    @mixin tab {
+      font-size: 20px;
     }
-    &__number {
-      font-size: 16px;
-      @mixin mobile {
-        font-size: 14px;
-      }
+    @mixin mobile {
+      font-size: 20px;
     }
   }
+}
 
-  &__date {
+.books-list__month {
+  margin-top: 15px;
+  @mixin tab {
+    margin-top: 2%;
+  }
+  @mixin mobile {
+    margin-top: 2%;
+  }
+  & > li {
+    margin-top: 10px;
+    padding: 0 2%;
+    &:first-child {
+      margin-top: 0;
+    }
+    @mixin tab {
+      margin-top: 2%;
+    }
+    @mixin mobile {
+      margin-top: 2%;
+    }
+  }
+  &__title {
+    padding: 5px 10px;
+    font-size: 20px;
+    border-bottom: 1px solid var(--gray);
+    background-color: var(--superLightGray);
+    @mixin tab {
+      font-size: 17px;
+    }
+    @mixin mobile {
+      font-size: 17px;
+    }
+  }
+  &__books {
     display: flex;
     justify-content: flex-start;
     align-items: stretch;
     flex-wrap: wrap;
-    padding: 2%;
+    margin-top: 10px;
     @mixin tab {
-      padding: 2% 0;
+      margin-top: 2%;
     }
     @mixin mobile {
-      padding: 2% 0;
+      margin-top: 2%;
     }
     & > li {
       @mixin pc {
@@ -136,6 +171,7 @@ export default {
     }
   }
 }
+
 .book-card {
   padding: 5%;
   width: 100%;

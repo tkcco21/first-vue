@@ -11,7 +11,7 @@ export default new Vuex.Store({
   modules: { auth },
   state: {
     loggedIn: false,
-    books: {},
+    books: [],
     targetBook: {
       id: null,
       title: '',
@@ -50,8 +50,8 @@ export default new Vuex.Store({
     failRequest(state, { message }) {
       state.errorMessage = message;
     },
-    doneGetAllBooks(state, payload) {
-      state.books = payload;
+    doneGetAllBooks(state, { books }) {
+      state.books = books;
     },
     doneGetBook(state, payload) {
       state.targetBook = Object.assign({}, payload);
@@ -79,7 +79,7 @@ export default new Vuex.Store({
     },
     getAllBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
-        commit('doneGetAllBooks', data);
+        commit('doneGetAllBooks', { books: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });

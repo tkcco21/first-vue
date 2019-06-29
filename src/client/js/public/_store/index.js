@@ -7,24 +7,22 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
-    books: {},
+    books: [],
     errorMessage: '',
   },
-  getters: {
-    completedDate: state => Object.keys(state.books),
-  },
+  getters: {},
   mutations: {
     failRequest(state, { message }) {
       state.errorMessage = message;
     },
-    doneGetBooks(state, payload) {
-      state.books = payload;
+    doneGetBooks(state, { books }) {
+      state.books = books;
     },
   },
   actions: {
     getBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
-        commit('doneGetBooks', data);
+        commit('doneGetBooks', { books: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });

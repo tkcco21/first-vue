@@ -4,21 +4,45 @@ import books from '@Server/db/entity/books';
 export default {
   getAllBooks(req, res) {
     books.findAll().then((data) => {
-      const dateArray = data.books
-        .map(book => moment(book.completedAt).format('YYYY'))
-        .filter((book, index, self) => self.indexOf(book) === index)
-        .sort((prev, next) => prev > next ? -1 : 1);
+      // console.time('books')
+      // const dateArray = data.books
+      //   .map(book => moment(book.completedAt).format('YYYY-MM'))
+      //   .filter((book, index, self) => self.indexOf(book) === index)
+      //   .sort((prev, next) => prev > next ? -1 : 1);
+      // let filteredBooksArray = {};
+      // dateArray.forEach(date => {
+      //   Object.assign(filteredBooksArray, {
+      //     [date]: data.books.filter(book =>
+      //       moment(date).format('YYYY-MM') === moment(book.completedAt).format('YYYY-MM'))
+      //   });
+      // });
+      // console.timeEnd('books')
+      // return res.send(filteredBooksArray);
 
-      let filteredBooksArray = {};
-
-      dateArray.forEach(date => {
-        Object.assign(filteredBooksArray, {
-          [date]: data.books.filter(book =>
-            moment(date).format('YYYY-MM') === moment(book.completedAt).format('YYYY-MM'))
+      // =========================================
+      // console.time('books')
+      const books = {};
+      data.books
+        .forEach((book) => {
+          const year = moment(book.completedAt).format('YYYY');
+          const month = moment(book.completedAt).format('MM');
+          Object.assign(books, {
+            [year]: Object.assign({}, books[year], {
+              [month]: data.books
+                .filter(book =>
+                  moment(`${year}-${month}`).format('YYYY-MM') ===
+                  moment(book.completedAt).format('YYYY-MM'))
+            })
+          });
         });
-      });
+      const booksArray = Object.keys(books)
+        .map(year => ({ [year]: books[year] }))
+        .sort((prev, next) =>
+          Object.keys(prev)[0] > Object.keys(next)[0] ? -1 : 1
+        );
+      // console.timeEnd('books')
 
-      return res.send(filteredBooksArray);
+      return res.send(booksArray);
     }).catch(({ message }) => res.status(404).send({ message }));
   },
 
