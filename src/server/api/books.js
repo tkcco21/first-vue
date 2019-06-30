@@ -26,20 +26,24 @@ export default {
         .forEach((book) => {
           const year = moment(book.completedAt).format('YYYY');
           const month = moment(book.completedAt).format('MM');
+          const array = books[year] &&
+            books[year][parseInt(month)] &&
+            books[year][parseInt(month)].length
+              ? books[year][parseInt(month)]
+              : [];
           Object.assign(books, {
             [year]: Object.assign({}, books[year], {
-              [month]: data.books
-                .filter(book =>
-                  moment(`${year}-${month}`).format('YYYY-MM') ===
-                  moment(book.completedAt).format('YYYY-MM'))
+              [parseInt(month)]: array.concat(book)
             })
           });
         });
+        console.log(books);
       const booksArray = Object.keys(books)
         .map(year => ({ [year]: books[year] }))
         .sort((prev, next) =>
           Object.keys(prev)[0] > Object.keys(next)[0] ? -1 : 1
         );
+      // console.log(booksArray);
       // console.timeEnd('books')
 
       return res.send(booksArray);
