@@ -75,8 +75,8 @@ export default {
 .books-list__year {
   padding: 10px;
   line-height: 1.2;
-  border-left: 8px solid color(var(--keycolor) a(70%));
-  border-bottom: 1px solid color(var(--keycolor) a(70%));
+  border-left: 8px solid color(var(--keycolor) a(80%));
+  border-bottom: 2px solid color(var(--keycolor) a(80%));
   background-color: var(--superLightGray);
   &__text {
     font-size: 26px;
@@ -113,8 +113,8 @@ export default {
   &__title {
     padding: 5px 10px;
     font-size: 20px;
-    border-bottom: 1px solid var(--gray);
-    background-color: var(--superLightGray);
+    border-bottom: 2px solid var(--gray);
+    background-color: var(--lightGray);
     @mixin tab {
       font-size: 17px;
     }

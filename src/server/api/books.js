@@ -37,7 +37,6 @@ export default {
             })
           });
         });
-        console.log(books);
       const booksArray = Object.keys(books)
         .map(year => ({ [year]: books[year] }))
         .sort((prev, next) =>
