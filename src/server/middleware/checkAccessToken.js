@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '@Config';
 import { decode } from '@Server/utils/jsonwebtoken';
 
 export default (req, res, next) => {

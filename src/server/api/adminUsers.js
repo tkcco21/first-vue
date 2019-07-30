@@ -1,4 +1,4 @@
-import config from 'config';
+import config from '@Config';
 import encrypt from '@Server/utils/hash';
 import { sign, decode } from '@Server/utils/jsonwebtoken';
 import adminUsers from '@Server/db/entity/adminUsers';
