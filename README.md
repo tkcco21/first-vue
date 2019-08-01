@@ -1,5 +1,9 @@
 # First Vue
 
+<a href="https://tkcco21-first-vue.herokuapp.com/" target="_blank">tkcco21-first-vue.herokuapp.com</a>
+
+Herokuの無料枠のものなのでアクセスがないとサーバーがスリープ状態になるので、読み込みがめちゃめちゃ長くなります。
+
 ## 準備
 
 package.jsonに記載のあるパッケージのインストール
@@ -33,12 +37,4 @@ npm run dev
 - [Sequelize](http://docs.sequelizejs.com/)
 - [Nodemon](https://nodemon.io/)
 - [pm2](http://pm2.keymetrics.io/)
-
-## 画面
-
-| URL | 内容 |
-|:--|:--|
-| /admin | 管理画面TOP |
-| /admin/books | 本 - 一覧画面 |
-
 
