@@ -35,7 +35,8 @@ const config = {
   ],
   entry: {
     public: ['./src/client/js/public/app.js'],
-    admin: ['./src/client/js/admin/app.js']
+    admin: ['./src/client/js/admin/app.js'],
+    // test: ['./src/client/js/test/app.js']
   },
   output: {
     filename: 'js/[name].bundle.js',
