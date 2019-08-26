@@ -23,10 +23,17 @@ export default {
           });
         });
       const booksArray = Object.keys(books)
-        .map(year => ({ [year]: books[year] }))
+      .map(year => ({ [year]: Object.keys(books[year])
+        .map(
+          month => ({ [month]: books[year][month] })
+        )
         .sort((prev, next) =>
           Object.keys(prev)[0] > Object.keys(next)[0] ? -1 : 1
-        );
+        )
+      }))
+      .sort((prev, next) =>
+        Object.keys(prev)[0] > Object.keys(next)[0] ? -1 : 1
+      );
       // console.log(booksArray);
       // console.timeEnd('books')
 

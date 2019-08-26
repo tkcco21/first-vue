@@ -6,7 +6,7 @@
       class="books-list"
     >
       <template v-for="(everyBooks, year, everyBooksIndex) in yearly">
-        <div :key="year" class="books-list__year">
+        <div :key="`year${year}`" class="books-list__year">
           <h3 class="books-list__year__text">{{ year }}年</h3>
           <!--
             // TODO: 冊数入れたいな
@@ -14,30 +14,32 @@
           <!-- <span>{{ }}冊</span> -->
         </div>
 
-        <ul :key="everyBooksIndex" class="books-list__month">
-          <li
-            v-for="(monthlyBooks, month, monthIndex) in everyBooks"
-            :key="monthIndex"
-          >
-            <h4 class="books-list__month__title">{{ month }}月</h4>
-            <ul class="books-list__month__books">
-              <li
-                v-for="book in monthlyBooks"
-                :key="book.id"
-              >
-                <div class="book-card">
-                  <p
-                    class="book-card__link"
-                    v-html="sanitizeHtml(book.itemUrl, {
-                      allowedTags: ['a', 'img']
-                    })"
-                  />
-                  <h5 class="book-card__title">{{ book.title }}</h5>
-                  <p class="book-card__desc">{{ book.description }}</p>
-                </div>
-              </li>
-            </ul>
-          </li>
+        <ul :key="`year${everyBooksIndex}`" class="books-list__month">
+          <template v-for="monthly in everyBooks">
+            <li
+              v-for="(monthlyBooks, month) in monthly"
+              :key="`month${month}`"
+            >
+              <h4 class="books-list__month__title">{{ month }}月</h4>
+              <ul class="books-list__month__books">
+                <li
+                  v-for="book in monthlyBooks"
+                  :key="book.id"
+                >
+                  <div class="book-card">
+                    <p
+                      class="book-card__link"
+                      v-html="sanitizeHtml(book.itemUrl, {
+                        allowedTags: ['a', 'img']
+                      })"
+                    />
+                    <h5 class="book-card__title">{{ book.title }}</h5>
+                    <p class="book-card__desc">{{ book.description }}</p>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </template>
         </ul>
       </template>
     </div>
