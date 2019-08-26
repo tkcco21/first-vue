@@ -28,7 +28,9 @@ export default {
           month => ({ [month]: books[year][month] })
         )
         .sort((prev, next) =>
-          Object.keys(prev)[0] > Object.keys(next)[0] ? -1 : 1
+          Object.keys(parseInt(prev, 10))[0] > Object.keys(parseInt(next, 10))[0]
+          ? -1
+          : 1
         )
       }))
       .sort((prev, next) =>
