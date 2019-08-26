@@ -5,7 +5,7 @@
     >
       <v-expansion-panel-content
         v-for="(everyBooks, year) in yearly"
-        :key="year"
+        :key="`${year}year`"
       >
         <template v-slot:header class="grey lighten-3">
           <div class="title font-weight-bold">
@@ -20,7 +20,7 @@
           <template
             v-for="(monthlyBooks, month) in everyBooks"
           >
-            <v-flex :key="month" xs12>
+            <v-flex :key="`${month}month`" xs12>
               <v-card
                 class="green lighten-2 pa-0"
                 flat

@@ -4,21 +4,6 @@ import books from '@Server/db/entity/books';
 export default {
   getAllBooks(req, res) {
     books.findAll().then((data) => {
-      // console.time('books')
-      // const dateArray = data.books
-      //   .map(book => moment(book.completedAt).format('YYYY-MM'))
-      //   .filter((book, index, self) => self.indexOf(book) === index)
-      //   .sort((prev, next) => prev > next ? -1 : 1);
-      // let filteredBooksArray = {};
-      // dateArray.forEach(date => {
-      //   Object.assign(filteredBooksArray, {
-      //     [date]: data.books.filter(book =>
-      //       moment(date).format('YYYY-MM') === moment(book.completedAt).format('YYYY-MM'))
-      //   });
-      // });
-      // console.timeEnd('books')
-      // return res.send(filteredBooksArray);
-
       // =========================================
       // console.time('books')
       const books = {};
