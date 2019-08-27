@@ -3,7 +3,6 @@
     <v-form @submit.prevent="handleSubmit">
       <v-text-field
         v-validate="'required'"
-        data-vv-name="title"
         :error-messages="errors.collect('title')"
         label="本のタイトル"
         name="title"
@@ -13,17 +12,24 @@
       />
       <v-text-field
         v-validate="'required'"
-        data-vv-name="itemUrl"
         :error-messages="errors.collect('itemUrl')"
-        label="本のURL"
+        label="本の遷移URL"
         name="itemUrl"
         type="text"
         :value="targetBook.itemUrl"
         @input="updateValue($event, 'itemUrl')"
       />
+      <v-text-field
+        v-validate="'required'"
+        :error-messages="errors.collect('imageUrl')"
+        label="本の画像URL"
+        name="imageUrl"
+        type="text"
+        :value="targetBook.imageUrl"
+        @input="updateValue($event, 'imageUrl')"
+      />
       <v-textarea
         v-validate="'required'"
-        data-vv-name="description"
         :error-messages="errors.collect('description')"
         label="本の感想・概要"
         name="description"
@@ -124,7 +130,10 @@ export default {
             required: () => '必須項目です。本のタイトルを入力してください。',
           },
           itemUrl: {
-            required: () => '必須項目です。本のURLを入力してください。',
+            required: () => '必須項目です。本の遷移URLを入力してください。',
+          },
+          imageUrl: {
+            required: () => '必須項目です。本の画像URLを入力してください。',
           },
           description: {
             required: () => '必須項目です。本の感想・概要を入力してください。',

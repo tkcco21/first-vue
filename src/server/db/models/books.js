@@ -4,6 +4,7 @@ export default (sequelize, DataTypes) => {
   const Books = sequelize.define('books', {
     title: DataTypes.STRING,
     itemUrl: DataTypes.TEXT,
+    imageUrl: DataTypes.TEXT,
     description: DataTypes.STRING,
     completedAt: DataTypes.DATE,
     deletedAt: DataTypes.DATE

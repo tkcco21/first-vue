@@ -52,8 +52,8 @@ export default {
       return res.send({
         id,
         title,
-        imageUrl,
         itemUrl,
+        imageUrl,
         description,
         completedYear,
         completedMonth,
@@ -65,6 +65,7 @@ export default {
     const {
       title,
       itemUrl,
+      imageUrl,
       description,
       completedYear,
       completedMonth
@@ -74,7 +75,7 @@ export default {
     const completedAt = `${year + month}`;
 
     books
-      .create({ title, itemUrl, description, completedAt })
+      .create({ title, itemUrl, imageUrl, description, completedAt })
       .then((data) => res.send(data.book))
       .catch(({ message }) => res.status(404).send({ message }));
   },
@@ -83,8 +84,8 @@ export default {
     const {
       id,
       title,
-      imageUrl,
       itemUrl,
+      imageUrl,
       description,
       completedYear,
       completedMonth,
@@ -94,12 +95,12 @@ export default {
     const completedAt = `${year + month}`;
 
     books
-      .update({ id, title, imageUrl, itemUrl, description, completedAt })
+      .update({ id, title, itemUrl, imageUrl, description, completedAt })
       .then(() => res.send({
         id,
         title,
-        imageUrl,
         itemUrl,
+        imageUrl,
         description,
         completedYear,
         completedMonth,

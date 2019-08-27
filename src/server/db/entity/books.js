@@ -4,7 +4,14 @@ export default {
   findAll() {
     return new Promise((resolve, reject) => {
       Books.findAll({
-        attributes: ['id', 'title', 'itemUrl', 'description', 'completedAt']
+        attributes: [
+          'id',
+          'title',
+          'itemUrl',
+          'imageUrl',
+          'description',
+          'completedAt',
+        ]
       }).then((data) => {
         resolve({ books: JSON.parse(JSON.stringify(data)) });
       }).catch((err) => {
@@ -21,6 +28,7 @@ export default {
           'id',
           'title',
           'itemUrl',
+          'imageUrl',
           'description',
           'completedAt',
         ],
