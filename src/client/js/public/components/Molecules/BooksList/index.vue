@@ -27,12 +27,23 @@
                   :key="book.id"
                 >
                   <div class="book-card">
-                    <p
-                      class="book-card__link"
-                      v-html="sanitizeHtml(book.itemUrl, {
-                        allowedTags: ['a', 'img']
-                      })"
-                    />
+                    <!-- TODO: ここのif文あとでなくす -->
+                    <!-- TODO: pタグで囲うのもやめて、スタイルの調整もする -->
+                    <template v-if="book.imageUrl">
+                      <p class="book-card__link">
+                        <a :href="book.itemUrl" target="_blank">
+                          <img :src="book.imageUrl" :alt="book.title">
+                        </a>
+                      </p>
+                    </template>
+                    <template v-else>
+                      <p
+                        class="book-card__link"
+                        v-html="sanitizeHtml(book.itemUrl, {
+                          allowedTags: ['a', 'img']
+                        })"
+                      />
+                    </template>
                     <h5 class="book-card__title">{{ book.title }}</h5>
                     <p class="book-card__desc">{{ book.description }}</p>
                   </div>
