@@ -42,13 +42,21 @@
                 xs4
               >
                 <v-card class="pa-2">
-                  <v-img
-                    class="text-lg-center text-md-center text-sm-center"
-                    height="180"
-                    v-html="sanitizeHtml(book.itemUrl, {
-                      allowedTags: ['a', 'img']
-                    })"
-                  />
+                  <!-- TODO: ここのif文あとでなくす -->
+                  <template v-if="book.imageUrl">
+                    <a :href="book.itemUrl" target="_blank">
+                      <img :src="book.imageUrl" :alt="book.title">
+                    </a>
+                  </template>
+                  <template v-else>
+                    <v-img
+                      class="text-lg-center text-md-center text-sm-center"
+                      height="180"
+                      v-html="sanitizeHtml(book.itemUrl, {
+                        allowedTags: ['a', 'img']
+                      })"
+                    />
+                  </template>
 
                   <v-card-title class="pa-0 mt-2">
                     <h3 class="subheading font-weight-bold mb-0">{{ book.title }}</h3>
