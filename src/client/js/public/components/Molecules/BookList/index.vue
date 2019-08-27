@@ -1,7 +1,7 @@
 <template lang="html">
   <div class="books-inner">
     <div
-      v-for="(yearly, yearIndex) in books"
+      v-for="(yearly, yearIndex) in bookList"
       :key="yearIndex"
       class="books-list"
     >
@@ -27,6 +27,25 @@
                   :key="book.id"
                 >
                   <div class="book-card">
+                    <div class="book-card__btn">
+                      <app-link
+                        text="Amazonのページ"
+                        :to="book.itemUrl"
+                        external
+                        block
+                        bg-second
+                        small
+                      />
+                      <app-link
+                        text="詳細"
+                        :to="`/books/${book.id}`"
+                        block
+                        bg-key
+                        white
+                        small
+                        margin-top
+                      />
+                    </div>
                     <!-- TODO: ここのif文あとでなくす -->
                     <!-- TODO: pタグで囲うのもやめて、スタイルの調整もする -->
                     <template v-if="book.imageUrl">
@@ -45,7 +64,6 @@
                       />
                     </template>
                     <h5 class="book-card__title">{{ book.title }}</h5>
-                    <p class="book-card__desc">{{ book.description }}</p>
                   </div>
                 </li>
               </ul>
@@ -59,12 +77,16 @@
 
 <script>
 import sanitizeHtml from 'sanitize-html';
+import Link from '@Public/components/Atoms/Link';
 
 export default {
+  components: {
+    appLink: Link,
+  },
   props: {
-    books: {
+    bookList: {
       type: Array,
-      default: () => [],
+      required: true,
     },
   },
   computed: {
@@ -135,51 +157,51 @@ export default {
       font-size: 17px;
     }
   }
-  &__books {
-    display: flex;
-    justify-content: flex-start;
-    align-items: stretch;
-    flex-wrap: wrap;
-    margin-top: 10px;
+}
+.books-list__month__books {
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  flex-wrap: wrap;
+  margin-top: 10px;
+  @mixin tab {
+    margin-top: 2%;
+  }
+  @mixin mobile {
+    margin-top: 2%;
+  }
+  & > li {
+    @mixin pc {
+      margin-top: 1.2%;
+      margin-left: 1.2%;
+      width: 24.1%;
+      &:nth-child(-n+4) {
+        margin-top: 0;
+      }
+      &:nth-child(4n+1) {
+        margin-left: 0;
+      }
+    }
     @mixin tab {
-      margin-top: 2%;
+      margin-top: 1.2%;
+      margin-left: 1.2%;
+      width: 24.1%;
+      &:nth-child(-n+4) {
+        margin-top: 0;
+      }
+      &:nth-child(4n+1) {
+        margin-left: 0;
+      }
     }
     @mixin mobile {
-      margin-top: 2%;
-    }
-    & > li {
-      @mixin pc {
-        margin-top: 1.2%;
-        margin-left: 1.2%;
-        width: 24.1%;
-        &:nth-child(-n+4) {
-          margin-top: 0;
-        }
-        &:nth-child(4n+1) {
-          margin-left: 0;
-        }
+      margin-top: 1.4%;
+      margin-left: 1.4%;
+      width: 32.4%;
+      &:nth-child(-n+3) {
+        margin-top: 0;
       }
-      @mixin tab {
-        margin-top: 1.2%;
-        margin-left: 1.2%;
-        width: 24.1%;
-        &:nth-child(-n+4) {
-          margin-top: 0;
-        }
-        &:nth-child(4n+1) {
-          margin-left: 0;
-        }
-      }
-      @mixin mobile {
-        margin-top: 1.4%;
-        margin-left: 1.4%;
-        width: 32.4%;
-        &:nth-child(-n+3) {
-          margin-top: 0;
-        }
-        &:nth-child(3n+1) {
-          margin-left: 0;
-        }
+      &:nth-child(3n+1) {
+        margin-left: 0;
       }
     }
   }
@@ -194,6 +216,7 @@ export default {
   border: 1px solid var(--lightGray);
   box-sizing: border-box;
   &__link {
+    margin-top: 10px;
     font-size: 0;
   }
   &__title {
@@ -209,7 +232,7 @@ export default {
       font-size: 14px;
     }
   }
-  &__desc {
+  /* &__desc {
     margin-top: 10px;
     text-align: left;
     color: var(--darkGray);
@@ -220,7 +243,7 @@ export default {
     @mixin mobile {
       display: none;
     }
-  }
+  } */
 }
 </style>
 

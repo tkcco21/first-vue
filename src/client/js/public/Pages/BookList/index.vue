@@ -2,24 +2,24 @@
   <section class="books">
     <h2 class="books__title">読んだ本たち</h2>
     <p class="books__caution">※ 本のリンクはすべてアマゾンのアフィリエイトリンクになっています。</p>
-    <books-list :books="books" />
+    <app-book-list :book-list="bookList" />
   </section>
 </template>
 
 <script>
-import BooksList from '@Public/components/Molecules';
+import BookList from '@Public/components/Molecules';
 
 export default {
   components: {
-    BooksList,
+    appBookList: BookList,
   },
   computed: {
-    books() {
-      return this.$store.state.books;
+    bookList() {
+      return this.$store.state.bookList;
     },
   },
   created() {
-    this.$store.dispatch('getBooks');
+    this.$store.dispatch('getAllBooks');
   },
 };
 </script>

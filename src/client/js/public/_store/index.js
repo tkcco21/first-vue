@@ -7,7 +7,16 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   strict: process.env.NODE_ENV !== 'production',
   state: {
-    books: [],
+    bookList: [],
+    book: {
+      id: null,
+      title: null,
+      itemUrl: null,
+      imageUrl: null,
+      description: null,
+      completedYear: null,
+      completedMonth: null,
+    },
     errorMessage: '',
   },
   getters: {},
@@ -15,14 +24,24 @@ export default new Vuex.Store({
     failRequest(state, { message }) {
       state.errorMessage = message;
     },
-    doneGetBooks(state, { books }) {
-      state.books = books;
+    doneGetAllBooks(state, { bookList }) {
+      state.bookList = bookList;
+    },
+    doneGetBook(state, { book }) {
+      state.book = Object.assign({}, book);
     },
   },
   actions: {
-    getBooks({ commit }) {
+    getAllBooks({ commit }) {
       axios.get('/api/books').then(({ data }) => {
-        commit('doneGetBooks', { books: data });
+        commit('doneGetAllBooks', { bookList: data });
+      }).catch((err) => {
+        commit('failRequest', { message: err.response.data.message });
+      });
+    },
+    getBook({ commit }, { id }) {
+      axios.get(`/api/books/${id}`).then(({ data }) => {
+        commit('doneGetBook', { book: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
