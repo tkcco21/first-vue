@@ -3,14 +3,14 @@
     <div class="book-detail__image">
       <img :src="book.imageUrl" alt="">
       <app-link
-        text="Amazonへ"
+        text="Amazonの詳細へ"
         :to="book.itemUrl"
         external
-        block
         bg-second
         white
         small
-        center
+        padding-m
+        round-s
       />
     </div>
 
@@ -19,15 +19,13 @@
       <p class="book-detail__date">
         {{ book.completedYear }}年 {{ book.completedMonth }}月 読了
       </p>
-      <p class="book-detail__desc">
-        {{ book.description }}
-      </p>
+      <p class="book-detail__desc">{{ book.description }}</p>
     </div>
   </article>
 </template>
 
 <script>
-import Link from '@Public/components/Atoms/Link';
+import { Link } from '@Public/components/Atoms';
 
 export default {
   components: {
@@ -50,6 +48,7 @@ export default {
   margin-top: 20px;
   &__image {
     width: 28%;
+    text-align: center;
     img {
       margin-bottom: 10px;
     }
@@ -67,12 +66,13 @@ export default {
   }
   &__date {
     margin-top: 10px;
-    color: var(--darkGdray);
+    color: var(--darkGray);
     font-size: 14px;
   }
   &__desc {
     margin-top: 10px;
     font-size: 16px;
+    white-space: pre-line;
   }
 }
 </style>

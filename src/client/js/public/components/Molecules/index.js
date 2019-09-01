@@ -1,3 +1,7 @@
-import BookList from './BookList';
+import PageTitle from './PageTitle';
+import Card from './Card';
 
-export default BookList;
+export {
+  PageTitle,
+  Card,
+};

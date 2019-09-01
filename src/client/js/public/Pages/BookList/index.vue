@@ -1,16 +1,17 @@
 <template lang="html">
   <section class="book-list">
-    <h2 class="book-list__title">読んだ本たち</h2>
-    <p class="book-list__caution">※ 本のアマゾンのリンクはすべてアフィリエイトリンクになっています。</p>
+    <app-page-title title="読んだ本たち" text="※ 本の画像部分のリンクはすべてアフィリエイトリンクになっています。" />
     <app-book-list :book-list="bookList" />
   </section>
 </template>
 
 <script>
-import BookList from '@Public/components/Molecules';
+import { PageTitle } from '@Public/components/Molecules';
+import { BookList } from '@Public/components/Organisms';
 
 export default {
   components: {
+    appPageTitle: PageTitle,
     appBookList: BookList,
   },
   computed: {
@@ -23,22 +24,3 @@ export default {
   },
 };
 </script>
-
-<style lang="postcss" scoped>
-.book-list {
-  &__title {
-    font-size: 24px;
-    @mixin mobile {
-      font-size: 20px;
-    }
-  }
-  &__caution {
-    font-size: 14px;
-    color: var(--darkGray);
-    @mixin mobile {
-      font-size: 12px;
-      line-height: 1.4;
-    }
-  }
-}
-</style>

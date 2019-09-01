@@ -1,3 +1,7 @@
 import Link from './Link';
+import Text from './Text';
 
-export default Link;
+export {
+  Link,
+  Text,
+};
