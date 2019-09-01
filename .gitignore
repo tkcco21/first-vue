@@ -1,6 +1,6 @@
 /node_modules
 /.env
-wiki/
+/wiki/
 
 /dist/js
 /dist/css
