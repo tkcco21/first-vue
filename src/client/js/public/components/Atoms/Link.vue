@@ -30,15 +30,15 @@ export default {
       type: Boolean,
       default: false,
     },
-    marginTop: {
-      type: Boolean,
-      default: false,
-    },
     small: {
       type: Boolean,
       default: false,
     },
     white: {
+      type: Boolean,
+      default: false,
+    },
+    center: {
       type: Boolean,
       default: false,
     },
@@ -62,9 +62,11 @@ export default {
       return {
         link: true,
         'link--block': this.block,
-        'link--margin-top': this.marginTop,
         'link--small': this.small,
         'link--white': this.white,
+        'link--center': this.center,
+        'link--left': this.left,
+        'link--right': this.right,
         'link--bg-key': this.bgKey,
         'link--bg-second': this.bgSecond,
       };
@@ -81,14 +83,20 @@ export default {
   &--block {
     display: block;
   }
-  &--margin-top {
-    margin-top: 5px;
-  }
   &--small {
     font-size: 14px;
   }
   &--white {
     color: #fff;
+  }
+  &--center {
+    text-align: center;
+  }
+  &--left {
+    text-align: left;
+  }
+  &--right {
+    text-align: right;
   }
   &--bg-key {
     background-color: var(--keycolor);

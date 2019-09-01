@@ -8,10 +8,10 @@ const router = express.Router();
 router.post('/admin/signin', adminUsers.signin);
 router.get('/admin/token', adminUsers.checkToken);
 
-router.get('/books', books.getAllBooks);
 router.post('/books', checkAccessToken, books.addBook);
-router.get('/books/:id', checkAccessToken, books.getBook);
 router.patch('/books/:id', checkAccessToken, books.editBook);
+router.get('/books', books.getAllBooks);
+router.get('/books/:id', books.getBook);
 
 
 export default router;

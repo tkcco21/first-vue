@@ -34,8 +34,11 @@
                         external
                         block
                         bg-second
+                        white
                         small
                       />
+                    </div>
+                    <div class="book-card__btn">
                       <app-link
                         text="詳細"
                         :to="`/books/${book.id}`"
@@ -43,7 +46,6 @@
                         bg-key
                         white
                         small
-                        margin-top
                       />
                     </div>
                     <!-- TODO: ここのif文あとでなくす -->
@@ -244,6 +246,9 @@ export default {
       display: none;
     }
   } */
+  &__btn {
+    margin-top: 5px;
+  }
 }
 </style>
 

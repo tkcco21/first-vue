@@ -1,7 +1,7 @@
 <template lang="html">
-  <section class="books">
-    <h2 class="books__title">読んだ本たち</h2>
-    <p class="books__caution">※ 本のリンクはすべてアマゾンのアフィリエイトリンクになっています。</p>
+  <section class="book-list">
+    <h2 class="book-list__title">読んだ本たち</h2>
+    <p class="book-list__caution">※ 本のアマゾンのリンクはすべてアフィリエイトリンクになっています。</p>
     <app-book-list :book-list="bookList" />
   </section>
 </template>
@@ -25,7 +25,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.books {
+.book-list {
   &__title {
     font-size: 24px;
     @mixin mobile {
