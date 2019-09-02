@@ -1,7 +1,7 @@
 <template>
   <div class="card">
     <a :href="item.itemUrl" target="_blank" class="card__link">
-      <img :src="item.imageUrl" :alt="item.title">
+      <img v-lazy="item.imageUrl" :alt="item.title">
       <h3 class="card__title">{{ item.title }}</h3>
     </a>
 

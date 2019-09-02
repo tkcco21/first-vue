@@ -4,7 +4,7 @@
       <img :src="book.imageUrl" alt="">
       <app-link
         text="Amazonの詳細へ"
-        :to="book.itemUrl"
+        :to="book.itemUrl || ''"
         external
         bg-second
         white
