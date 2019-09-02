@@ -28,13 +28,13 @@ export default {
           month => ({ [month]: books[year][month] })
         )
         .sort((prev, next) =>
-          Object.keys(parseInt(prev, 10))[0] > Object.keys(parseInt(next, 10))[0]
-          ? -1
-          : 1
+          parseInt(Object.keys(prev)[0]) > parseInt(Object.keys(next)[0])
+            ? -1
+            : 1
         )
       }))
       .sort((prev, next) =>
-        Object.keys(prev)[0] > Object.keys(next)[0] ? -1 : 1
+        parseInt(Object.keys(prev)[0]) > parseInt(Object.keys(next)[0]) ? -1 : 1
       );
       // console.log(booksArray);
       // console.timeEnd('books')
