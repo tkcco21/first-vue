@@ -23,19 +23,24 @@ export default {
           });
         });
       const booksArray = Object.keys(books)
-      .map(year => ({ [year]: Object.keys(books[year])
-        .map(
-          month => ({ [month]: books[year][month] })
-        )
+        .map(year => ({ [year]: Object.keys(books[year])
+          .map(
+            month => ({
+              [month]: {
+                books: books[year][month],
+                count: books[year][month].length,
+              }
+            })
+          )
+          .sort((prev, next) =>
+            parseInt(Object.keys(prev)[0]) > parseInt(Object.keys(next)[0])
+              ? -1
+              : 1
+          )
+        }))
         .sort((prev, next) =>
-          parseInt(Object.keys(prev)[0]) > parseInt(Object.keys(next)[0])
-            ? -1
-            : 1
-        )
-      }))
-      .sort((prev, next) =>
-        parseInt(Object.keys(prev)[0]) > parseInt(Object.keys(next)[0]) ? -1 : 1
-      );
+          parseInt(Object.keys(prev)[0]) > parseInt(Object.keys(next)[0]) ? -1 : 1
+        );
       // console.log(booksArray);
       // console.timeEnd('books')
 

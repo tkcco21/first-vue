@@ -20,10 +20,13 @@
               v-for="(monthlyBooks, month) in monthly"
               :key="`month${month}`"
             >
-              <p class="book-list__month__title">{{ month }}月</p>
+              <p class="book-list__month__title">
+                {{ month }}月
+                <span>{{ monthlyBooks.count }} 冊</span>
+              </p>
               <ul class="book-list__month__books">
                 <li
-                  v-for="book in monthlyBooks"
+                  v-for="book in monthlyBooks.books"
                   :key="book.id"
                 >
                   <app-card :item="book" detail="books" />
@@ -108,6 +111,8 @@ export default {
     }
   }
   &__title {
+    display: flex;
+    justify-content: space-between;
     padding: 5px 10px;
     font-size: 20px;
     border-bottom: 2px solid var(--gray);

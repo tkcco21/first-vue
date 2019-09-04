@@ -1,7 +1,8 @@
 import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 import path from 'path';
-import CompressionPlugin from 'compression-webpack-plugin';
+// ↓Herokuではサーバーサイドでgzipに変換しないといけないので意味ない
+// import CompressionPlugin from 'compression-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
 import StatsPlugin from 'stats-webpack-plugin';
 // import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
