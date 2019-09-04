@@ -108,10 +108,10 @@ if (isDev) {
   });
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 } else {
-  config.plugins.push(new CompressionPlugin({
-    test: /\.(css)|(js)$/,
-    compressionOptions: { level: 9 },
-  }));
+  // config.plugins.push(new CompressionPlugin({
+  //   test: /\.(css)|(js)$/,
+  //   compressionOptions: { level: 9 },
+  // }));
 }
 
 export default config;
