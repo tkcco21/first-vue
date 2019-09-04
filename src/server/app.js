@@ -23,7 +23,7 @@ const app = express();
 if (isDev) require('./webpackForHmr').default(app);
 // =========================================================
 
-app.use(compression());
+// app.use(compression());
 app.use(logger('dev'));
 app.use(helmet());
 app.use(cookieParser());
