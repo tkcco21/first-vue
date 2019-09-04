@@ -1,7 +1,6 @@
 import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 import path from 'path';
-import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
 import StatsPlugin from 'stats-webpack-plugin';
 // import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
@@ -21,9 +20,6 @@ const config = {
   },
   plugins: [
     new VueLoaderPlugin(),
-    new MiniCssExtractPlugin({
-      filename: 'css/[name].css',
-    }),
     new WebpackNotifierPlugin({
       excludeWarnings: true,
       title: 'First Vue'
@@ -65,17 +61,15 @@ const config = {
       {
         test: /\.(post)?css$/,
         use: [
-          isDev ? 'vue-style-loader' : {
-            loader: MiniCssExtractPlugin.loader
-          },
+          'vue-style-loader',
           {
             loader: 'css-loader',
-            options: { sourceMap: true, importLoaders: 1 },
+            options: { sourceMap: isDev, importLoaders: 1 },
           },
           {
             loader: 'postcss-loader',
             options: {
-              sourceMap: true,
+              sourceMap: isDev,
               plugins: () => [
                 require('postcss-import')(),
                 require('postcss-mixins')({

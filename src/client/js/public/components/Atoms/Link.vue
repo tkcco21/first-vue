@@ -3,6 +3,7 @@
     :is="tag"
     :[href]="to"
     :target="external ? '_blank' : false"
+    :rel="external ? 'noopener' : false"
     :class="classes"
   >
     {{ text }}
