@@ -1,6 +1,7 @@
 import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 import path from 'path';
+import CompressionPlugin from 'compression-webpack-plugin';
 import WebpackNotifierPlugin from 'webpack-notifier';
 import StatsPlugin from 'stats-webpack-plugin';
 // import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
@@ -106,6 +107,11 @@ if (isDev) {
     hotUpdateMainFilename: 'js/.hot/[hash].hot-update.json'
   });
   config.plugins.push(new webpack.HotModuleReplacementPlugin());
+} else {
+  config.plugins.push(new CompressionPlugin({
+    test: /\.(css)|(js)$/,
+    compressionOptions: { level: 9 },
+  }));
 }
 
 export default config;

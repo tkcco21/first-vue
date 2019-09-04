@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import compression from 'compression'
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
 import logger from 'morgan';
@@ -22,6 +23,7 @@ const app = express();
 if (isDev) require('./webpackForHmr').default(app);
 // =========================================================
 
+app.use(compression());
 app.use(logger('dev'));
 app.use(helmet());
 app.use(cookieParser());
