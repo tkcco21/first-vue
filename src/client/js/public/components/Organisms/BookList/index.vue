@@ -41,7 +41,6 @@
 </template>
 
 <script>
-import sanitizeHtml from 'sanitize-html';
 import { Card } from '@Public/components/Molecules';
 
 export default {
@@ -52,11 +51,6 @@ export default {
     bookList: {
       type: Array,
       required: true,
-    },
-  },
-  computed: {
-    sanitizeHtml() {
-      return sanitizeHtml;
     },
   },
 };

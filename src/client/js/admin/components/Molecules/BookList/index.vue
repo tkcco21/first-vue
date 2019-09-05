@@ -21,18 +21,18 @@
             <template v-for="(monthlyBooks, month) in monthly">
               <v-flex :key="`${month}month`" xs12>
                 <v-card
-                  class="green lighten-2 pa-0"
+                  class="green lighten-2 pa-2"
                   flat
                   dark
                 >
-                  <v-card-title class="subheading font-weight-bold pa-2">
-                    {{ month }}月
+                  <v-card-title class="subheading font-weight-bold pa-0">
+                    {{ month }}月（{{ monthlyBooks.count }}冊）
                   </v-card-title>
                 </v-card>
               </v-flex>
 
               <v-flex
-                v-for="book in monthlyBooks"
+                v-for="book in monthlyBooks.books"
                 :key="book.id"
                 class="pa-2"
                 align-start
@@ -42,21 +42,9 @@
                 xs4
               >
                 <v-card class="pa-2">
-                  <!-- TODO: ここのif文あとでなくす -->
-                  <template v-if="book.imageUrl">
-                    <a :href="book.itemUrl" target="_blank">
-                      <img :src="book.imageUrl" :alt="book.title">
-                    </a>
-                  </template>
-                  <template v-else>
-                    <v-img
-                      class="text-lg-center text-md-center text-sm-center"
-                      height="180"
-                      v-html="sanitizeHtml(book.itemUrl, {
-                        allowedTags: ['a', 'img']
-                      })"
-                    />
-                  </template>
+                  <a :href="book.itemUrl" target="_blank">
+                    <img :src="book.imageUrl" :alt="book.title">
+                  </a>
 
                   <v-card-title class="pa-0 mt-2">
                     <h3 class="subheading font-weight-bold mb-0">{{ book.title }}</h3>
@@ -99,18 +87,11 @@
 </template>
 
 <script>
-import sanitizeHtml from 'sanitize-html';
-
 export default {
   props: {
     books: {
       type: Array,
-      default: () => [],
-    },
-  },
-  computed: {
-    sanitizeHtml() {
-      return sanitizeHtml;
+      required: true,
     },
   },
 };
