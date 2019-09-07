@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 // import Home from '@Public/Pages/Home';
-import BookList from '@Public/Pages/BookList';
+import Books from '@Public/Pages/Books';
 import BookDetail from '@Public/Pages/BookDetail';
 import NotFound from '@Public/Pages/NotFound';
 
@@ -20,7 +20,7 @@ export default new VueRouter({
       name: 'books',
       // path: '/books',
       path: '',
-      component: BookList,
+      component: Books,
     },
     {
       name: 'bookDetail',

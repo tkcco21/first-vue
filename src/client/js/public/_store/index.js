@@ -19,7 +19,18 @@ export default new Vuex.Store({
     },
     errorMessage: '',
   },
-  getters: {},
+  getters: {
+    yearlyNumberOfBooks: (state) => {
+      const yearlyNumberOfBooks = state.bookList.reduce((acc, value) => {
+        let num = 0;
+        value[Object.keys(value)[0]].forEach((item) => {
+          num += item[Object.keys(item)].count;
+        });
+        return Object.assign({}, acc, { [Object.keys(value)[0]]: num });
+      }, {});
+      return yearlyNumberOfBooks;
+    },
+  },
   mutations: {
     failRequest(state, { message }) {
       state.errorMessage = message;

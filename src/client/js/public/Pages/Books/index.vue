@@ -1,22 +1,33 @@
 <template lang="html">
-  <section class="book-list">
+  <section>
     <app-page-title title="読んだ本たち" text="※ 本の画像部分のリンクはすべてアフィリエイトリンクになっています。" />
-    <app-book-list :book-list="bookList" />
+
+    <ul class="book-list">
+      <app-yearly-books
+        v-for="(yearly, yearIndex) in bookList"
+        :key="yearIndex"
+        :yearly="yearly"
+        :yearly-books-count="yearlyNumberOfBooks"
+      />
+    </ul>
   </section>
 </template>
 
 <script>
 import { PageTitle } from '@Public/components/Molecules';
-import { BookList } from '@Public/components/Organisms';
+import { YearlyBooks } from '@Public/components/Organisms';
 
 export default {
   components: {
     appPageTitle: PageTitle,
-    appBookList: BookList,
+    appYearlyBooks: YearlyBooks,
   },
   computed: {
     bookList() {
       return this.$store.state.bookList;
+    },
+    yearlyNumberOfBooks() {
+      return this.$store.getters.yearlyNumberOfBooks;
     },
   },
   created() {
@@ -24,3 +35,9 @@ export default {
   },
 };
 </script>
+
+<style lang="postcss" scoped>
+.book-list {
+  margin-top: 20px;
+}
+</style>

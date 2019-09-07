@@ -1,7 +1,7 @@
-import BookList from './BookList';
+import YearlyBooks from './Books/Yearly';
 import BookDetail from './BookDetail';
 
 export {
-  BookList,
+  YearlyBooks,
   BookDetail,
 };
