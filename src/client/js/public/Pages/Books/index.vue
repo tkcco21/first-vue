@@ -8,6 +8,8 @@
         :key="yearIndex"
         :yearly="yearly"
         :yearly-books-count="yearlyNumberOfBooks"
+        :shown-year-array="shownYearArray"
+        @toggleCount="toggleCount"
       />
     </ul>
   </section>
@@ -22,6 +24,11 @@ export default {
     appPageTitle: PageTitle,
     appYearlyBooks: YearlyBooks,
   },
+  data() {
+    return {
+      shownYearArray: [],
+    };
+  },
   computed: {
     bookList() {
       return this.$store.state.bookList;
@@ -33,11 +40,26 @@ export default {
   created() {
     this.$store.dispatch('getAllBooks');
   },
+  methods: {
+    toggleCount(targetYear) {
+      if (this.shownYearArray.includes(targetYear)) {
+        this.shownYearArray = this.shownYearArray.filter(year => year !== targetYear);
+      } else {
+        this.shownYearArray.push(targetYear);
+      }
+    },
+  },
 };
 </script>
 
 <style lang="postcss" scoped>
 .book-list {
   margin-top: 20px;
+  & > li {
+    margin-top: 20px;
+    &:first-child {
+      margin-top: 0;
+    }
+  }
 }
 </style>

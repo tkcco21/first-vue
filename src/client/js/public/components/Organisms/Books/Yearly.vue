@@ -2,23 +2,45 @@
   <li>
     <template v-for="(yearlyBooks, year, yearlyBooksIndex) in yearly">
       <div :key="`year${year}`" class="year">
-        <p class="year__heading">{{ year }}年</p>
-        <span class="year__count">{{ yearlyBooksCount[year] }}冊</span>
+        <p class="year__heading">
+          {{ year }}年
+          <template v-if="shownYearArray.includes(year)">
+            <button @click="$emit('toggleCount', year)">本を非表示にする</button>
+          </template>
+        </p>
+
+        <template v-if="shownYearArray.includes(year)">
+          <span class="year__count">{{ yearlyBooksCount[year] }}冊</span>
+        </template>
       </div>
 
-      <app-monthly
-        :key="`year${yearlyBooksIndex}`"
-        :yearly-books="yearlyBooks"
-      />
+      <template v-if="shownYearArray.includes(year)">
+        <app-monthly
+          :key="`year${yearlyBooksIndex}`"
+          :yearly-books="yearlyBooks"
+        />
+      </template>
+      <template v-else>
+        <app-yearly-count
+          :key="`year${yearlyBooksIndex}`"
+          :year="year"
+          :books-count="yearlyBooksCount[year]"
+          @toggleCount="$emit('toggleCount', year)"
+        />
+      </template>
     </template>
   </li>
 </template>
 
 <script>
 import Monthly from './Monthly';
+import YearlyCount from './YearlyCount';
 
 export default {
-  components: { appMonthly: Monthly },
+  components: {
+    appMonthly: Monthly,
+    appYearlyCount: YearlyCount,
+  },
   props: {
     yearly: {
       type: Object,
@@ -26,6 +48,10 @@ export default {
     },
     yearlyBooksCount: {
       type: Object,
+      required: true,
+    },
+    shownYearArray: {
+      type: Array,
       required: true,
     },
   },
