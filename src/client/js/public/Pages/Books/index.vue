@@ -57,6 +57,7 @@ export default {
   margin-top: 20px;
   & > li {
     margin-top: 20px;
+    overflow: hidden;
     &:first-child {
       margin-top: 0;
     }

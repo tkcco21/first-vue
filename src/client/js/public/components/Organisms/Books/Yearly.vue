@@ -1,33 +1,31 @@
 <template>
   <li>
-    <template v-for="(yearlyBooks, year, yearlyBooksIndex) in yearly">
+    <template v-for="(yearlyBooks, year) in yearly">
       <div :key="`year${year}`" class="year">
-        <p class="year__heading">
-          {{ year }}年
-          <template v-if="shownYearArray.includes(year)">
-            <button @click="$emit('toggleCount', year)">本を非表示にする</button>
-          </template>
-        </p>
-
-        <template v-if="shownYearArray.includes(year)">
-          <span class="year__count">{{ yearlyBooksCount[year] }}冊</span>
-        </template>
+        <p class="year__heading">{{ year }}年</p>
       </div>
 
-      <template v-if="shownYearArray.includes(year)">
+      <app-yearly-count
+        :key="`hide${year}`"
+        :year="year"
+        :books-count="yearlyBooksCount[year]"
+        :show="shownYearArray.includes(year)"
+        @toggleCount="$emit('toggleCount', year)"
+      />
+
+      <transition
+        :key="`show${year}`"
+        name="slide"
+        @enter="enter"
+        @leave="leave"
+        @before-enter="beforeEnter"
+        @before-leave="beforeLeave"
+      >
         <app-monthly
-          :key="`year${yearlyBooksIndex}`"
+          v-show="shownYearArray.includes(year)"
           :yearly-books="yearlyBooks"
         />
-      </template>
-      <template v-else>
-        <app-yearly-count
-          :key="`year${yearlyBooksIndex}`"
-          :year="year"
-          :books-count="yearlyBooksCount[year]"
-          @toggleCount="$emit('toggleCount', year)"
-        />
-      </template>
+      </transition>
     </template>
   </li>
 </template>
@@ -55,14 +53,29 @@ export default {
       required: true,
     },
   },
+  methods: {
+    beforeEnter(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = 0;
+    },
+    enter(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = `${el.scrollHeight}px`;
+    },
+    beforeLeave(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = `${el.scrollHeight}px`;
+    },
+    leave(el) {
+      // eslint-disable-next-line no-param-reassign
+      el.style.height = 0;
+    },
+  },
 };
 </script>
 
 <style lang="postcss" scoped>
 .year {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
   padding: 10px;
   line-height: 1.2;
   border-left: 8px solid color(var(--keycolor) a(80%));
@@ -77,14 +90,8 @@ export default {
       font-size: 20px;
     }
   }
-  &__count {
-    font-size: 16px;
-    @mixin tab {
-      font-size: 14px;
-    }
-    @mixin mobile {
-      font-size: 14px;
-    }
-  }
+}
+.slide-enter-active, .slide-leave-active {
+  transition: height .5s;
 }
 </style>
