@@ -24,6 +24,7 @@
         <app-monthly
           v-show="shownYearArray.includes(year)"
           :yearly-books="yearlyBooks"
+          :style="{ height: `${height}px` }"
         />
       </transition>
     </template>
@@ -31,6 +32,7 @@
 </template>
 
 <script>
+// import { Text } from '@Public/components/Atoms';
 import Monthly from './Monthly';
 import YearlyCount from './YearlyCount';
 
@@ -38,6 +40,7 @@ export default {
   components: {
     appMonthly: Monthly,
     appYearlyCount: YearlyCount,
+    // appText: Text,
   },
   props: {
     yearly: {
@@ -53,22 +56,23 @@ export default {
       required: true,
     },
   },
+  data() {
+    return {
+      height: 0,
+    };
+  },
   methods: {
-    beforeEnter(el) {
-      // eslint-disable-next-line no-param-reassign
-      el.style.height = 0;
+    beforeEnter() {
+      this.height = 0;
     },
     enter(el) {
-      // eslint-disable-next-line no-param-reassign
-      el.style.height = `${el.scrollHeight}px`;
+      this.height = el.scrollHeight;
     },
     beforeLeave(el) {
-      // eslint-disable-next-line no-param-reassign
-      el.style.height = `${el.scrollHeight}px`;
+      this.height = el.scrollHeight;
     },
-    leave(el) {
-      // eslint-disable-next-line no-param-reassign
-      el.style.height = 0;
+    leave() {
+      this.height = 0;
     },
   },
 };
