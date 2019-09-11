@@ -69,7 +69,7 @@ export default {
       }
       @mixin tab {
         margin-right: 5%;
-        width: 60%;
+        width: 30%;
       }
       @mixin mobile {
         margin-right: 5%;
