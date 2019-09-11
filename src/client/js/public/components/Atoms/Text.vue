@@ -13,6 +13,52 @@ export default {
       type: String,
       default: 'h1',
     },
+
+    // ↓For Classes
+    fontXl: { // 26
+      type: Boolean,
+      default: false,
+    },
+    fontL: { // 24
+      type: Boolean,
+      default: false,
+    },
+    fontM: { // 20
+      type: Boolean,
+      default: false,
+    },
+    fontS: { // 16
+      type: Boolean,
+      default: false,
+    },
+    fontXs: { // 14
+      type: Boolean,
+      default: false,
+    },
+    keycolor: {
+      type: Boolean,
+      default: false,
+    },
+    darkGray: {
+      type: Boolean,
+      default: false,
+    },
+    left: {
+      type: Boolean,
+      default: false,
+    },
+    right: {
+      type: Boolean,
+      default: false,
+    },
+    center: {
+      type: Boolean,
+      default: false,
+    },
+    underline: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

@@ -1,7 +1,10 @@
 <template>
   <div class="count">
     <p>{{ booksCount }}冊</p>
-    <button @click="$emit('toggleCount')">
+    <button
+      :class="show && 'is-show'"
+      @click="$emit('toggleCount')"
+    >
       読んだ本を{{ show ? '非表示' : '表示' }}
     </button>
   </div>
@@ -32,8 +35,16 @@ export default {
     font-size: 16px;
   }
   button {
+    padding: 3px 5px;
     margin-left: 20px;
+    color: var(--keycolor);
     font-size: 14px;
+    text-decoration: underline;
+    border-radius: 5px;
+    transition: .5s;
+    &.is-show {
+      color: var(--darkGray);
+    }
   }
 }
 </style>

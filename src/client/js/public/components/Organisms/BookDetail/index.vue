@@ -42,23 +42,55 @@ export default {
 
 <style lang="postcss" scoped>
 .book-detail {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
   margin-top: 20px;
+  @mixin pc {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+  }
   &__image {
-    width: 28%;
     text-align: center;
+    @mixin pc {
+      width: 28%;
+    }
+    @mixin tab {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    @mixin mobile {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
     img {
-      margin-bottom: 10px;
+      @mixin pc {
+        margin-bottom: 10px;
+      }
+      @mixin tab {
+        margin-right: 5%;
+        width: 60%;
+      }
+      @mixin mobile {
+        margin-right: 5%;
+        width: 30%;
+      }
     }
   }
   &__body {
     padding: 2% 3%;
-    width: 70%;
     border: 2px solid var(--lightGray);
     border-radius: 8px;
     box-sizing: border-box;
+    @mixin pc {
+      width: 70%;
+    }
+    @mixin tab {
+      margin-top: 5%;
+    }
+    @mixin mobile {
+      margin-top: 5%;
+    }
   }
   &__title {
     font-size: 22px;
