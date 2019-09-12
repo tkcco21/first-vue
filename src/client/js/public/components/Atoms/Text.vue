@@ -35,7 +35,7 @@ export default {
       type: Boolean,
       default: false,
     },
-    keycolor: {
+    keyColor: {
       type: Boolean,
       default: false,
     },

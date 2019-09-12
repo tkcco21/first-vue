@@ -57,8 +57,8 @@ export default {
       padding: 2px 10px;
     }
     &.active {
-      color: var(--keycolor);
-      border-color: var(--keycolor);
+      color: var(--keyColor);
+      border-color: var(--keyColor);
     }
   }
 }

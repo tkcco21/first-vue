@@ -63,7 +63,7 @@ export default {
   padding: 20px 10px;
   width: var(--sidebarWidth);
   height: 100%;
-  background-color: var(--keycolor);
+  background-color: var(--keyColor);
   &__title {
     color: #fff;
     font-size: 24px;
@@ -72,9 +72,9 @@ export default {
   &__list {
     margin-top: 20px;
     padding: 0;
-    background-color: var(--keycolor);
+    background-color: var(--keyColor);
     &__children {
-      background-color: var(--keycolor);
+      background-color: var(--keyColor);
     }
     &__title {
       display: flex;
@@ -98,7 +98,7 @@ export default {
         background-color: rgba(220, 220, 220, .3);
       }
       &.router-link-active {
-        color: var(--keycolor);
+        color: var(--keyColor);
         background-color: #fff;
         cursor: default;
       }

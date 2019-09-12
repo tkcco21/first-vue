@@ -161,7 +161,7 @@ export default {
     border-radius: 8px;
   }
   &--bg-key {
-    background-color: var(--keycolor);
+    background-color: var(--keyColor);
   }
   &--bg-second {
     background-color: var(--secondColor);

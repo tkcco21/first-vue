@@ -57,7 +57,7 @@ export default {
     overflow: hidden;
     position: relative;
     padding-top: 31px;
-    border-bottom: 1px solid var(--keycolor);
+    border-bottom: 1px solid var(--keyColor);
     @mixin mobile {
       padding-top: 25px;
     }
@@ -74,7 +74,7 @@ export default {
     color: #fff;
     font-weight: var(--black);
     font-size: 12px;
-    background-color: var(--keycolor);
+    background-color: var(--keyColor);
     cursor: pointer;
     transition: all .5s;
     &.active {

@@ -82,8 +82,8 @@ export default {
 .year {
   padding: 10px;
   line-height: 1.2;
-  border-left: 8px solid color(var(--keycolor) a(80%));
-  border-bottom: 2px solid color(var(--keycolor) a(80%));
+  border-left: 8px solid color(var(--keyColor) a(80%));
+  border-bottom: 2px solid color(var(--keyColor) a(80%));
   background-color: var(--superLightGray);
   &__heading {
     font-size: 26px;

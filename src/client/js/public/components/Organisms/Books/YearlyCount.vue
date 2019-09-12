@@ -37,7 +37,7 @@ export default {
   button {
     padding: 3px 5px;
     margin-left: 20px;
-    color: var(--keycolor);
+    color: var(--keyColor);
     font-size: 14px;
     text-decoration: underline;
     border-radius: 5px;
