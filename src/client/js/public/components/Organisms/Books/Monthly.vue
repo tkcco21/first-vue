@@ -5,10 +5,10 @@
         v-for="(monthlyBooks, month) in monthly"
         :key="`month${month}`"
       >
-        <p class="month__heading">
-          {{ month }}月
-          <span>{{ monthlyBooks.count }} 冊</span>
-        </p>
+        <div class="month__heading">
+          <app-text tag="p" :text="`${month}月`" font-m />
+          <app-text tag="p" :text="`${monthlyBooks.count}冊`" font-s />
+        </div>
         <ul class="month__books">
           <li
             v-for="book in monthlyBooks.books"
@@ -23,10 +23,14 @@
 </template>
 
 <script>
+import { Text } from '@Public/components/Atoms';
 import { Card } from '@Public/components/Molecules';
 
 export default {
-  components: { appCard: Card },
+  components: {
+    appText: Text,
+    appCard: Card,
+  },
   props: {
     yearlyBooks: {
       type: Array,
@@ -38,12 +42,12 @@ export default {
 
 <style lang="postcss" scoped>
 .month {
-  margin-top: 15px;
+  margin-top: 5px;
   @mixin tab {
-    margin-top: 2%;
+    margin-top: 1%;
   }
   @mixin mobile {
-    margin-top: 2%;
+    margin-top: 1%;
   }
   & > li {
     margin-top: 10px;
@@ -62,17 +66,11 @@ export default {
 
 .month__heading {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   padding: 5px 10px;
-  font-size: 20px;
   border-bottom: 2px solid var(--gray);
   background-color: var(--lightGray);
-  @mixin tab {
-    font-size: 17px;
-  }
-  @mixin mobile {
-    font-size: 17px;
-  }
 }
 
 .month__books {

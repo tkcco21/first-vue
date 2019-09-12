@@ -2,7 +2,7 @@
   <li>
     <template v-for="(yearlyBooks, year) in yearly">
       <div :key="`year${year}`" class="year">
-        <p class="year__heading">{{ year }}年</p>
+        <app-text tag="p" :text="`${year}年`" font-l />
       </div>
 
       <app-yearly-count
@@ -32,7 +32,7 @@
 </template>
 
 <script>
-// import { Text } from '@Public/components/Atoms';
+import { Text } from '@Public/components/Atoms';
 import Monthly from './Monthly';
 import YearlyCount from './YearlyCount';
 
@@ -40,7 +40,7 @@ export default {
   components: {
     appMonthly: Monthly,
     appYearlyCount: YearlyCount,
-    // appText: Text,
+    appText: Text,
   },
   props: {
     yearly: {
@@ -85,17 +85,8 @@ export default {
   border-left: 8px solid color(var(--keyColor) a(80%));
   border-bottom: 2px solid color(var(--keyColor) a(80%));
   background-color: var(--superLightGray);
-  &__heading {
-    font-size: 26px;
-    @mixin tab {
-      font-size: 20px;
-    }
-    @mixin mobile {
-      font-size: 20px;
-    }
-  }
 }
 .slide-enter-active, .slide-leave-active {
-  transition: height .5s;
+  transition: height 1s ease;
 }
 </style>

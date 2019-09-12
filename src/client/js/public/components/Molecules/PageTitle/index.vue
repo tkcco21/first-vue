@@ -1,8 +1,13 @@
 <template>
   <div class="page-title">
-    <app-text tag="h2" :text="title" />
+    <app-text tag="h2" :text="title" font-l />
     <template v-if="text">
-      <app-text tag="p" :text="text" />
+      <app-text
+        tag="p"
+        :text="text"
+        dark-gray
+        font-xs
+      />
     </template>
   </div>
 </template>

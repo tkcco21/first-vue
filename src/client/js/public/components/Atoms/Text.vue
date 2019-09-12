@@ -1,5 +1,5 @@
 <template>
-  <component :is="tag">{{ text }}</component>
+  <component :is="tag" :class="classes">{{ text }}</component>
 </template>
 
 <script>
@@ -11,27 +11,27 @@ export default {
     },
     tag: {
       type: String,
-      default: 'h1',
+      required: true,
     },
 
     // ↓For Classes
-    fontXl: { // 26
+    fontXl: {
       type: Boolean,
       default: false,
     },
-    fontL: { // 24
+    fontL: {
       type: Boolean,
       default: false,
     },
-    fontM: { // 20
+    fontM: {
       type: Boolean,
       default: false,
     },
-    fontS: { // 16
+    fontS: {
       type: Boolean,
       default: false,
     },
-    fontXs: { // 14
+    fontXs: {
       type: Boolean,
       default: false,
     },
@@ -60,22 +60,78 @@ export default {
       default: false,
     },
   },
+  computed: {
+    classes() {
+      return {
+        'text--font-xl': this.fontXl,
+        'text--font-l': this.fontL,
+        'text--font-m': this.fontM,
+        'text--font-s': this.fontS,
+        'text--font-xs': this.fontXs,
+        'text--key-color': this.keyColor,
+        'text--dark-gray': this.darkGray,
+        'text--left': this.left,
+        'text--right': this.right,
+        'text--center': this.center,
+        'text--underline': this.underline,
+      };
+    },
+  },
 };
 </script>
 
 <style lang="postcss" scoped>
-h2 {
-  font-size: 24px;
-  @mixin mobile {
-    font-size: 20px;
+.text {
+  &--font-xl {
+    font-size: 26px;
+    @mixin mobile {
+      font-size: 23px;
+    }
   }
-}
-p {
-  font-size: 14px;
-  color: var(--darkGray);
-  @mixin mobile {
-    font-size: 12px;
-    line-height: 1.4;
+  &--font-l {
+    font-size: 24px;
+    @mixin mobile {
+      font-size: 21px;
+    }
+  }
+  &--font-m {
+    font-size: 20px;
+    @mixin mobile {
+      font-size: 17px;
+    }
+  }
+  &--font-s {
+    font-size: 16px;
+    @mixin mobile {
+      font-size: 14px;
+    }
+  }
+  &--font-xs {
+    font-size: 14px;
+    @mixin mobile {
+      font-size: 12px;
+    }
+  }
+  &--key-color {
+    color: var(--keyColor);
+  }
+  &--dark-gray {
+    color: var(--darkGray);
+  }
+  &--white {
+    color: #fff;
+  }
+  &--left {
+    text-align: left;
+  }
+  &--right {
+    text-align: right;
+  }
+  &--center {
+    text-align: center;
+  }
+  &--underline {
+    text-decoration: underline;
   }
 }
 </style>

@@ -1,17 +1,26 @@
 <template>
   <div class="count">
-    <p>{{ booksCount }}冊</p>
-    <button
-      :class="show && 'is-show'"
+    <app-text tag="p" :text="`${booksCount}冊`" font-s />
+    <app-button
+      type="button"
+      :text="`読んだ本を${ show ? '非表示' : '表示' }`"
+      font-s
+      key-color
+      underline
+      :class="[show && 'is-show', 'count__button']"
       @click="$emit('toggleCount')"
-    >
-      読んだ本を{{ show ? '非表示' : '表示' }}
-    </button>
+    />
   </div>
 </template>
 
 <script>
+import { Button, Text } from '@Public/components/Atoms';
+
 export default {
+  components: {
+    appButton: Button,
+    appText: Text,
+  },
   props: {
     booksCount: {
       type: Number,
@@ -31,16 +40,8 @@ export default {
   justify-content: flex-start;
   align-items: center;
   padding: 1% 2%;
-  p {
-    font-size: 16px;
-  }
-  button {
-    padding: 3px 5px;
+  &__button {
     margin-left: 20px;
-    color: var(--keyColor);
-    font-size: 14px;
-    text-decoration: underline;
-    border-radius: 5px;
     transition: .5s;
     &.is-show {
       color: var(--darkGray);

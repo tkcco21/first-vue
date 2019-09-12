@@ -15,21 +15,36 @@
     </div>
 
     <div class="book-detail__body">
-      <h3 class="book-detail__title">{{ book.title }}</h3>
-      <p class="book-detail__date">
-        {{ book.completedYear }}年 {{ book.completedMonth }}月 読了
-      </p>
-      <p class="book-detail__desc">{{ book.description }}</p>
+      <app-text
+        tag="h3"
+        :text="book.title"
+        font-m
+        underline
+      />
+      <app-text
+        tag="p"
+        :text="`${book.completedYear}年 ${book.completedMonth}月 読了`"
+        font-xs
+        dark-gray
+        class="book-detail__date"
+      />
+      <app-text
+        tag="p"
+        :text="book.description"
+        font-s
+        class="book-detail__desc"
+      />
     </div>
   </article>
 </template>
 
 <script>
-import { Link } from '@Public/components/Atoms';
+import { Link, Text } from '@Public/components/Atoms';
 
 export default {
   components: {
     appLink: Link,
+    appText: Text,
   },
   props: {
     book: {
@@ -92,18 +107,11 @@ export default {
       margin-top: 5%;
     }
   }
-  &__title {
-    font-size: 22px;
-    text-decoration: underline;
-  }
   &__date {
     margin-top: 10px;
-    color: var(--darkGray);
-    font-size: 14px;
   }
   &__desc {
     margin-top: 10px;
-    font-size: 16px;
     white-space: pre-line;
   }
 }

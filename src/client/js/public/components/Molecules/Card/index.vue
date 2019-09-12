@@ -7,33 +7,39 @@
       rel="noopener"
     >
       <img v-lazy="item.imageUrl" :alt="item.title">
-      <h3 class="card__title">{{ item.title }}</h3>
+      <app-text
+        tag="h3"
+        :text="item.title"
+        font-s
+        left
+        class="card__title"
+      />
     </a>
 
     <template v-if="detail">
-      <div class="card__btn">
-        <app-link
-          text="詳細"
-          :to="`/${detail}/${item.id}`"
-          block
-          bg-key
-          white
-          small
-          round-s
-          padding-s
-          hover-opa
-        />
-      </div>
+      <app-link
+        text="詳細"
+        :to="`/${detail}/${item.id}`"
+        block
+        bg-key
+        white
+        small
+        round-s
+        padding-s
+        hover-opa
+        class="card__btn"
+      />
     </template>
   </div>
 </template>
 
 <script>
-import { Link } from '@Public/components/Atoms';
+import { Link, Text } from '@Public/components/Atoms';
 
 export default {
   components: {
     appLink: Link,
+    appText: Text,
   },
   props: {
     detail: {
@@ -83,15 +89,12 @@ export default {
   }
   &__title {
     margin-top: 10px;
-    font-size: 16px;
     line-height: 1.4;
-    text-align: left;
     @mixin tab {
       margin-top: 3%;
     }
     @mixin mobile {
       margin-top: 2%;
-      font-size: 14px;
     }
   }
   &__btn {
