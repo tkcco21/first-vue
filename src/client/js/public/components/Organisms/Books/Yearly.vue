@@ -3,36 +3,46 @@
     <template v-for="(yearlyBooks, year) in yearly">
       <div :key="`year${year}`" class="year">
         <app-text tag="p" :text="`${year}年`" font-l />
+        <app-button
+          type="button"
+          :text="`読んだ本を${ shownYearArray.includes(year) ? '非表示' : '表示' }`"
+          font-s
+          key-color
+          bg-white
+          round-m
+          padding-s
+          :class="[shownYearArray.includes(year) && 'is-show', 'year__button']"
+          @click="$emit('toggleCount', year)"
+        />
       </div>
-
-      <app-yearly-count
-        :key="`hide${year}`"
-        :year="year"
-        :books-count="yearlyBooksCount[year]"
-        :show="shownYearArray.includes(year)"
-        @toggleCount="$emit('toggleCount', year)"
-      />
 
       <transition
         :key="`show${year}`"
         name="slide"
-        @enter="enter"
-        @leave="leave"
-        @before-enter="beforeEnter"
-        @before-leave="beforeLeave"
       >
-        <app-monthly
-          v-show="shownYearArray.includes(year)"
+        <component
+          :is="shownYearArray.includes(year) ? 'app-monthly' : 'app-yearly-count'"
+          :books-count="yearlyBooksCount[year]"
           :yearly-books="yearlyBooks"
-          :style="{ height: `${height}px` }"
+          @toggleCount="$emit('toggleCount', year)"
         />
       </transition>
+      <app-button
+        v-if="shownYearArray.includes(year)"
+        :key="`hide${year}`"
+        type="button"
+        text="読んだ本を非表示"
+        font-s
+        key-color
+        underline
+        @click="$emit('toggleCount', year)"
+      />
     </template>
   </li>
 </template>
 
 <script>
-import { Text } from '@Public/components/Atoms';
+import { Button, Text } from '@Public/components/Atoms';
 import Monthly from './Monthly';
 import YearlyCount from './YearlyCount';
 
@@ -40,6 +50,7 @@ export default {
   components: {
     appMonthly: Monthly,
     appYearlyCount: YearlyCount,
+    appButton: Button,
     appText: Text,
   },
   props: {
@@ -80,6 +91,9 @@ export default {
 
 <style lang="postcss" scoped>
 .year {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   padding: 10px;
   line-height: 1.2;
   border-left: 8px solid color(var(--keyColor) a(80%));

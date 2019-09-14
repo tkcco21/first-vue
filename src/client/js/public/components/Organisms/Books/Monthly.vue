@@ -31,6 +31,7 @@ export default {
     appText: Text,
     appCard: Card,
   },
+  inheritAttrs: false,
   props: {
     yearlyBooks: {
       type: Array,
@@ -42,16 +43,18 @@ export default {
 
 <style lang="postcss" scoped>
 .month {
-  margin-top: 5px;
+  padding: 15px;
+  border: solid 1px var(--lightGray);
+  border-top: none;
+  background-color: var(--superLightGray);
   @mixin tab {
-    margin-top: 1%;
+    padding: 2%;
   }
   @mixin mobile {
-    margin-top: 1%;
+    padding: 2%;
   }
   & > li {
     margin-top: 10px;
-    padding: 0 2%;
     &:first-child {
       margin-top: 0;
     }

@@ -89,6 +89,10 @@ export default {
       type: Boolean,
       default: false,
     },
+    bgWhite: {
+      type: Boolean,
+      default: false,
+    },
     hoverOpa: {
       type: Boolean,
       default: false,
@@ -116,6 +120,7 @@ export default {
         'button--round-l': this.roundL,
         'button--bg-key': this.bgKey,
         'button--bg-second': this.bgSecond,
+        'button--bg-white': this.bgWhite,
         'button--hover-opa': this.hoverOpa,
       };
     },
@@ -189,6 +194,9 @@ export default {
   }
   &--bg-second {
     background-color: var(--secondColor);
+  }
+  &--bg-white {
+    background-color: #fff;
   }
   &--hover-opa {
     transition: opacity .5s;
