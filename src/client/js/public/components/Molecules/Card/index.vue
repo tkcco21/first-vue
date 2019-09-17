@@ -7,6 +7,7 @@
       rel="noopener"
     >
       <img v-lazy="item.imageUrl" :alt="item.title">
+      <!-- <img :src="item.imageUrl" :alt="item.title"> -->
       <app-text
         tag="h3"
         :text="item.title"

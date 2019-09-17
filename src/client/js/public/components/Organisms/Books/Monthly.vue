@@ -1,33 +1,45 @@
 <template>
-  <ul class="month">
-    <template v-for="monthly in yearlyBooks">
-      <li
-        v-for="(monthlyBooks, month) in monthly"
-        :key="`month${month}`"
-      >
-        <div class="month__heading">
-          <app-text tag="p" :text="`${month}月`" font-m />
-          <app-text tag="p" :text="`${monthlyBooks.count}冊`" font-s />
-        </div>
-        <ul class="month__books">
-          <li
-            v-for="book in monthlyBooks.books"
-            :key="book.id"
-          >
-            <app-card :item="book" detail="books" />
-          </li>
-        </ul>
-      </li>
-    </template>
-  </ul>
+  <div class="monthly">
+    <ul class="monthly__list">
+      <template v-for="monthly in yearlyBooks">
+        <li
+          v-for="(monthlyBooks, month) in monthly"
+          :key="`month${month}`"
+        >
+          <div class="monthly__heading">
+            <app-text tag="p" :text="`${month}月`" font-m />
+            <app-text tag="p" :text="`${monthlyBooks.count}冊`" font-s />
+          </div>
+          <ul class="monthly__books">
+            <li
+              v-for="book in monthlyBooks.books"
+              :key="book.id"
+            >
+              <app-card :item="book" detail="books" />
+            </li>
+          </ul>
+        </li>
+      </template>
+    </ul>
+    <app-button
+      class="monthly__button"
+      type="button"
+      text="読んだ本を非表示"
+      font-s
+      key-color
+      underline
+      @click="$emit('toggleYear')"
+    />
+  </div>
 </template>
 
 <script>
-import { Text } from '@Public/components/Atoms';
+import { Button, Text } from '@Public/components/Atoms';
 import { Card } from '@Public/components/Molecules';
 
 export default {
   components: {
+    appButton: Button,
     appText: Text,
     appCard: Card,
   },
@@ -42,7 +54,7 @@ export default {
 </script>
 
 <style lang="postcss" scoped>
-.month {
+.monthly {
   padding: 15px;
   border: solid 1px var(--lightGray);
   border-top: none;
@@ -53,6 +65,8 @@ export default {
   @mixin mobile {
     padding: 2%;
   }
+}
+.monthly__list {
   & > li {
     margin-top: 10px;
     &:first-child {
@@ -67,7 +81,7 @@ export default {
   }
 }
 
-.month__heading {
+.monthly__heading {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -76,7 +90,7 @@ export default {
   background-color: var(--lightGray);
 }
 
-.month__books {
+.monthly__books {
   display: flex;
   justify-content: flex-start;
   align-items: stretch;
@@ -123,5 +137,9 @@ export default {
       }
     }
   }
+}
+
+.monthly__button {
+  margin-top: 10px;
 }
 </style>

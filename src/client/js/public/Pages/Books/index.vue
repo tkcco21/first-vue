@@ -9,7 +9,7 @@
         :yearly="yearly"
         :yearly-books-count="yearlyNumberOfBooks"
         :shown-year-array="shownYearArray"
-        @toggleCount="toggleCount"
+        @toggleYear="toggleYear"
       />
     </ul>
   </section>
@@ -41,7 +41,7 @@ export default {
     this.$store.dispatch('getAllBooks');
   },
   methods: {
-    toggleCount(targetYear) {
+    toggleYear(targetYear) {
       if (this.shownYearArray.includes(targetYear)) {
         this.shownYearArray = this.shownYearArray.filter(year => year !== targetYear);
       } else {

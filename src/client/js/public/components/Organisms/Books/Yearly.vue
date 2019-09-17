@@ -12,31 +12,24 @@
           round-m
           padding-s
           :class="[shownYearArray.includes(year) && 'is-show', 'year__button']"
-          @click="$emit('toggleCount', year)"
+          @click="toggleYear(year)"
         />
       </div>
 
       <transition
         :key="`show${year}`"
-        name="slide"
+        name="fade"
+        mode="out-in"
       >
-        <component
-          :is="shownYearArray.includes(year) ? 'app-monthly' : 'app-yearly-count'"
-          :books-count="yearlyBooksCount[year]"
-          :yearly-books="yearlyBooks"
-          @toggleCount="$emit('toggleCount', year)"
-        />
+        <keep-alive>
+          <component
+            :is="shownYearArray.includes(year) ? 'app-monthly' : 'app-yearly-count'"
+            :books-count="yearlyBooksCount[year]"
+            :yearly-books="yearlyBooks"
+            @toggleYear="toggleYear(year)"
+          />
+        </keep-alive>
       </transition>
-      <app-button
-        v-if="shownYearArray.includes(year)"
-        :key="`hide${year}`"
-        type="button"
-        text="読んだ本を非表示"
-        font-s
-        key-color
-        underline
-        @click="$emit('toggleCount', year)"
-      />
     </template>
   </li>
 </template>
@@ -67,23 +60,9 @@ export default {
       required: true,
     },
   },
-  data() {
-    return {
-      height: 0,
-    };
-  },
   methods: {
-    beforeEnter() {
-      this.height = 0;
-    },
-    enter(el) {
-      this.height = el.scrollHeight;
-    },
-    beforeLeave(el) {
-      this.height = el.scrollHeight;
-    },
-    leave() {
-      this.height = 0;
+    toggleYear(year) {
+      this.$emit('toggleYear', year);
     },
   },
 };
@@ -100,7 +79,13 @@ export default {
   border-bottom: 2px solid color(var(--keyColor) a(80%));
   background-color: var(--superLightGray);
 }
-.slide-enter-active, .slide-leave-active {
-  transition: height 1s ease;
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+.fade-enter-to, .fade-leave {
+  opacity: 1;
+}
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .3s ease;
 }
 </style>
