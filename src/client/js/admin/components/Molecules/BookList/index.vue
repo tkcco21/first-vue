@@ -1,7 +1,7 @@
 <template>
   <v-expansion-panel expand>
     <template
-      v-for="yearly in books"
+      v-for="yearly in bookList"
     >
       <v-expansion-panel-content
         v-for="(everyBooks, year) in yearly"
@@ -89,7 +89,7 @@
 <script>
 export default {
   props: {
-    books: {
+    bookList: {
       type: Array,
       required: true,
     },

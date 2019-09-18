@@ -16,11 +16,11 @@ export default {
   },
   computed: {
     book() {
-      return this.$store.state.book;
+      return this.$store.state.books.book;
     },
   },
   created() {
-    this.$store.dispatch('getBook', this.$route.params);
+    this.$store.dispatch('books/getBook', this.$route.params);
   },
 };
 </script>

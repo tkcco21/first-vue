@@ -18,8 +18,8 @@ export default {
   },
   watch: {
     $route() {
-      this.$store.dispatch('clearMessage');
-      this.$store.dispatch('resetForm');
+      this.$store.dispatch('books/clearMessage');
+      this.$store.dispatch('books/resetForm');
     },
   },
 };

@@ -17,31 +17,31 @@ export default {
   components: { BookForm },
   computed: {
     doneMessage() {
-      return this.$store.state.doneMessage;
+      return this.$store.state.books.doneMessage;
     },
     errorMessage() {
-      return this.$store.state.errorMessage;
+      return this.$store.state.books.errorMessage;
     },
     targetBook() {
-      return this.$store.state.targetBook;
+      return this.$store.state.books.targetBook;
     },
   },
   created() {
-    this.$store.dispatch('getBook', { id: this.$route.params.id });
+    this.$store.dispatch('books/getBook', { id: this.$route.params.id });
   },
   methods: {
     updateValue(target) {
-      this.$store.dispatch('updateValue', target);
+      this.$store.dispatch('books/updateValue', target);
     },
     clear() {
-      this.$store.dispatch('clearMessage');
+      this.$store.dispatch('books/clearMessage');
     },
     invalidateSubmit() {
-      this.$store.dispatch('invalidate', '必須項目が未入力か、ちゃんとした値が入力されてないよ。');
+      this.$store.dispatch('books/invalidate', '必須項目が未入力か、ちゃんとした値が入力されてないよ。');
     },
     handleSubmit(book) {
-      this.$store.dispatch('editBook', book).then(() => {
-        this.$store.dispatch('resetForm');
+      this.$store.dispatch('books/editBook', book).then(() => {
+        this.$store.dispatch('books/resetForm');
       });
     },
   },

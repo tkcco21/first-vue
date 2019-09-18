@@ -21,7 +21,7 @@ router.beforeEach((to, from, next) => {
   const isPublic = to.matched.some(route => route.meta.isPublic);
 
   if (!isPublic && !store.state.auth.token) {
-    return store.dispatch('checkToken')
+    return store.dispatch('auth/checkToken')
       .then(() => next())
       .catch(() => next({
         path: '/admin/signin',

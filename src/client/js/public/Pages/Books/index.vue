@@ -31,14 +31,14 @@ export default {
   },
   computed: {
     bookList() {
-      return this.$store.state.bookList;
+      return this.$store.state.books.bookList;
     },
     yearlyNumberOfBooks() {
-      return this.$store.getters.yearlyNumberOfBooks;
+      return this.$store.getters['books/yearlyNumberOfBooks'];
     },
   },
   created() {
-    this.$store.dispatch('getAllBooks');
+    this.$store.dispatch('books/getAllBooks');
   },
   methods: {
     toggleYear(targetYear) {

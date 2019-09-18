@@ -17,20 +17,20 @@
     <div class="book-detail__body">
       <app-text
         tag="h3"
-        :text="book.title"
+        :text="book.title || ''"
         font-m
         underline
       />
       <app-text
         tag="p"
-        :text="`${book.completedYear}年 ${book.completedMonth}月 読了`"
+        :text="`${book.completedYear || ''}年 ${book.completedMonth || ''}月 読了`"
         font-xs
         dark-gray
         class="book-detail__date"
       />
       <app-text
         tag="p"
-        :text="book.description"
+        :text="book.description || ''"
         font-s
         class="book-detail__desc"
       />

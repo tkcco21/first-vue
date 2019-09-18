@@ -1,5 +1,5 @@
 <template lang="html">
-  <book-list :books="books" />
+  <book-list :book-list="bookList" />
 </template>
 
 <script>
@@ -8,12 +8,12 @@ import { BookList } from '@Admin/components/Molecules';
 export default {
   components: { BookList },
   computed: {
-    books() {
-      return this.$store.state.books;
+    bookList() {
+      return this.$store.state.books.bookList;
     },
   },
   created() {
-    this.$store.dispatch('getAllBooks');
+    this.$store.dispatch('books/getAllBooks');
   },
 };
 </script>

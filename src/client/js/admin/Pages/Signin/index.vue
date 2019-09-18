@@ -43,13 +43,13 @@ export default {
       this[target.name] = target.value;
     },
     clearMessage() {
-      this.$store.dispatch('clearMessage');
+      this.$store.dispatch('auth/clearMessage');
     },
     applySignin() {
-      this.$store.dispatch('applySignin');
+      this.$store.dispatch('auth/applySignin');
     },
     signin(auth) {
-      this.$store.dispatch('signin', auth);
+      this.$store.dispatch('auth/signin', auth);
     },
   },
 };
