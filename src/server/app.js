@@ -1,5 +1,6 @@
 import express from 'express';
 import path from 'path';
+import favicon from 'serve-favicon';
 import compression from 'compression'
 import cookieParser from 'cookie-parser';
 import helmet from 'helmet';
@@ -36,6 +37,7 @@ app.use(function(req, res, next) {
   res.header('Access-Control-Allow-Methods', 'PUT, POST, GET, DELETE, PATCH, OPTIONS');
   next();
 });
+app.use(favicon(`${rootDir}dist/favicon.png`));
 
 // view engine setup
 app.set('views', `${rootDir}dist/views/`);
