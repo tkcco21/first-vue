@@ -18,8 +18,8 @@
         "map": [
           ["@Config", "./config"],
           ["@Server", "./src/server"],
-          ["@Admin", "./src/client/js/admin"],
-          ["@Public", "./src/client/js/public"]
+          ["@Admin", "./src/js/admin"],
+          ["@Public", "./src/js/public"]
         ],
         "extensions": [".vue", ".js", ".json", ".css"]
       }

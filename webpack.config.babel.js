@@ -1,5 +1,6 @@
 import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
+import HtmlWebpackPlugin from 'html-webpack-plugin';
 import path from 'path';
 // ↓Herokuではサーバーサイドでgzipに変換しないといけないので意味ない
 // import CompressionPlugin from 'compression-webpack-plugin';
@@ -20,7 +21,26 @@ const config = {
   resolve: {
     extensions: ['.vue', '.js', '.json', '.css'],
   },
+  devServer: {
+    open: true,
+    inline: true,
+    hot: true,
+    port: 8000,
+    watchContentBase: true,
+    contentBase: dist,
+    historyApiFallback: true,
+  },
   plugins: [
+    new HtmlWebpackPlugin({
+      filename: 'index.html',
+      template: 'src/views/index.html',
+      chunks: ['public']
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'admin.html',
+      template: 'src/views/admin.html',
+      chunks: ['admin']
+    }),
     new VueLoaderPlugin(),
     new WebpackNotifierPlugin({
       excludeWarnings: true,
@@ -32,8 +52,8 @@ const config = {
     // new Jarvis({ port: 1337 }),
   ],
   entry: {
-    public: ['./src/client/js/public/app.js'],
-    admin: ['./src/client/js/admin/app.js'],
+    public: [`${src}/js/public/app.js`],
+    admin: [`${src}/js/admin/app.js`],
     // test: ['./src/client/js/test/app.js']
   },
   output: {
@@ -75,14 +95,14 @@ const config = {
               plugins: () => [
                 require('postcss-import')(),
                 require('postcss-mixins')({
-                  mixinsFiles: 'src/client/css/_helpers/_mixins.css'
+                  mixinsFiles: 'src/css/_helpers/_mixins.css'
                 }),
                 require('postcss-custom-media')({
-                  importFrom: 'src/client/css/_helpers/_media.css'
+                  importFrom: 'src/css/_helpers/_media.css'
                 }),
                 require('postcss-custom-properties')({
                   preserve: false,
-                  importFrom: 'src/client/css/_helpers/_variables.css'
+                  importFrom: 'src/css/_helpers/_variables.css'
                 }),
                 require('postcss-nested')(),
                 require('postcss-color-function')(),
@@ -100,19 +120,16 @@ const config = {
   }
 };
 
-if (isDev) {
-  config.entry.admin.unshift('webpack-hot-middleware/client?reload=true');
-  config.entry.public.unshift('webpack-hot-middleware/client?reload=true');
-  config.output = Object.assign({}, config.output, {
-    hotUpdateChunkFilename: 'js/.hot/[id].[hash].hot-update.js',
-    hotUpdateMainFilename: 'js/.hot/[hash].hot-update.json'
-  });
-  config.plugins.push(new webpack.HotModuleReplacementPlugin());
-} else {
-  // config.plugins.push(new CompressionPlugin({
-  //   test: /\.(css)|(js)$/,
-  //   compressionOptions: { level: 9 },
-  // }));
-}
+// NOTE: ↓はserver側のコードと同じリポジトリで管理していたときのもの
+// NOTE: 今はwebpack-dev-serverでやってる
+// if (isDev) {
+//   config.entry.admin.unshift('webpack-hot-middleware/client?reload=true');
+//   config.entry.public.unshift('webpack-hot-middleware/client?reload=true');
+//   config.output = Object.assign({}, config.output, {
+//     hotUpdateChunkFilename: 'js/.hot/[id].[hash].hot-update.js',
+//     hotUpdateMainFilename: 'js/.hot/[hash].hot-update.json'
+//   });
+//   config.plugins.push(new webpack.HotModuleReplacementPlugin());
+// }
 
 export default config;
