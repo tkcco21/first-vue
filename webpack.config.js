@@ -1,14 +1,13 @@
 /* eslint-disable */
-import { VueLoaderPlugin } from 'vue-loader';
-import webpack from 'webpack';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
-import path from 'path';
+const { VueLoaderPlugin } = require('vue-loader');
+const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const path = require('path');
 // ↓Herokuではサーバーサイドでgzipに変換しないといけないので意味ない
-// import CompressionPlugin from 'compression-webpack-plugin';
-import WebpackNotifierPlugin from 'webpack-notifier';
-import StatsPlugin from 'stats-webpack-plugin';
-// import HardSourceWebpackPlugin from 'hard-source-webpack-plugin';
-// import Jarvis from 'webpack-jarvis';
+// const CompressionPlugin = require('compression-webpack-plugin');
+const WebpackNotifierPlugin = require('webpack-notifier');
+const StatsPlugin = require('stats-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
 const isDev = nodeEnv === 'development';
@@ -16,7 +15,7 @@ const isDev = nodeEnv === 'development';
 const src = path.resolve(__dirname, './src');
 const dist = path.resolve(__dirname, './dist');
 
-const config = {
+module.exports = {
   mode: nodeEnv,
   devtool: isDev ? 'eval-source-map' : 'eval',
   resolve: {
@@ -32,6 +31,7 @@ const config = {
     historyApiFallback: true,
   },
   plugins: [
+    new VueLoaderPlugin(),
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/views/index.html',
@@ -42,7 +42,14 @@ const config = {
       template: 'src/views/admin.html',
       chunks: ['admin'],
     }),
-    new VueLoaderPlugin(),
+    new webpack.DefinePlugin({
+      SERVICE_URL: isDev
+        ? JSON.stringify('https://dev.first-vue.com')
+        : JSON.stringify('https://api.first-vue.tkcco21.me'),
+    }),
+    new CopyPlugin([
+      { from: 'src/views/favicon.png', to: '' },
+    ]),
     new WebpackNotifierPlugin({
       excludeWarnings: true,
       title: 'First Vue',
@@ -50,12 +57,6 @@ const config = {
     new StatsPlugin('stats.json', {
       chunkModules: true,
     }),
-    new webpack.DefinePlugin({
-      SERVICE_URL: isDev
-        ? JSON.stringify('https://dev.first-vue.com')
-        : JSON.stringify('https://api.first-vue.tkcco21.me'),
-    }),
-    // new Jarvis({ port: 1337 }),
   ],
   entry: {
     public: [`${src}/js/public/app.js`],
@@ -136,5 +137,3 @@ const config = {
 //   });
 //   config.plugins.push(new webpack.HotModuleReplacementPlugin());
 // }
-
-export default config;
