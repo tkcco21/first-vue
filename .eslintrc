@@ -12,6 +12,9 @@
     "airbnb-base",
     "plugin:vue/recommended"
   ],
+  "globals": {
+    "SERVICE_URL": true,
+  },
   "settings": {
     "import/resolver": {
       "alias": {

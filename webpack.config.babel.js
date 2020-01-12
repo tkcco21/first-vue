@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { VueLoaderPlugin } from 'vue-loader';
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
@@ -34,27 +35,31 @@ const config = {
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'src/views/index.html',
-      chunks: ['public']
+      chunks: ['public'],
     }),
     new HtmlWebpackPlugin({
       filename: 'admin.html',
       template: 'src/views/admin.html',
-      chunks: ['admin']
+      chunks: ['admin'],
     }),
     new VueLoaderPlugin(),
     new WebpackNotifierPlugin({
       excludeWarnings: true,
-      title: 'First Vue'
+      title: 'First Vue',
     }),
     new StatsPlugin('stats.json', {
       chunkModules: true,
+    }),
+    new webpack.DefinePlugin({
+      SERVICE_URL: isDev
+        ? JSON.stringify('https://dev.first-vue.com')
+        : JSON.stringify('https://api.first-vue.tkcco21.me'),
     }),
     // new Jarvis({ port: 1337 }),
   ],
   entry: {
     public: [`${src}/js/public/app.js`],
     admin: [`${src}/js/admin/app.js`],
-    // test: ['./src/client/js/test/app.js']
   },
   output: {
     filename: 'js/[name].bundle.js',
@@ -68,7 +73,7 @@ const config = {
         enforce: 'pre',
         exclude: /node_modules/,
         loader: 'eslint-loader',
-        options: { failOnError: false }
+        options: { failOnError: false },
       },
       {
         test: /\.js$/,
@@ -95,14 +100,14 @@ const config = {
               plugins: () => [
                 require('postcss-import')(),
                 require('postcss-mixins')({
-                  mixinsFiles: 'src/css/_helpers/_mixins.css'
+                  mixinsFiles: 'src/css/_helpers/_mixins.css',
                 }),
                 require('postcss-custom-media')({
-                  importFrom: 'src/css/_helpers/_media.css'
+                  importFrom: 'src/css/_helpers/_media.css',
                 }),
                 require('postcss-custom-properties')({
                   preserve: false,
-                  importFrom: 'src/css/_helpers/_variables.css'
+                  importFrom: 'src/css/_helpers/_variables.css',
                 }),
                 require('postcss-nested')(),
                 require('postcss-color-function')(),
@@ -110,14 +115,14 @@ const config = {
               ],
             },
           },
-        ]
+        ],
       },
       {
         test: /\.(png|jpe?g|gif|svg|woff|woff2|ttf|eot|ico)$/,
-        loader: 'file-loader?name=assets/[name].[hash].[ext]'
-      }
-    ]
-  }
+        loader: 'file-loader?name=assets/[name].[hash].[ext]',
+      },
+    ],
+  },
 };
 
 // NOTE: ↓はserver側のコードと同じリポジトリで管理していたときのもの
