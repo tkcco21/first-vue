@@ -44,8 +44,8 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       SERVICE_URL: isDev
-        ? JSON.stringify('https://dev.first-vue.com')
-        : JSON.stringify('https://api.first-vue.tkcco21.me'),
+        ? JSON.stringify('https://dev.first-vue.com/api')
+        : JSON.stringify('https://tkcco21-first-vue.herokuapp.com/api'),
     }),
     new CopyPlugin([
       { from: 'src/views/favicon.png', to: '' },
