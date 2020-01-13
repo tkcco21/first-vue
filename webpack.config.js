@@ -49,6 +49,7 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: 'src/views/favicon.png', to: '' },
+      { from: 'src/views/ogp.png', to: '' },
     ]),
     new WebpackNotifierPlugin({
       excludeWarnings: true,
