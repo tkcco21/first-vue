@@ -40,14 +40,14 @@ export default {
   },
   actions: {
     getAllBooks({ commit }) {
-      axios.get(`${SERVICE_URL}/api/books`).then(({ data }) => {
+      axios.get(`${SERVICE_URL}/books`).then(({ data }) => {
         commit('doneGetAllBooks', { bookList: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
     getBook({ commit }, { id }) {
-      axios.get(`${SERVICE_URL}/api/books/${id}`).then(({ data }) => {
+      axios.get(`${SERVICE_URL}/books/${id}`).then(({ data }) => {
         commit('doneGetBook', { book: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
