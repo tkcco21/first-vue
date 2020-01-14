@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '@Common/axiosDefault';
 
 export default {
   namespaced: true,
@@ -73,28 +73,28 @@ export default {
       commit('updateValue', input);
     },
     getAllBooks({ commit }) {
-      axios.get('/api/books').then(({ data }) => {
+      axios.get('/books').then(({ data }) => {
         commit('doneGetAllBooks', { bookList: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
     getBook({ commit }, { id }) {
-      axios.get(`/api/books/${id}`).then(({ data }) => {
+      axios.get(`/books/${id}`).then(({ data }) => {
         commit('doneGetBook', data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
     addBook({ commit }, book) {
-      axios.post('/api/books', book).then(({ data }) => {
+      axios.post('/books', book).then(({ data }) => {
         commit('doneAddBook', data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
     editBook({ commit }, book) {
-      axios.patch(`/api/books/${book.id}`, book).then(({ data }) => {
+      axios.patch(`/books/${book.id}`, book).then(({ data }) => {
         commit('doneEditBook', data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });

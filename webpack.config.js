@@ -28,7 +28,12 @@ module.exports = {
     port: 8000,
     watchContentBase: true,
     contentBase: dist,
-    historyApiFallback: true,
+    historyApiFallback: {
+      rewrites: [
+        { from: /^\/admin/, to: '/admin.html'},
+        { from: /^\/$/, to: '/index.html'},
+      ]
+    },
   },
   plugins: [
     new VueLoaderPlugin(),

@@ -20,7 +20,7 @@
       "alias": {
         "map": [
           ["@Config", "./config"],
-          ["@Server", "./src/server"],
+          ["@Common", "./src/js/common"],
           ["@Admin", "./src/js/admin"],
           ["@Public", "./src/js/public"]
         ],
