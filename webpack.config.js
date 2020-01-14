@@ -49,6 +49,8 @@ module.exports = {
     }),
     new CopyPlugin([
       { from: 'src/views/favicon.png', to: '' },
+      { from: 'src/views/ogp.png', to: '' },
+      { from: 'src/views/_redirects', to: '' },
     ]),
     new WebpackNotifierPlugin({
       excludeWarnings: true,
