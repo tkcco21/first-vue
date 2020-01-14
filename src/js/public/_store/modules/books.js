@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '@Common/axiosDefault';
 
 export default {
   namespaced: true,
@@ -40,14 +40,14 @@ export default {
   },
   actions: {
     getAllBooks({ commit }) {
-      axios.get(`${SERVICE_URL}/books`).then(({ data }) => {
+      axios.get('/books').then(({ data }) => {
         commit('doneGetAllBooks', { bookList: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
     getBook({ commit }, { id }) {
-      axios.get(`${SERVICE_URL}/books/${id}`).then(({ data }) => {
+      axios.get(`/books/${id}`).then(({ data }) => {
         commit('doneGetBook', { book: data });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });

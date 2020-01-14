@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '@Common/axiosDefault';
 
 export default {
   namespaced: true,
@@ -36,7 +36,7 @@ export default {
       commit('applySignin');
     },
     signin({ commit }, adminUser) {
-      axios.post('/api/admin/signin', adminUser).then(({ data }) => {
+      axios.post('/admin/signin', adminUser).then(({ data }) => {
         commit('successSignin', { token: data.token });
       }).catch((err) => {
         commit('failSignin', { message: err.response.data.message });
@@ -44,7 +44,7 @@ export default {
     },
     checkToken({ commit }) {
       return new Promise((resolve, reject) => {
-        axios.get('/api/admin/token').then(({ data }) => {
+        axios.get('/admin/token').then(({ data }) => {
           resolve();
           commit('successSignin', { token: data.token });
         }).catch(() => {
