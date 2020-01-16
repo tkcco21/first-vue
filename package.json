@@ -7,9 +7,6 @@
     "node": "10.15.0",
     "npm": "6.9.0"
   },
-  "renovate": {
-    "baseBranches": ["develop"]
-  },
   "scripts": {
     "rm:dist": "rimraf ./dist",
     "dev": "NODE_ENV=development webpack-dev-server",
