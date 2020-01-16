@@ -1,5 +1,10 @@
 {
+  "baseBranches": ["develop"],
+  "schedule": "every weekend",
   "extends": [
     "config:base"
-  ]
+  ],
+  "minor": {
+    "groupName": "all dependencies"
+  }
 }
