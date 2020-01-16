@@ -86,15 +86,25 @@ export default {
         commit('failRequest', { message: err.response.data.message });
       });
     },
-    addBook({ commit }, book) {
-      axios.post('/books', book).then(({ data }) => {
+    addBook({ rootState, commit }, book) {
+      axios({
+        headers: { Authorization: `Bearer ${rootState.auth.token}` },
+        method: 'POST',
+        url: '/books',
+        data: book,
+      }).then(({ data }) => {
         commit('doneAddBook', data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
-    editBook({ commit }, book) {
-      axios.patch(`/books/${book.id}`, book).then(({ data }) => {
+    editBook({ rootState, commit }, book) {
+      axios({
+        headers: { Authorization: `Bearer ${rootState.auth.token}` },
+        method: 'PATCH',
+        url: `/books/${book.id}`,
+        data: book,
+      }).then(({ data }) => {
         commit('doneEditBook', data);
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });

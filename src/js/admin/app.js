@@ -21,12 +21,18 @@ router.beforeEach((to, from, next) => {
   const isPublic = to.matched.some(route => route.meta.isPublic);
 
   if (!isPublic && !store.state.auth.token) {
-    return store.dispatch('auth/checkToken')
-      .then(() => next())
-      .catch(() => next({
-        path: '/admin/signin',
-        query: { redirect: to.fullPath },
-      }));
+    return next({
+      path: '/admin/signin',
+      query: { redirect: to.fullPath },
+    });
+    // NOTE: クロスドメインだとcookieの登録ができなかったので、この部分は意味ないのでコメントアウト。
+    // TODO: 要修正。ただクライアントのJSではcookieは触りたくない。
+    // return store.dispatch('auth/checkToken')
+    //   .then(() => next())
+    //   .catch(() => next({
+    //     path: '/admin/signin',
+    //     query: { redirect: to.fullPath },
+    //   }));
   }
   return next();
 });
