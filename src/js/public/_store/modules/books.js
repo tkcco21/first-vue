@@ -40,17 +40,23 @@ export default {
   },
   actions: {
     getAllBooks({ commit }) {
+      commit('generics/startLoading', null, { root: true });
       axios.get('/books').then(({ data }) => {
         commit('doneGetAllBooks', { bookList: data });
+        commit('generics/finishLoading', null, { root: true });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
+        commit('generics/finishLoading', null, { root: true });
       });
     },
     getBook({ commit }, { id }) {
+      commit('generics/startLoading', null, { root: true });
       axios.get(`/books/${id}`).then(({ data }) => {
         commit('doneGetBook', { book: data });
+        commit('generics/finishLoading', null, { root: true });
       }).catch((err) => {
         commit('failRequest', { message: err.response.data.message });
+        commit('generics/finishLoading', null, { root: true });
       });
     },
   },

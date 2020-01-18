@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import generics from './modules/generics';
 import auth from './modules/auth';
 import books from './modules/books';
 
@@ -11,5 +12,6 @@ export default new Vuex.Store({
   modules: {
     auth,
     books,
+    generics,
   },
 });

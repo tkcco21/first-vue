@@ -73,9 +73,12 @@ export default {
       commit('updateValue', input);
     },
     getAllBooks({ commit }) {
+      commit('generics/startLoading', null, { root: true });
       axios.get('/books').then(({ data }) => {
+        commit('generics/finishLoading', null, { root: true });
         commit('doneGetAllBooks', { bookList: data });
       }).catch((err) => {
+        commit('generics/finishLoading', null, { root: true });
         commit('failRequest', { message: err.response.data.message });
       });
     },
