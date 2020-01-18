@@ -1,3 +1,7 @@
-import Sidebar from './Sidebar';
+import GlobalLoading from './Loading';
+import GlobalSidebar from './Sidebar';
 
-export default Sidebar;
+export {
+  GlobalLoading,
+  GlobalSidebar,
+};

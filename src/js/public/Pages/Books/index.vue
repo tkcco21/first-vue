@@ -2,6 +2,8 @@
   <section>
     <app-page-title title="読んだ本たち" text="※ 本の画像部分のリンクはすべてアフィリエイトリンクになっています。" />
 
+    <Loading v-if="isLoading" />
+
     <ul class="book-list">
       <app-yearly-books
         v-for="(yearly, yearIndex) in bookList"
@@ -16,11 +18,13 @@
 </template>
 
 <script>
+import { Loading } from '@Public/components/_globals';
 import { PageTitle } from '@Public/components/Molecules';
 import { YearlyBooks } from '@Public/components/Organisms';
 
 export default {
   components: {
+    Loading,
     appPageTitle: PageTitle,
     appYearlyBooks: YearlyBooks,
   },
@@ -30,6 +34,9 @@ export default {
     };
   },
   computed: {
+    isLoading() {
+      return this.$store.state.generics.isLoading;
+    },
     bookList() {
       return this.$store.state.books.bookList;
     },
