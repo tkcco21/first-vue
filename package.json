@@ -16,7 +16,7 @@
     "analyze": "webpack-bundle-analyzer dist/stats.json --port 8765"
   },
   "browserslist": [
-    "last 1 versions",
+    "last 2 versions",
     "> 1%",
     "IE >= 11"
   ],
@@ -66,7 +66,6 @@
     "postcss-nested": "4.2.1",
     "rimraf": "3.0.0",
     "stats-webpack-plugin": "0.7.0",
-    "style-loader": "0.23.1",
     "vue-loader": "15.8.3",
     "vue-style-loader": "4.1.2",
     "vue-template-compiler": "2.6.11",
