@@ -49,7 +49,7 @@ module.exports = {
     }),
     new webpack.DefinePlugin({
       SERVICE_URL: isDev
-        ? JSON.stringify('https://dev.first-vue.com/api')
+        ? JSON.stringify('http://localhost:3000/api')
         : JSON.stringify('https://tkcco21-first-vue.herokuapp.com/api'),
     }),
     new CopyPlugin([

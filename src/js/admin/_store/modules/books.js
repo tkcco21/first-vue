@@ -29,7 +29,7 @@ export default {
       state.doneMessage = '';
     },
     resetForm(state) {
-      state.targetBook = Object.assign({}, {
+      state.targetBook = {
         id: null,
         title: '',
         itemUrl: '',
@@ -37,7 +37,7 @@ export default {
         description: '',
         completedYear: null,
         completedMonth: null,
-      });
+      };
     },
     updateValue(state, { value, name }) {
       state.targetBook[name] = value;
@@ -49,14 +49,14 @@ export default {
       state.bookList = bookList;
     },
     doneGetBook(state, payload) {
-      state.targetBook = Object.assign({}, payload);
+      state.targetBook = payload;
     },
     doneAddBook(state) {
       state.doneMessage = '新しい本を追加しました';
     },
     doneEditBook(state, payload) {
       state.doneMessage = '本の情報を更新しました';
-      state.targetBook = Object.assign({}, payload);
+      state.targetBook = payload;
     },
   },
   actions: {
@@ -77,7 +77,7 @@ export default {
       axios.get('/books').then(({ data }) => {
         commit('generics/finishLoading', null, { root: true });
         commit('doneGetAllBooks', { bookList: data });
-      }).catch((err) => {
+      }).catch(err => {
         commit('generics/finishLoading', null, { root: true });
         commit('failRequest', { message: err.response.data.message });
       });
@@ -85,7 +85,7 @@ export default {
     getBook({ commit }, { id }) {
       axios.get(`/books/${id}`).then(({ data }) => {
         commit('doneGetBook', data);
-      }).catch((err) => {
+      }).catch(err => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
@@ -97,7 +97,7 @@ export default {
         data: book,
       }).then(({ data }) => {
         commit('doneAddBook', data);
-      }).catch((err) => {
+      }).catch(err => {
         commit('failRequest', { message: err.response.data.message });
       });
     },
@@ -109,7 +109,7 @@ export default {
         data: book,
       }).then(({ data }) => {
         commit('doneEditBook', data);
-      }).catch((err) => {
+      }).catch(err => {
         commit('failRequest', { message: err.response.data.message });
       });
     },

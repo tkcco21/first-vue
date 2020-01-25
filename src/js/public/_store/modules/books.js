@@ -16,13 +16,13 @@ export default {
     errorMessage: '',
   },
   getters: {
-    yearlyNumberOfBooks: (state) => {
+    yearlyNumberOfBooks: state => {
       const yearlyNumberOfBooks = state.bookList.reduce((acc, value) => {
         let num = 0;
-        value[Object.keys(value)[0]].forEach((item) => {
+        value[Object.keys(value)[0]].forEach(item => {
           num += item[Object.keys(item)].count;
         });
-        return Object.assign({}, acc, { [Object.keys(value)[0]]: num });
+        return { ...acc, [Object.keys(value)[0]]: num };
       }, {});
       return yearlyNumberOfBooks;
     },
@@ -35,7 +35,7 @@ export default {
       state.bookList = bookList;
     },
     doneGetBook(state, { book }) {
-      state.book = Object.assign({}, book);
+      state.book = book;
     },
   },
   actions: {
@@ -44,7 +44,7 @@ export default {
       axios.get('/books').then(({ data }) => {
         commit('doneGetAllBooks', { bookList: data });
         commit('generics/finishLoading', null, { root: true });
-      }).catch((err) => {
+      }).catch(err => {
         commit('failRequest', { message: err.response.data.message });
         commit('generics/finishLoading', null, { root: true });
       });
@@ -54,7 +54,7 @@ export default {
       axios.get(`/books/${id}`).then(({ data }) => {
         commit('doneGetBook', { book: data });
         commit('generics/finishLoading', null, { root: true });
-      }).catch((err) => {
+      }).catch(err => {
         commit('failRequest', { message: err.response.data.message });
         commit('generics/finishLoading', null, { root: true });
       });

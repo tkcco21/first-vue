@@ -38,7 +38,7 @@ export default {
     signin({ commit }, adminUser) {
       axios.post('/admin/signin', adminUser).then(({ data }) => {
         commit('successSignin', { token: data.token });
-      }).catch((err) => {
+      }).catch(err => {
         commit('failSignin', { message: err.response.data.message });
       });
     },

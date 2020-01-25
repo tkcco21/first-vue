@@ -5,7 +5,7 @@ import Vuetify from 'vuetify';
 
 import '../../css/global';
 import 'vuetify/dist/vuetify.min.css';
-import '@mdi/font/css/materialdesignicons.css';
+import '@mdi/font/css/materialdesignicons';
 
 import MyApp from '@Admin/Pages';
 import router from '@Admin/_router';
