@@ -72,7 +72,7 @@ export default {
     signin() {
       this.$emit('clearMessage');
 
-      this.$validator.validate().then((valid) => {
+      this.$validator.validate().then(valid => {
         if (valid) {
           this.$emit('applySignin');
           this.$emit('signin', {

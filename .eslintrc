@@ -13,7 +13,7 @@
     "plugin:vue/recommended"
   ],
   "globals": {
-    "SERVICE_URL": true,
+    "SERVICE_URL": true
   },
   "settings": {
     "import/resolver": {
@@ -29,6 +29,11 @@
     }
   },
   "rules": {
+    "import/extensions": ["error", "always", {
+      "js": "never",
+      "css": "never",
+      "vue": "never"
+    }],
     "no-new": "off",
     "no-console": "warn",
     "no-control-regex": "off",
@@ -52,6 +57,7 @@
     ],
     "import/no-named-as-default": "off",
     "import/no-extraneous-dependencies": "off",
+    "arrow-parens": ["error", "as-needed"],
     "no-param-reassign": [
       "error",
       {

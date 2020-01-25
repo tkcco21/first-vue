@@ -177,7 +177,7 @@ export default {
     handleSubmit() {
       this.$emit('clear');
 
-      this.$validator.validate().then((valid) => {
+      this.$validator.validate().then(valid => {
         if (!valid) {
           this.$emit('invalidateSubmit');
         } else {
