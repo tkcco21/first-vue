@@ -1,7 +1,7 @@
 <template lang="html">
   <footer class="footer">
     <div class="footer__inner">
-      <p class="footer__copyright">© tkcco21</p>
+      <p class="footer__copyright">© おいなり (tkcco21)</p>
     </div>
   </footer>
 </template>
