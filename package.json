@@ -9,6 +9,7 @@
   },
   "scripts": {
     "rm:dist": "rimraf ./dist",
+    "server": "nodemon mock/server.js --watch ./mock",
     "dev": "NODE_ENV=development webpack-dev-server",
     "start": "npm run rm:dist && npm run dev",
     "build": "npm run rm:dist && NODE_ENV=production webpack",
@@ -65,8 +66,10 @@
     "file-loader": "5.1.0",
     "html-webpack-plugin": "3.2.0",
     "husky": "4.2.3",
+    "json-server": "^0.16.1",
     "lint-staged": "10.0.9",
     "mini-css-extract-plugin": "0.9.0",
+    "nodemon": "^2.0.2",
     "postcss-color-function": "4.1.0",
     "postcss-custom-media": "7.0.8",
     "postcss-custom-properties": "9.1.1",
