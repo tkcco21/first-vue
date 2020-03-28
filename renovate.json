@@ -6,5 +6,6 @@
   ],
   "minor": {
     "groupName": "all dependencies"
-  }
+  },
+  "ignoreDeps": ["npm", "node"]
 }
