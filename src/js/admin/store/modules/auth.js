@@ -42,6 +42,7 @@ export default {
         commit('failSignin', { message: err.response.data.message });
       });
     },
+    // ↓トークンが有効かどうかの確認。ただ、今は使ってない。
     checkToken({ commit }) {
       return new Promise((resolve, reject) => {
         axios.get('/admin/token').then(({ data }) => {
