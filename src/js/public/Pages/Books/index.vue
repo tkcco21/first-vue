@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import { Loading } from '@Public/components/_globals';
+import { Loading } from '@Public/components/Atoms';
 import { PageTitle } from '@Public/components/Molecules';
 import { YearlyBooks } from '@Public/components/Organisms';
 
