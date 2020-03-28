@@ -23,7 +23,6 @@
       {
         "alias": {
           "@Config": "./config",
-          "@Common": "./src/js/common",
           "@Admin": "./src/js/admin",
           "@Public": "./src/js/public"
         }

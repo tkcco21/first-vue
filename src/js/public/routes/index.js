@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-// import Home from '@Public/Pages/Home';
-import Books from '@Public/Pages/Books';
-import BookDetail from '@Public/Pages/BookDetail';
-import NotFound from '@Public/Pages/NotFound';
+// import Home from '@Public/pages/Home';
+import Books from '@Public/pages/Books';
+import BookDetail from '@Public/pages/BookDetail';
+import NotFound from '@Public/pages/NotFound';
 
 Vue.use(VueRouter);
 
