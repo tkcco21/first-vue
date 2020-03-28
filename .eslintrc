@@ -20,6 +20,7 @@
       "alias": {
         "map": [
           ["@Config", "./config"],
+          ["@Common", "./src/js/common"],
           ["@Admin", "./src/js/admin"],
           ["@Public", "./src/js/public"]
         ],
@@ -36,7 +37,6 @@
     "no-new": "off",
     "no-console": "warn",
     "no-control-regex": "off",
-    "import/prefer-default-export": "off",
     "max-len": [
       "error",
       {

@@ -1,16 +1,16 @@
 <template lang="html">
   <div>
-    <app-loading v-if="isLoading" />
+    <global-loading v-if="isLoading" />
     <book-list :book-list="bookList" />
   </div>
 </template>
 
 <script>
-import { Loading } from '@Admin/components/Atoms';
+import { GlobalLoading } from '@Admin/components/globals';
 import { BookList } from '@Admin/components/Molecules';
 
 export default {
-  components: { BookList, appLoading: Loading },
+  components: { BookList, GlobalLoading },
   computed: {
     isLoading() {
       return this.$store.state.generics.isLoading;

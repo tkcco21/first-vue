@@ -14,7 +14,7 @@ import {
   Header,
   Menu,
   Footer,
-} from '@Public/layouts';
+} from '@Public/components/_globals';
 
 export default {
   components: {

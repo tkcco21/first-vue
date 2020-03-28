@@ -7,9 +7,9 @@ import '../../css/global';
 import 'vuetify/dist/vuetify.min.css';
 import '@mdi/font/css/materialdesignicons';
 
-import MyApp from '@Admin';
-import router from '@Admin/routes';
-import store from '@Admin/store';
+import MyApp from '@Admin/Pages';
+import router from '@Admin/_router';
+import store from '@Admin/_store';
 
 Vue.use(VeeValidate);
 Validator.localize('ja', ja);

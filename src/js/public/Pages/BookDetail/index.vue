@@ -9,7 +9,7 @@
 </template>
 
 <script>
-import { Loading } from '@Public/components/Atoms';
+import { Loading } from '@Public/components/_globals';
 import { PageTitle } from '@Public/components/Molecules';
 import { BookDetail } from '@Public/components/Organisms';
 

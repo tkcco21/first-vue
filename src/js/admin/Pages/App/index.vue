@@ -1,6 +1,6 @@
 <template lang="html">
   <div>
-    <app-sidebar />
+    <global-sidebar />
     <main class="content">
       <div class="content__inner">
         <router-view />
@@ -10,11 +10,11 @@
 </template>
 
 <script>
-import { Sidebar } from '@Admin/layouts';
+import { GlobalSidebar } from '@Admin/components/globals';
 
 export default {
   components: {
-    appSidebar: Sidebar,
+    GlobalSidebar,
   },
   watch: {
     $route() {
