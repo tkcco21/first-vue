@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import routesArray from '@Public/_helper/routesArray';
+import routesArray from '@Public/helper/routesArray';
 
 export default {
   data() {
