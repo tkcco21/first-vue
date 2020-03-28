@@ -23,14 +23,14 @@ server.post('/books', (req, res) => {
   if (req.headers.authorization.split(' ')[1] === TOKEN) {
     return res.jsonp(req.body);
   }
-  return res.sendStatus(401);
+  return res.status(401).send({ message: 'サインインし直してください' });
 });
 
 server.patch('/books/:id', (req, res) => {
   if (req.headers.authorization.split(' ')[1] === TOKEN) {
     return res.jsonp(req.body);
   }
-  return res.sendStatus(401);
+  return res.status(401).send({ message: 'サインインし直してください' });
 });
 
 server.post('/admin/signin', (req, res) => {
@@ -39,7 +39,7 @@ server.post('/admin/signin', (req, res) => {
   if (username === user.name && password === user.password) {
     return res.jsonp({ token: TOKEN });
   }
-  return res.sendStatus(401);
+  return res.status(401).send({ message: 'サインインできません。' });
 });
 
 server.use(router);
