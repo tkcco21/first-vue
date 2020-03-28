@@ -1,16 +1,16 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import App from '@Admin/pages/App';
+import App from '@Admin/Pages/App';
 // -- Home ---
-import Home from '@Admin/pages/Home';
+import Home from '@Admin/Pages/Home';
 // -- Auth ---
-import Signin from '@Admin/pages/Signin';
+import Signin from '@Admin/Pages/Signin';
 // -- Books ---
-import Books from '@Admin/pages/Books';
-import BooksList from '@Admin/pages/Books/List';
-import BookForm from '@Admin/pages/Books/Form';
-import BookDetails from '@Admin/pages/Books/Details';
+import Books from '@Admin/Pages/Books';
+import BooksList from '@Admin/Pages/Books/List';
+import BookForm from '@Admin/Pages/Books/Form';
+import BookDetails from '@Admin/Pages/Books/Details';
 
 Vue.use(VueRouter);
 
