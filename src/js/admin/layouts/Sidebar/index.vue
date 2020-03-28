@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import routeLinksArray from '@Admin/_helper/routeLinksArray';
+import routeLinksArray from '@Admin/helper/routeLinksArray';
 
 export default {
   computed: {
