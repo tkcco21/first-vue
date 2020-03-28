@@ -1,4 +1,4 @@
-import axios from '@Common/axiosDefault';
+import axios from '@Admin/helper/axiosDefault';
 
 export default {
   namespaced: true,

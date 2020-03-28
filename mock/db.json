@@ -1,0 +1,273 @@
+{
+  "books": [
+    {
+      "2020": [
+        {
+          "12": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2020年12月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "本の概要とか感想とか\n読みづらかったのかな。\n\nアマゾンを分析をし、今後どうなりそうかを書いている。\n分析の方法、その方法をつかって分析したアマゾンについてや今後の展開について。",
+                "completedAt": "2020-12-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2020年12月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2020-12-01T00:00:00.000Z"
+              },
+              {
+                "id": 3,
+                "title": "2020年12月 本のタイトル03",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "③。",
+                "completedAt": "2020-12-01T00:00:00.000Z"
+              }
+            ],
+            "count": 3
+          }
+        },
+        {
+          "10": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2020年10月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "①",
+                "completedAt": "2020-10-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2020年10月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2020-10-01T00:00:00.000Z"
+              },
+              {
+                "id": 3,
+                "title": "2020年10月 本のタイトル03",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "③。",
+                "completedAt": "2020-10-01T00:00:00.000Z"
+              },
+              {
+                "id": 4,
+                "title": "2020年10月 本のタイトル04",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "④。",
+                "completedAt": "2020-10-01T00:00:00.000Z"
+              }
+            ],
+            "count": 4
+          }
+        },
+        {
+          "5": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2020年5月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "①",
+                "completedAt": "2020-05-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2020年5月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2020-05-01T00:00:00.000Z"
+              }
+            ],
+            "count": 2
+          }
+        },
+        {
+          "1": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2020年1月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "①",
+                "completedAt": "2020-01-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2020年1月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2020-01-01T00:00:00.000Z"
+              }
+            ],
+            "count": 2
+          }
+        }
+      ]
+    },
+    {
+      "2018": [
+        {
+          "12": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2018年12月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "①",
+                "completedAt": "2018-12-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2018年12月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2018-12-01T00:00:00.000Z"
+              },
+              {
+                "id": 3,
+                "title": "2018年12月 本のタイトル03",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "③。",
+                "completedAt": "2018-12-01T00:00:00.000Z"
+              }
+            ],
+            "count": 3
+          }
+        },
+        {
+          "10": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2018年10月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "①",
+                "completedAt": "2018-10-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2018年10月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2018-10-01T00:00:00.000Z"
+              },
+              {
+                "id": 3,
+                "title": "2018年10月 本のタイトル03",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "③。",
+                "completedAt": "2018-10-01T00:00:00.000Z"
+              },
+              {
+                "id": 4,
+                "title": "2018年10月 本のタイトル04",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "④。",
+                "completedAt": "2018-10-01T00:00:00.000Z"
+              }
+            ],
+            "count": 4
+          }
+        },
+        {
+          "5": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2018年5月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "①",
+                "completedAt": "2018-05-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2018年5月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2018-05-01T00:00:00.000Z"
+              }
+            ],
+            "count": 2
+          }
+        },
+        {
+          "1": {
+            "books": [
+              {
+                "id": 1,
+                "title": "2018年1月 本のタイトル01",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "①",
+                "completedAt": "2018-01-01T00:00:00.000Z"
+              },
+              {
+                "id": 2,
+                "title": "2018年1月 本のタイトル02",
+                "itemUrl": "https://amzn.to/32VVBUS",
+                "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+                "description": "②。",
+                "completedAt": "2018-01-01T00:00:00.000Z"
+              }
+            ],
+            "count": 2
+          }
+        }
+      ]
+    }
+  ],
+  "bookDetail": [
+    {
+      "id": 1,
+      "title": "2020年12月 本のタイトル01",
+      "itemUrl": "https://amzn.to/32VVBUS",
+      "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+      "description": "本の概要とか感想とか\n読みづらかったのかな。\n\nアマゾンを分析をし、今後どうなりそうかを書いている。\n分析の方法、その方法をつかって分析したアマゾンについてや今後の展開について。",
+      "completedYear": 2020,
+      "completedMonth": 12
+    },
+    {
+      "id": 2,
+      "title": "2020年12月 本のタイトル02",
+      "itemUrl": "https://amzn.to/32VVBUS",
+      "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+      "description": "②。",
+      "completedYear": 2020,
+      "completedMonth": 12
+    },
+    {
+      "id": 3,
+      "title": "2020年12月 本のタイトル03",
+      "itemUrl": "https://amzn.to/32VVBUS",
+      "imageUrl": "https://images-fe.ssl-images-amazon.com/images/I/41KlREPZLWL._SL250_.jpg",
+      "description": "③。",
+      "completedYear": 2020,
+      "completedMonth": 12
+    }
+  ]
+}
