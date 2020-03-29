@@ -2,8 +2,8 @@
   <component
     :is="tag"
     :[href]="to"
-    :target="external ? '_blank' : false"
-    :rel="external ? 'noopener' : false"
+    :target="external && '_blank'"
+    :rel="external && 'noopener noreferrer'"
     :class="classes"
   >
     {{ text }}
