@@ -36,7 +36,7 @@
     "core-js": "^3.0.1",
     "dotenv": "^8.0.0",
     "helmet": "^3.21.2",
-    "jsonwebtoken": "^8.5.1",
+    "jsonwebtoken": "^9.0.0",
     "moment": "^2.24.0",
     "vee-validate": "^2.2.7",
     "vue": "^2.6.11",
